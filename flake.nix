@@ -32,7 +32,7 @@
     
     in {
 
-      packages.system.default =
+      packages.system.NixDesktop =
       (nvf.lib.neovimConfiguration { modules = [ standalones/nvf.nix ]; }).neovim;
       
       nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
