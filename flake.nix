@@ -8,6 +8,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     stylix.url = "github:danth/stylix";
+
+    nvf.url = "github:notashelf/nvf";
     
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,7 +24,7 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    
+
     let
     
       system = "x86_64-linux";
@@ -30,6 +32,12 @@
     
     in {
       
+      packages."x86_64-linux".default = 
+        (nvf.lib.neovimConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          modules = [ ./nvf.nix ];
+        }).neovim;
+    
       nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
 	specialArgs = { inherit inputs; };
 	modules = [
