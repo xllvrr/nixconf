@@ -55,6 +55,9 @@
     ];
   };
 
+  # Align nix path
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   ## Software ##
 
   # Enable the X11 windowing system.

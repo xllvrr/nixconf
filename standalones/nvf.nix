@@ -20,7 +20,11 @@
 
     statusline.lualine.enable = true;
     telescope.enable = true;
+
+    autopairs.nvim-autopairs.enable = true;
+
     autocomplete.nvim-cmp.enable = true;
+    ui.colorizer.enable = true;
 
     languages = {
       enableLSP = true;
