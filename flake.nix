@@ -32,18 +32,13 @@
     
     in {
       
-      packages."x86_64-linux".default = 
-        (nvf.lib.neovimConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          modules = [ ./nvf.nix ];
-        }).neovim;
-    
       nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
 	specialArgs = { inherit inputs; };
 	modules = [
 	    ./hosts/NixDesktop/configuration.nix
 	    inputs.stylix.nixosModules.stylix
 	    inputs.home-manager.nixosModules.default
+	    nvf.nixosModules.default
 	];
       };
 
