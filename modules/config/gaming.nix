@@ -1,5 +1,5 @@
 # Gaming Settings
-{ pkgs, ... }
+{ pkgs, ... }:
 
 {
 
