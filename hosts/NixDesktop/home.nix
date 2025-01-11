@@ -1,6 +1,12 @@
 { config, pkgs, inputs, ... }:
 
 {
+  
+  imports = 
+  [
+    ../../modules/home/firefox.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "xllvr";
@@ -53,47 +59,6 @@
     aliases = {
       cm = "commit -am";
     };
-  };
-
-  # Firefox
-  programs.firefox = {
-
-      enable = true;
-      
-      profiles.xllvr = {
-
-      /* Extensions */
-
-	extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-	  bitwarden
-	  ublock-origin
-	  darkreader
-	  tridactyl
-	  # enhancer-for-youtube
-	];
-
-     };
-      
-      /* Policies */
-
-      policies = {
-       DisableTelemetry = true;
-       DisableFirefoxStudies = true;
-       EnableTrackingProtection = {
-         Value = true;
-	 Locked = true;
-	 Cryptomining = true;
-	 Fingerprinting = true;
-       };
-       DisablePocket = true;
-       DisableFirefoxScreenshots = true;
-       OverrideFirstRunPage = "";
-       OverridePostUpdatePage = "";
-       DontCheckDefaultBrowser = true;
-       SearchBar = "unified";
-      };
-
-
   };
 
   # Let Home Manager install and manage itself.

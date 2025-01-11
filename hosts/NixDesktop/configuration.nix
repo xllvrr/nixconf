@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/stylix.nix
+      ../../modules/config/stylix.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -52,6 +52,7 @@
       fcitx5-mozc
       fcitx5-rime
       rime-data
+      fcitx5-chinese-addons
     ];
   };
 
