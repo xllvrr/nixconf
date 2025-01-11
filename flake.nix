@@ -5,7 +5,7 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -27,7 +27,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, ... }@inputs:
 
     let
 
@@ -57,12 +57,7 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [ 
           ./hosts/NixDesktop/home.nix 
-          {
-            wayland.windowManager.hyprland = {
-              enable = true;
-              package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-            };
-          }
+          {wayland.windowManager.hyprland.enable = true;}
         ];
       };
 
