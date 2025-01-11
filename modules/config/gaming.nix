@@ -22,7 +22,7 @@
 
     # Gaming
     mangohud
-    protonup
+    protonup-qt
     lutris
     bottles
 
