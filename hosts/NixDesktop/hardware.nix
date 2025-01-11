@@ -28,6 +28,19 @@
     [ { device = "/dev/disk/by-uuid/8d8d33ae-aeb7-4e2f-83e1-51b81669fa45"; }
     ];
 
+  # Automount game drive
+  fileSystems."/run/media/xllvr/Games" =
+  { device = "/dev/disk/by-uuid/32e168a3-3ef4-4a95-83e0-a95a6f15617b";
+  };
+
+  # Mouse setup for Elecom Huge
+  services.udev.extraHwdb = ''
+    evdev:input:b*v056Ep010C*
+      KEYBOARD_KEY_90008=btn_middle
+      KEYBOARD_KEY_90005=btn_side
+      KEYBOARD_KEY_90004=btn_extra
+  '';
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

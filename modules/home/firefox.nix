@@ -1,5 +1,5 @@
 # Firefox Setup
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.firefox = {

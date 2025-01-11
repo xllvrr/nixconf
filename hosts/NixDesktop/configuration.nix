@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware.nix
       ../../modules/config/stylix.nix
       inputs.home-manager.nixosModules.default
     ];
@@ -102,19 +102,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-  };
-
-  # Mouse setup for Elecom Huge
-  services.udev.extraHwdb = ''
-    evdev:input:b*v056Ep010C*
-      KEYBOARD_KEY_90008=btn_middle
-      KEYBOARD_KEY_90005=btn_side
-      KEYBOARD_KEY_90004=btn_extra
-  '';
-
-  # Automount game drive
-  fileSystems."/run/media/xllvr/Games" =
-  { device = "/dev/disk/by-uuid/32e168a3-3ef4-4a95-83e0-a95a6f15617b";
   };
 
   # Enable openGL for gaming
