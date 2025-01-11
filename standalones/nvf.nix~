@@ -29,7 +29,7 @@
     languages = {
       enableLSP = true;
       enableTreesitter = true;
-      enableFormat = true;
+      enableformat = true;
 
       nix.enable = true;
       r.enable = true;
