@@ -1,4 +1,4 @@
-{r
+{
   description = "Nixos Config Flake";
 
   inputs = {

@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware.nix
       ../../modules/config/stylix.nix
+      ../../modules/config/gaming.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -104,20 +105,7 @@
     pulse.enable = true;
   };
 
-  # Enable openGL for gaming
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  # Enable AMD drivers
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  # Install steam
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
-
+  
   ## User Settings ##
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -189,12 +177,6 @@
 	home-manager
 	nix-output-monitor
 	nvd
-
-	# Gaming
-	mangohud
-	protonup-qt
-	lutris
-	bottles
 
 	# Communications
 	webcord
