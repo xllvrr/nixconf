@@ -187,6 +187,7 @@
 	unzip
 	tree
 	wev
+	lazygit
 
 	# Terminal
 	kitty
@@ -236,7 +237,7 @@
 
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
-    # FLAKE = "/home/xllvr/nixos";
+    FLAKE = "/home/xllvr/nixos";
   };
 
   # System version
