@@ -29,18 +29,22 @@
     
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      customNvim = nvf.lib.neovimConfiguration {
+        inherit pkgs;
+	modules = [ standalones/nvf.nix ];
+      };
     
     in {
 
-      packages.system.NixDesktop =
-      (nvf.lib.neovimConfiguration { modules = [ standalones/nvf.nix ]; }).neovim;
+      packages.${system}.my-neovim = customNvim.neovim;
       
       nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
 	specialArgs = { inherit inputs; };
 	modules = [
-	    ./hosts/NixDesktop/configuration.nix
-	    inputs.stylix.nixosModules.stylix
-	    inputs.home-manager.nixosModules.default
+          ./hosts/NixDesktop/configuration.nix
+	  inputs.stylix.nixosModules.stylix
+	  inputs.home-manager.nixosModules.default
+	  {environment.systemPackages = [customNvim.neovim];}
 	];
       };
 
@@ -48,7 +52,7 @@
         inherit pkgs;
 	extraSpecialArgs = { inherit inputs; };
 	modules = [ 
-	    ./hosts/NixDesktop/home.nix 
+	  ./hosts/NixDesktop/home.nix 
 	];
       };
 
