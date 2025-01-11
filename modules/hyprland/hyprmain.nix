@@ -9,6 +9,8 @@ in
   wayland.windowManager.hyprland = {
 
     enable = true;
+    xwayland.enable = true;
+    systemd.enable = true;
 
     settings = {
 
@@ -41,12 +43,12 @@ in
       };
 
       # Borders
-      general = with config.colorScheme.colors; {
+      general = {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        "col.active_border" = "rgba(${base0E}ff) rgba(${base09}ee) 60deg";
-        "col.inactive_border" = "rgba(${base00}ff)";
+        "col.active_border" = "rgba(ff7f50ee) rgba(9400d3ee) 60deg";
+        "col.inactive_border" = "rgba(ffffffee)";
       };
 
       # Decorations
@@ -115,29 +117,6 @@ in
         "mod, $up, movefocus, u"
         "mod, $down, movefocus, d"
 
-        # Workspace control
-        ## Switch workspaces
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        "$mod, 0, workspace, 10"
-        ## Move active window to workspace
-        "$mod SHIFT, 1, movetoworkspacesilent, 1"
-        "$mod SHIFT, 2, movetoworkspacesilent, 2"
-        "$mod SHIFT, 3, movetoworkspacesilent, 3"
-        "$mod SHIFT, 4, movetoworkspacesilent, 4"
-        "$mod SHIFT, 5, movetoworkspacesilent, 5"
-        "$mod SHIFT, 6, movetoworkspacesilent, 6"
-        "$mod SHIFT, 7, movetoworkspacesilent, 7"
-        "$mod SHIFT, 8, movetoworkspacesilent, 8"
-        "$mod SHIFT, 9, movetoworkspacesilent, 9"
-        "$mod SHIFT, 0, movetoworkspacesilent, 10"
         ## Move workspace to different monitor
         "mod CTRL, $left, movecurrentoworkspacetomonitor, $primaryscreen"
         "mod CTRL, left, movecurrentoworkspacetomonitor, $primaryscreen"
@@ -152,6 +131,19 @@ in
         # Tools
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
+      ]
+        ++ (
+          # Workspace movement
+          builtins.concatLists (builtins.genList (i:
+          let ws = i+1;
+          in [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
+            ])) 
+        );
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ];
 
       # Window binds
@@ -171,9 +163,11 @@ in
         "fcitx5-remote -r"
         "firefox"
         "obsidian"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
         "${startupScript}/bin/Startup"
+        "export SSH_AUTH_SOCK"
+        "ssh-add ~/.ssh/github_rsa"
       ];
       exec = [
         "mako"
@@ -181,6 +175,6 @@ in
       ];
 
     };
-
   };
+
 }

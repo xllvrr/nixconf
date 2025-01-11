@@ -20,6 +20,7 @@
 
     statusline.lualine.enable = true;
     telescope.enable = true;
+    filetree.neo-tree.enable = true;
 
     autopairs.nvim-autopairs.enable = true;
 

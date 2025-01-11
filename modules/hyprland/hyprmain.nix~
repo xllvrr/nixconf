@@ -9,6 +9,8 @@ in
   wayland.windowManager.hyprland = {
 
     enable = true;
+    xwayland.enable = true;
+    systemd.enable = true;
 
     settings = {
 
@@ -41,12 +43,12 @@ in
       };
 
       # Borders
-      general = with config.colorScheme.colors; {
+      general = {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        "col.active_border" = "rgba(${base0E}ff) rgba(${base09}ee) 60deg";
-        "col.inactive_border" = "rgba(${base00}ff)";
+        "col.active_border" = "rgba(ff7f50ee) rgba(9400d3ee) 60deg";
+        "col.inactive_border" = "rgba(ffffffee)";
       };
 
       # Decorations
@@ -153,6 +155,10 @@ in
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
       ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
 
       # Window binds
       workspace = [
@@ -171,8 +177,11 @@ in
         "fcitx5-remote -r"
         "firefox"
         "obsidian"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"
+        "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
+        "${startupScript}/bin/Startup"
+        "export SSH_AUTH_SOCK"
+        "ssh-add ~/.ssh/github_rsa"
       ];
       exec = [
         "mako"
@@ -180,6 +189,6 @@ in
       ];
 
     };
-
   };
+
 }
