@@ -10,7 +10,6 @@
       ./hardware.nix
       ../../modules/config/stylix.nix
       ../../modules/config/gaming.nix
-      ../../modules/programs/nvf.nix
     ];
 
   ## OS ##

@@ -31,6 +31,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
     
     in {
+
+      packages.system.default =
+      (nvf.lib.neovimConfiguration { modules = [ standalones/nvf.nix ]; }).neovim;
       
       nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
 	specialArgs = { inherit inputs; };
@@ -38,7 +41,6 @@
 	    ./hosts/NixDesktop/configuration.nix
 	    inputs.stylix.nixosModules.stylix
 	    inputs.home-manager.nixosModules.default
-	    nvf.nixosModules.default
 	];
       };
 
