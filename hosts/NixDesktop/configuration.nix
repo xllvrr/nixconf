@@ -53,7 +53,6 @@
       fcitx5-mozc
       fcitx5-rime
       rime-data
-      fcitx5-chinese-addons
     ];
   };
 
