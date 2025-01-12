@@ -3,6 +3,7 @@
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "Startup" ''
     ${pkgs.waybar}/bin/waybar &
+    ssh-add ~/.ssh/github_rsa
   '';
 in
   {
@@ -182,7 +183,6 @@ in
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
         "${startupScript}/bin/Startup"
         "export SSH_AUTH_SOCK"
-        "ssh-add ~/.ssh/github_rsa"
       ];
       exec = [
         "mako"
