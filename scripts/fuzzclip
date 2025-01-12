@@ -1,3 +1,0 @@
-#!/bin/sh
-
-cliphist list | fuzzel -d -b 282c34ff -s 000000ff -S 74bb80ff -t 74bb80ff -C 74bba4ff -p 'Clipboard history below:' | cliphist decode | wl-copy
