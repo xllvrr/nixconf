@@ -171,10 +171,10 @@
     # Screenshots
     grim
     slurp
+    hyprpicker
 
     # Terminal
     kitty
-    usbutils
 
     # Programming Languages
     gcc
@@ -191,15 +191,14 @@
     # Productivity
     obsidian
     cliphist
-    hyprshot
     syncthing
 
-    # OS
-    # waybar
+    # System Tools
     fuzzel
-    mako
     wl-clipboard
     evtest
+    usbutils
+    libnotify
 
     # Security
     mullvad-vpn
