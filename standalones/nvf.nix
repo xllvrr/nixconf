@@ -36,6 +36,18 @@
       r.enable = true;
       lua.enable = true;
     };
+    
+    binds = {
+      cheatsheet.enable = true;
+      whichKey.setupOpts = {
+        replace = {
+          "<C-H>" = "<C-W>H";
+          "<C-J>" = "<C-W>J";
+          "<C-K>" = "<C-W>K";
+          "<C-L>" = "<C-W>L";
+        };
+      };
+    };
 
   };
 
