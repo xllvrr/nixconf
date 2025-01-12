@@ -198,7 +198,7 @@
     wl-clipboard
     evtest
     usbutils
-    notify-send
+    libnotify
 
     # Security
     mullvad-vpn

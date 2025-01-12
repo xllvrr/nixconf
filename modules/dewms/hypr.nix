@@ -25,7 +25,7 @@ in
       "$mod" = "SUPER";
       "$term" = "kitty";
       "$browser" = "firefox";
-      "$menu" = "fuzzel -b 282c34ff -s 000000 -S 74bb80ff -t 74bb80ff -C 74bba4ff";
+      "$menu" = "fuzzel";
       "$filemanager" = "nautilus";
       "$primaryscreen" = "DP-2";
       "$secondaryscreen" = "DP-3";
@@ -104,6 +104,7 @@ in
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "workspace 7 silent, class:^(lollypop)$"
+        "float, class:floating"
       ];
 
       # Keybinds
@@ -140,7 +141,7 @@ in
         # Tools
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
-        "$mod SHIFT, S, exec, ~/repos/scripts/grimblast"
+        "$mod SHIFT, S, exec, ~/repos/scripts/fuzzblast"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(

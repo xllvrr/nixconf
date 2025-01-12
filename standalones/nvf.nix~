@@ -20,6 +20,7 @@
 
     statusline.lualine.enable = true;
     telescope.enable = true;
+    filetree.neo-tree.enable = true;
 
     autopairs.nvim-autopairs.enable = true;
 
@@ -34,6 +35,10 @@
       nix.enable = true;
       r.enable = true;
       lua.enable = true;
+    };
+    
+    binds = {
+      cheatsheet.enable = true;
     };
 
   };

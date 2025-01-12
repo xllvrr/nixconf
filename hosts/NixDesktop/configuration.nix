@@ -199,6 +199,7 @@
     evtest
     usbutils
     libnotify
+    jq
 
     # Security
     mullvad-vpn
