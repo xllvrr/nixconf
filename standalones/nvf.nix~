@@ -37,9 +37,9 @@
       lua.enable = true;
     };
     
-    binds = {
-      cheatsheet.enable = true;
-    };
+    keymaps = [
+      {key = "<C-H>"; mode = "n"; silent = true; action = "<C-W>H";}
+    ];
 
   };
 

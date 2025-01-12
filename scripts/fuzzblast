@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+## Wrapper around Grimblast to allow fuzzel to use it more easily
+
+case "$(printf "copy\\nsave\\ncopysave\\nedit" | fuzzel -d -p 'Screenshot type')" in
+    "copy") action="copy" ;;
+    "save") action="save" ;;
+    "copysave") action="copysave" ;;
+    "edit") action="edit" ;;
+esac
+
+case "$(printf "area\\nactive\\nscreen" | fuzzel -d -p 'Screenshot target')" in
+    "area") grimblast $action area;;
+    "active") grimblast $action active;;
+    "screen") grimblast $action screen;;
+esac
