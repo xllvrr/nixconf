@@ -139,7 +139,8 @@ in
 
         # Tools
         "ALT, SPACE, exec, fuzzel"
-        "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
+        "$mod ALT, V, exec, ../../scripts/fuzzclip"
+        "$mod SHIFT, S, exec, ../../scripts/grimpick"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(

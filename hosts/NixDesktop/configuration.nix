@@ -168,6 +168,10 @@
     wev
     lazygit
 
+    # Screenshots
+    grim
+    slurp
+
     # Terminal
     kitty
     usbutils

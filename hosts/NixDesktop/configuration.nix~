@@ -168,6 +168,11 @@
     wev
     lazygit
 
+    # Screenshots
+    grim
+    slurp
+    swappy
+
     # Terminal
     kitty
     usbutils
@@ -191,7 +196,7 @@
     syncthing
 
     # OS
-    waybar
+    # waybar
     fuzzel
     mako
     wl-clipboard

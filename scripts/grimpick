@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case "$(printf "a selected area\\ncurrent window\\nfull screen" | fuzzel -d -b 282c34ff -s 000000ff -S 74bb80ff -t 74bb80ff -C 74bba4ff -p 'Screenshot which area?')" in
+    "a selected area") path="$HOME/shots/pic-selected-$(date +%y%m%d-%H%M-%S).png" && 
+        grim -g "$(slurp)" $path &&
+        wl-copy < $path;;
+	"current window") path="$HOME/shots/pic-window-$(date +%y%m%d-%H%M-%S).png" &&
+        grim -o $(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"') $path &&
+        wl-copy < $path;;
+	"full screen") path="$HOME/shots/pic-full-$(date +%y%m%d-%H%M-%S).png" &&
+        grim $path &&
+        wl-copy < $path;;
+esac

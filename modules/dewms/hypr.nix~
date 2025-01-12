@@ -11,12 +11,13 @@ in
     ../config/waybar.nix
   ];
 
+  waybar.enable = true;
+
   wayland.windowManager.hyprland = {
 
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    waybar.enable = true;
 
     settings = {
 
@@ -138,7 +139,7 @@ in
 
         # Tools
         "ALT, SPACE, exec, fuzzel"
-        "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
+        "$mod ALT, V, exec, ../../scripts/fuzzclip"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(
