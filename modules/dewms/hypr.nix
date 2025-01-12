@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "Startup" ''
@@ -47,8 +47,8 @@ in
         gaps_in = 5;
         gaps_out = 10;
         border_size = 3;
-        "col.active_border" = "rgba(ff7f50ee) rgba(9400d3ee) 60deg";
-        "col.inactive_border" = "rgba(ffffffee)";
+        "col.active_border" = lib.mkForce "rgba(ff7f50ee) rgba(9400d3ee) 60deg";
+        "col.inactive_border" = lib.mkForce "rgba(ffffffee)";
       };
 
       # Decorations
@@ -67,7 +67,7 @@ in
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "rgba(1a1a1aee)";
+          color = lib.mkForce "rgba(1a1a1aee)";
         };
       };
 
@@ -100,7 +100,6 @@ in
       # Keybinds
       bind = [
         # System controls
-        "$mod, L, hyprctl dispatch exit"
         "$mod ALT, O, exec, systemctl poweroff"
         "$mod ALT, R, exec, systemctl reboot"
         "$mod ALT, S, exec, systemctl suspend"
@@ -112,16 +111,37 @@ in
         "$mod, J, togglesplit"
         "ALT, TAB, cyclenext"
         ## Focus
-        "mod, $left, movefocus, l"
-        "mod, $right, movefocus, r"
-        "mod, $up, movefocus, u"
-        "mod, $down, movefocus, d"
+        "$mod, $left, movefocus, l"
+        "$mod, $right, movefocus, r"
+        "$mod, $up, movefocus, u"
+        "$mod, $down, movefocus, d"
 
+        # Workspace controls
         ## Move workspace to different monitor
-        "mod CTRL, $left, movecurrentoworkspacetomonitor, $primaryscreen"
-        "mod CTRL, left, movecurrentoworkspacetomonitor, $primaryscreen"
-        "mod CTRL, $right, movecurrentoworkspacetomonitor, $secondaryscreen"
-        "mod CTRL, right, movecurrentoworkspacetomonitor, $secondaryscreen"
+        "$mod CTRL, $left, movecurrentworkspacetomonitor, $primaryscreen"
+        "$mod CTRL, left, movecurrentworkspacetomonitor, $primaryscreen"
+        "$mod CTRL, $right, movecurrentworkspacetomonitor, $secondaryscreen"
+        "$mod CTRL, right, movecurrentworkspacetomonitor, $secondaryscreen"
+        ## Move to workspace
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        ## Move active window to workspace
+        "$mod CTRL, 1, movetoworkspacesilent, 1"
+        "$mod CTRL, 2, movetoworkspacesilent, 2"
+        "$mod CTRL, 3, movetoworkspacesilent, 3"
+        "$mod CTRL, 4, movetoworkspacesilent, 4"
+        "$mod CTRL, 5, movetoworkspacesilent, 5"
+        "$mod CTRL, 6, movetoworkspacesilent, 6"
+        "$mod CTRL, 7, movetoworkspacesilent, 7"
+        "$mod CTRL, 8, movetoworkspacesilent, 8"
+        "$mod CTRL, 9, movetoworkspacesilent, 9"
 
         # Applications
         "$mod, RETURN, exec, $term"
@@ -131,16 +151,7 @@ in
         # Tools
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
-      ]
-        ++ (
-          # Workspace movement
-          builtins.concatLists (builtins.genList (i:
-          let ws = i+1;
-          in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspacesilent, ${toString ws}"
-            ])) 
-        );
+      ];
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
