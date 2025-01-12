@@ -6,6 +6,11 @@ let
   '';
 in
   {
+
+  imports = [
+    ../config/waybar.nix
+  ];
+
   wayland.windowManager.hyprland = {
 
     enable = true;

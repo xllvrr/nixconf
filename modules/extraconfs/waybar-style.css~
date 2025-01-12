@@ -1,0 +1,78 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Jet Brains Mono Medium";
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    background-color: @base01;
+    border: 3px solid @base02;
+}
+
+#window {
+    font-weight: bold;
+    font-family: "Jet Brains Mono Medium";
+}
+
+#workspaces button {
+    font-family: "Font Awesome 6 Free Solid", "Font Awesome 6 Free Brands", "Font Awesome 6 Free Regular";
+    font-size: 15px;
+    padding: 3px 5px;
+    color: @base05;
+    border-top: 2px solid transparent;
+    transition: all 100ms ease-out;
+}
+
+#workspaces button.focused {
+    font-family: "Font Awesome 6 Free Solid", "Font Awesome 6 Free Brands", "Font Awesome 6 Free Regular";
+    color: #c9545d;
+    border-top: 2px solid #c9545d;
+}
+
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {
+    padding: 0 3px;
+    margin: 0 2px;
+    font-size: 16px;
+}
+
+#clock {
+    font-weight: bold;
+    border-bottom: 2px solid yellow;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+
+#network {
+    border-bottom: 2px solid chartreuse;
+}
+
+#network.disconnected {
+    background: #f53c3c;
+}
+
+#pulseaudio {
+    border-bottom: 2px solid aqua;
+}
+
+#pulseaudio.muted {
+    border-bottom: 2px solid red;
+}
+
+#tray {
+    border-bottom: 2px solid red;
+}

@@ -61,7 +61,7 @@ in
           passes = 3;
         };
 
-        blurls = "lockscreen";
+        blurls = "waybar";
 
         shadow = {
           enabled = true;
@@ -90,21 +90,22 @@ in
       # Window Rules
       windowrule = [
         "pseudo, fcitx"
+        "float, class:^(mako)$"
+      ];
+      windowrulev2 = [
         "workspace 1, class:^(webcord)$"
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "workspace 7 silent, class:^(lollypop)$"
-        "float, class:^(mako)$"
       ];
 
       # Keybinds
       bind = [
         # System controls
-        "$mod, L, hyprctl dispatch exit"
         "$mod ALT, O, exec, systemctl poweroff"
         "$mod ALT, R, exec, systemctl reboot"
         "$mod ALT, S, exec, systemctl suspend"
-
+        "$mod, L, exec, hyprctl dispatch exit"
         # Window controls
         "$mod, C, killactive"
         "$mod, V, togglefloating"
@@ -123,26 +124,6 @@ in
         "$mod CTRL, left, movecurrentworkspacetomonitor, $primaryscreen"
         "$mod CTRL, $right, movecurrentworkspacetomonitor, $secondaryscreen"
         "$mod CTRL, right, movecurrentworkspacetomonitor, $secondaryscreen"
-        ## Move to workspace
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-        "$mod, 5, workspace, 5"
-        "$mod, 6, workspace, 6"
-        "$mod, 7, workspace, 7"
-        "$mod, 8, workspace, 8"
-        "$mod, 9, workspace, 9"
-        ## Move active window to workspace
-        "$mod CTRL, 1, movetoworkspacesilent, 1"
-        "$mod CTRL, 2, movetoworkspacesilent, 2"
-        "$mod CTRL, 3, movetoworkspacesilent, 3"
-        "$mod CTRL, 4, movetoworkspacesilent, 4"
-        "$mod CTRL, 5, movetoworkspacesilent, 5"
-        "$mod CTRL, 6, movetoworkspacesilent, 6"
-        "$mod CTRL, 7, movetoworkspacesilent, 7"
-        "$mod CTRL, 8, movetoworkspacesilent, 8"
-        "$mod CTRL, 9, movetoworkspacesilent, 9"
 
         # Applications
         "$mod, RETURN, exec, $term"
@@ -152,7 +133,20 @@ in
         # Tools
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, ~/repos/scripts/fuzzclip"
-      ];
+      ] ++ (
+          # Go to and Move to Workspaces
+          builtins.concatLists (builtins.genList(
+            x: let
+              ws = let
+                c = (x + 1) / 10;
+              in
+                builtins.toString (x + 1 - (c * 10));
+            in [
+              "$mod, ${ws}, workspace, ${toString (x+1)}"
+              "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x+1)}"
+            ]
+          ) 10)
+        );
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
