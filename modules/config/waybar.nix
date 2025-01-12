@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ...}:
+{ pkgs, inputs, lib, config, ...}:
 
 {
   options = {
@@ -8,7 +8,6 @@
   config = lib.mkIf config.waybar.enable {
     programs.waybar = {
       enable = true;
-      systemd.enable = true;
       style = 
         with config.lib.stylix.colors.withHashtag;
         ''
@@ -27,12 +26,12 @@
           spacing = 8;
           # Set margins
           margin-top = 6;
-          margin-left = 4;
-          margin-right = 4;
+          margin-left = 8;
+          margin-right = 8;
           # Set modules
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["pulseaudio" "network" "tray"];
+          modules-right = ["tray" "pulseaudio" "network"];
           # Workspaces
           "hyprland/workspaces" = {
             "disable-scroll" = true;
@@ -58,7 +57,6 @@
           };
           "clock" = {
             format = "{:%a %d %b %H:%M}";
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           };
           "network" = {
             format-wifi = "{essid} ";

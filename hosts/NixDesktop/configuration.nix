@@ -191,7 +191,7 @@
     syncthing
 
     # OS
-    waybar
+    # waybar
     fuzzel
     mako
     wl-clipboard

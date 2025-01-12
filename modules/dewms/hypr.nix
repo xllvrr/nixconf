@@ -11,6 +11,8 @@ in
     ../config/waybar.nix
   ];
 
+  waybar.enable = true;
+
   wayland.windowManager.hyprland = {
 
     enable = true;

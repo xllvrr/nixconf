@@ -1,34 +1,34 @@
 * {
-    border: none;
-    border-radius: 0;
     font-family: "Jet Brains Mono Medium";
-    min-height: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: @base05;
+    border: none;
 }
 
 window#waybar {
     background: transparent;
-    background-color: @base01;
     border: 3px solid @base02;
+    border-radius: 10px;
 }
 
-#window {
-    font-weight: bold;
-    font-family: "Jet Brains Mono Medium";
+.modules-left {
+    margin: 0px 5px;
+}
+
+.modules-right {
+    margin: 0px 5px;
 }
 
 #workspaces button label {
     font-family: "Font Awesome 6 Free Solid", "Font Awesome 6 Free Brands", "Font Awesome 6 Free Regular";
-    font-size: 15px;
-    padding: 3px 5px;
-    color: @base05;
-    border-top: 2px solid transparent;
+    font-size: 22px;
     transition: all 100ms ease-out;
 }
 
 #workspaces button.active label {
     font-family: "Font Awesome 6 Free Solid", "Font Awesome 6 Free Brands", "Font Awesome 6 Free Regular";
     color: @base0A;
-    border-top: 2px solid #c9545d;
     transition: all 100ms ease-out;
 }
 

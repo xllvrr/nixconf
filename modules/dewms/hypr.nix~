@@ -6,11 +6,17 @@ let
   '';
 in
   {
+
+  imports = [
+    ../config/waybar.nix
+  ];
+
   wayland.windowManager.hyprland = {
 
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+    waybar.enable = true;
 
     settings = {
 
