@@ -37,17 +37,12 @@
       lua.enable = true;
     };
     
-    binds = {
-      cheatsheet.enable = true;
-      whichKey.setupOpts = {
-        replace = {
-          "<C-H>" = "<C-W>H";
-          "<C-J>" = "<C-W>J";
-          "<C-K>" = "<C-W>K";
-          "<C-L>" = "<C-W>L";
-        };
-      };
-    };
+    keymaps = [
+      { key = "<C-H>"; mode = "n"; silent = true; action = "<C-W>H"; }
+      { key = "<C-J>"; mode = "n"; silent = true; action = "<C-W>J"; }
+      { key = "<C-K>"; mode = "n"; silent = true; action = "<C-W>K"; }
+      { key = "<C-L>"; mode = "n"; silent = true; action = "<C-W>L"; }
+    ];
 
   };
 
