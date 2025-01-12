@@ -5,7 +5,7 @@
   imports = 
     [
       ../../modules/programs/firefox.nix
-      ../../modules/hyprland/hyprmain.nix
+      ../../modules/dewms/hyprmain.nix
     ];
 
   # Home Manager needs a bit of information about you and the paths it should
