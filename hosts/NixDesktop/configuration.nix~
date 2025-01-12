@@ -58,6 +58,17 @@
   # Align nix path
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
+  # System timers
+  systemd = {
+    timers.sleep = {
+      description = "Sleep Time";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "Mon..Thur 23:00";
+      };
+    };
+  };
+
   ## Software ##
 
   # Enable the X11 windowing system.
@@ -199,6 +210,7 @@
     evtest
     usbutils
     libnotify
+    jq
 
     # Security
     mullvad-vpn
