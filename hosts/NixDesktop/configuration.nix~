@@ -60,12 +60,20 @@
 
   # System timers
   systemd = {
-    timers.sleep = {
-      description = "Sleep Time";
+    timers.sleeptimer = {
+      description = "Sleep Timer";
       wantedBy = [ "timers.target" ];
+      partOf = [ "sleeptimer.service" ];
       timerConfig = {
-        OnCalendar = "Mon..Thur 23:00";
+        OnCalendar = "Sun..Thur 23:00";
       };
+    };
+    services.sleeptimer = {
+      description = "Suspend PC for Sleep";
+      serviceConfig.Type = "simple";
+      script = ''
+        systemctl suspend
+      '';
     };
   };
 
@@ -203,6 +211,10 @@
     obsidian
     cliphist
     syncthing
+
+    # Health
+    safeeyes
+    redshift
 
     # System Tools
     fuzzel

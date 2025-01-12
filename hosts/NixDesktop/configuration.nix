@@ -112,6 +112,17 @@
     noto-fonts-cjk-serif
   ];
 
+  # Redshift
+  services.redshift = {
+    enable = true;
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
+  services.geoclue2.enable = true;
+  location.provider = "geoclue2";
+
   ## Hardware ##
 
   # Enable bluetooth
@@ -211,6 +222,10 @@
     obsidian
     cliphist
     syncthing
+
+    # Health
+    safeeyes
+    redshift
 
     # System Tools
     fuzzel

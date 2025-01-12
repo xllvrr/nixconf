@@ -183,6 +183,7 @@ in
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
         "${startupScript}/bin/Startup"
         "export SSH_AUTH_SOCK"
+        "safeeyes"
       ];
       exec = [
         "mako"
