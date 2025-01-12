@@ -112,6 +112,17 @@
     noto-fonts-cjk-serif
   ];
 
+  # Redshift
+  services.redshift = {
+    enable = true;
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
+  services.geoclue2.enable = true;
+  location.provider = "geoclue2";
+
   ## Hardware ##
 
   # Enable bluetooth
@@ -238,6 +249,13 @@
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
     FLAKE = "/home/xllvr/nixos";
+    GLFW_IM_MODULE = "fcitx";
+    GTK_IM_MODULE = "fcitx";
+    INPUT_METHOD = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    IMSETTINGS_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE = "fcitx";
   };
 
   # System version

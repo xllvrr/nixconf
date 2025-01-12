@@ -31,7 +31,7 @@
           # Set modules
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["tray" "pulseaudio" "network"];
+          modules-right = ["tray" "pulseaudio" "bluetooth" "network"];
           # Workspaces
           "hyprland/workspaces" = {
             "disable-scroll" = true;
@@ -62,13 +62,17 @@
             format-wifi = "{essid} ";
             format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
             format-disconnected = "Disconnected ⚠";
-            on-click = "kitty --detach nmtui";
+            on-click = "kitty --detach --class floating nmtui";
           };
           "pulseaudio" = {
             format = " {volume}%";
             format-bluetooth = " {volume}%";
             format-muted = "";
-            on-click = "kitty --detach pulsemixer";
+            on-click = "kitty --detach --class floating pulsemixer";
+          };
+          "bluetooth" = {
+            format = "";
+            on-click = "~/nixos/scripts/bluemenu";
           };
         };
       };

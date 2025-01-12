@@ -32,3 +32,6 @@ window#waybar {
     transition: all 100ms ease-out;
 }
 
+#bluetooth {
+    font-size: 20px;
+}

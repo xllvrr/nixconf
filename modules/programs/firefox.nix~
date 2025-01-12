@@ -15,6 +15,7 @@
         ublock-origin
         darkreader
         tridactyl
+        enhancer-for-youtube
       ];
 
     };
