@@ -239,7 +239,7 @@
     mullvad-vpn
 
     # Music
-    lollypop
+    musikcube
     tidal-hifi
     pulsemixer
     qpwgraph

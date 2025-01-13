@@ -104,7 +104,7 @@ in
         "workspace 1, class:^(webcord)$"
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
-        "workspace 7 silent, class:^(lollypop)$"
+        "workspace 7 silent, class:^(musikcube)$"
         "float, class:floating"
       ];
 
@@ -173,7 +173,7 @@ in
       # Startup
       exec-once = [
         "webcord --enable-features=UseOzonePlatform --ozone-platform = wayland --enable-wayland-ime"
-        "lollypop"
+        "kitty --detach --class musikcube musikcube"
         "$term -e syncthing"
         "fcitx5 -d -r"
         "fcitx5-remote -r"
