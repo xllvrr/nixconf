@@ -172,7 +172,7 @@ in
 
       # Startup
       exec-once = [
-        "webcord --enable-features=UseOzonePlatform --enable-wayland-ime"
+        "webcord --enable-features=UseOzonePlatform --ozone-platform = wayland --enable-wayland-ime"
         "lollypop"
         "$term -e syncthing"
         "fcitx5 -d -r"

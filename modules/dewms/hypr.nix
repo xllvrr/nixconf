@@ -184,6 +184,9 @@ in
         "${startupScript}/bin/Startup"
         "export SSH_AUTH_SOCK"
         "safeeyes"
+        "bluetoothctl trust 28:D0:EA:94:0C:A9"
+        "bluetoothctl power on"
+        "bluetoothctl connect 28:D0:EA:94:0C:A9"
       ];
       exec = [
         "mako"

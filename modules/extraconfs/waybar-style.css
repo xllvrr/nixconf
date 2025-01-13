@@ -13,11 +13,11 @@ window#waybar {
 }
 
 .modules-left {
-    margin: 0px 5px;
+    margin: 5px;
 }
 
 .modules-right {
-    margin: 0px 5px;
+    margin: 5px;
 }
 
 #workspaces button label {
