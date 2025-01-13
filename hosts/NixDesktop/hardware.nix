@@ -33,6 +33,16 @@
   { device = "/dev/disk/by-uuid/32e168a3-3ef4-4a95-83e0-a95a6f15617b";
   };
 
+  # Automount media
+  fileSystems."/run/media/xllvr/Media" =
+  { device = "/dev/disk/by-uuid/f59d9bbb-5513-46ca-9051-ba7214900e12";
+  };
+
+  # Automount storage
+  fileSystems."/run/media/xllvr/Storage" =
+  { device = "/dev/disk/by-uuid/3fb9f454-d0fe-42ee-8fa1-3bd92ae7cdf0";
+  };
+
   # Mouse setup for Elecom Huge
   services.udev.extraHwdb = ''
     evdev:input:b*v056Ep010C*

@@ -114,7 +114,7 @@ in
         "$mod ALT, O, exec, systemctl poweroff"
         "$mod ALT, R, exec, systemctl reboot"
         "$mod ALT, S, exec, systemctl suspend"
-        "$mod, L, exec, hyprctl dispatch exit"
+        "$mod ALT, L, exec, hyprctl dispatch exit"
         # Window controls
         "$mod, C, killactive"
         "$mod, V, togglefloating"
@@ -141,8 +141,8 @@ in
 
         # Tools
         "ALT, SPACE, exec, fuzzel"
-        "$mod ALT, V, exec, ../../scripts/fuzzclip"
-        "$mod SHIFT, S, exec, ../../scripts/fuzzblast"
+        "$mod ALT, V, exec, ~/nixos/scripts/fuzzclip"
+        "$mod SHIFT, S, exec, ~/nixos/scripts/fuzzblast"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(
@@ -172,7 +172,7 @@ in
 
       # Startup
       exec-once = [
-        "webcord --enable-features=UseOzonePlatform --ozone-platform = wayland --enable-wayland-ime"
+        "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
         "kitty --detach --class musikcube musikcube"
         "$term -e syncthing"
         "fcitx5 -d -r"

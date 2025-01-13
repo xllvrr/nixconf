@@ -240,6 +240,7 @@
 
     # Music
     musikcube
+    cava
     tidal-hifi
     pulsemixer
     qpwgraph

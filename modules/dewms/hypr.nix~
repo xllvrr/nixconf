@@ -114,7 +114,7 @@ in
         "$mod ALT, O, exec, systemctl poweroff"
         "$mod ALT, R, exec, systemctl reboot"
         "$mod ALT, S, exec, systemctl suspend"
-        "$mod, L, exec, hyprctl dispatch exit"
+        "$mod ALT, L, exec, hyprctl dispatch exit"
         # Window controls
         "$mod, C, killactive"
         "$mod, V, togglefloating"
@@ -172,8 +172,8 @@ in
 
       # Startup
       exec-once = [
-        "webcord --enable-features=UseOzonePlatform --ozone-platform = wayland --enable-wayland-ime"
-        "lollypop"
+        "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+        "kitty --detach --class musikcube musikcube"
         "$term -e syncthing"
         "fcitx5 -d -r"
         "fcitx5-remote -r"
