@@ -30,6 +30,7 @@ in
       "$filemanager" = "nautilus";
       "$primaryscreen" = "DP-2";
       "$secondaryscreen" = "DP-3";
+      "$scriptsdir" = "~/repos/scripts";
 
       # Vim directions
       "$left" = "h";
@@ -141,8 +142,7 @@ in
 
         # Tools
         "ALT, SPACE, exec, fuzzel"
-        "$mod ALT, V, exec, ../../scripts/fuzzclip"
-        "$mod SHIFT, S, exec, ../../scripts/fuzzblast"
+        "$mod ALT, V, exec, $scriptsdir/fuzzclip"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(
@@ -194,6 +194,25 @@ in
       ];
 
     };
+
+    # Screenshots
+    extraConfig = ''
+        # Go to screenshot submap
+        bind = $mod SHIFT, S, submap, screenshot
+        submap = screenshot
+
+        # Binds for screenshotting
+        bind = , A, exec, grimblast copy area
+        bind = , W, exec, grimblast copy active
+        bind = SHIFT, A, exec, grimblast copysave area
+        bind = SHIFT, W, exec, grimblast copysave active
+        bind = , E, exec, grimblast edit area
+
+        # Exit submap
+        bind = , escape, submap, reset
+        submap = reset
+    '';
+
   };
 
 }
