@@ -31,7 +31,7 @@
           # Set modules
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["tray" "bluetooth" "pulseaudio" "network"];
+          modules-right = ["tray" "pulseaudio" "bluetooth" "network"];
           # Workspaces
           "hyprland/workspaces" = {
             "disable-scroll" = true;
@@ -72,7 +72,7 @@
           };
           "bluetooth" = {
             format = "";
-            on-click = "~/nixos/scripts/bluemenu";
+            on-click = "~/repos/scripts/bluemenu";
           };
         };
       };

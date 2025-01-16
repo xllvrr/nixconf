@@ -26,6 +26,9 @@
     lutris
     bottles
 
+    # Minecraft
+    prismlauncher
+
   ];
 
 }

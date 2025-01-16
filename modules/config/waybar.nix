@@ -72,7 +72,7 @@
           };
           "bluetooth" = {
             format = "";
-            on-click = "~/nixos/scripts/bluemenu";
+            on-click = "blueman-manager";
           };
         };
       };

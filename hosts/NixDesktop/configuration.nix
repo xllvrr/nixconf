@@ -127,6 +127,8 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -201,7 +203,7 @@
     # Screenshots
     grim
     slurp
-    hyprpicker
+    hyprshot
 
     # Terminal
     kitty
@@ -246,6 +248,10 @@
     qpwgraph
 
   ];
+
+  environment.variables = {
+    HYPRSHOT_DIR = "/run/media/xllvr/Media/Pictures/Screenshots/";
+  };
 
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";

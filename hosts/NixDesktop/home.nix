@@ -76,6 +76,14 @@
     width = 300;
   };
 
+  # Cava settings
+  programs.cava.settings = {
+    input.method = "pipewire";
+    color = {
+      foreground = "green";
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

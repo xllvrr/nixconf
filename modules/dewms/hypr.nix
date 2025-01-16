@@ -106,6 +106,7 @@ in
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "workspace 7 silent, class:^(musikcube)$"
+        "float, class:.*(blueman-manager).*"
         "float, class:floating"
       ];
 
@@ -143,6 +144,7 @@ in
         # Tools
         "ALT, SPACE, exec, fuzzel"
         "$mod ALT, V, exec, $scriptsdir/fuzzclip"
+        "$mod SHIFT, S, exec, $scriptsdir/fuzzshot"
       ] ++ (
           # Go to and Move to Workspaces
           builtins.concatLists (builtins.genList(
@@ -173,7 +175,7 @@ in
       # Startup
       exec-once = [
         "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
-        "kitty --detach --class musikcube musikcube"
+        "kitty --detach --class musikcube --session $scriptsdir/musikvis"
         "$term -e syncthing"
         "fcitx5 -d -r"
         "fcitx5-remote -r"
@@ -194,23 +196,6 @@ in
       ];
 
     };
-
-    # Screenshots
-    extraConfig = ''
-        # Go to screenshot submap
-        bind = $mod SHIFT, S, submap, screenshot
-        submap = screenshot
-
-        # Binds for screenshotting
-        bind = , A, exec, grimblast copy area
-        bind = , W, exec, grimblast copy active
-        bind = SHIFT, A, exec, grimblast copysave area
-        bind = SHIFT, W, exec, grimblast copysave active
-
-        # Exit submap
-        bind = , escape, submap, reset
-        submap = reset
-    '';
 
   };
 
