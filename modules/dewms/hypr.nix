@@ -102,7 +102,7 @@ in
         "float, class:^(mako)$"
       ];
       windowrulev2 = [
-        "workspace 1, class:^(webcord)$"
+        "workspace 1, class:^(discord)$"
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "workspace 7 silent, class:^(musikcube)$"
@@ -174,7 +174,7 @@ in
 
       # Startup
       exec-once = [
-        "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+        "discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
         "kitty --detach --class musikcube --session $scriptsdir/musikvis"
         "$term -e syncthing"
         "fcitx5 -d -r"

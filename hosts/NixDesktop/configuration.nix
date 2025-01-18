@@ -199,6 +199,7 @@
     tree
     wev
     lazygit
+    htop
 
     # Screenshots
     grim
@@ -218,7 +219,9 @@
     nvd
 
     # Communications
-    webcord
+    (discord.override {
+      withVencord = true;
+    })
 
     # Productivity
     obsidian

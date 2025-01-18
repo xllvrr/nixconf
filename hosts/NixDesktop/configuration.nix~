@@ -128,6 +128,7 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -198,6 +199,7 @@
     tree
     wev
     lazygit
+    htop
 
     # Screenshots
     grim
