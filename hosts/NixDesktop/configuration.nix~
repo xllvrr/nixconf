@@ -219,7 +219,9 @@
     nvd
 
     # Communications
-    webcord
+    (discord.override {
+      withVencord = true;
+    })
 
     # Productivity
     obsidian

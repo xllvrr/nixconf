@@ -80,7 +80,7 @@
   programs.cava.settings = {
     input.method = "pipewire";
     color = {
-      foreground = "'${config.lib.stylix.colors.base00}'";
+      foreground = "green";
     };
   };
 

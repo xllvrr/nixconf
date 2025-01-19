@@ -9,7 +9,7 @@ in
   {
 
   imports = [
-    ../config/waybar.nix
+    ../apps/waybar.nix
   ];
 
   waybar.enable = true;
@@ -102,7 +102,7 @@ in
         "float, class:^(mako)$"
       ];
       windowrulev2 = [
-        "workspace 1, class:^(discord)$"
+        "workspace 1, class:^(vesktop)$"
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "workspace 7 silent, class:^(musikcube)$"
@@ -174,7 +174,7 @@ in
 
       # Startup
       exec-once = [
-        "discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
+        "vesktop"
         "kitty --detach --class musikcube --session $scriptsdir/musikvis"
         "$term -e syncthing"
         "fcitx5 -d -r"

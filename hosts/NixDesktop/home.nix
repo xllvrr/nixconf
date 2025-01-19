@@ -4,7 +4,7 @@
 
   imports = 
     [
-      ../../modules/programs/firefox.nix
+      ../../modules/apps/firefox.nix
       ../../modules/dewms/hypr.nix
     ];
 

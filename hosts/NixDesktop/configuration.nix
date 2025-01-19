@@ -219,9 +219,7 @@
     nvd
 
     # Communications
-    (discord.override {
-      withVencord = true;
-    })
+    vesktop
 
     # Productivity
     obsidian
