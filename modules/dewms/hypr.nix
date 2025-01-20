@@ -3,7 +3,7 @@
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "Startup" ''
     ${pkgs.waybar}/bin/waybar &
-    ssh-add ~/.ssh/github_rsa
+    ${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_rsa
   '';
 in
   {
@@ -174,7 +174,7 @@ in
 
       # Startup
       exec-once = [
-        "vesktop"
+        "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime"
         "kitty --detach --class musikcube --session $scriptsdir/musikvis"
         "$term -e syncthing"
         "fcitx5 -d -r"
