@@ -60,19 +60,20 @@
 
   # System timers
   systemd = {
-    timers.sleeptimer = {
+    timers.sleep_timer = {
       description = "Sleep Timer";
       wantedBy = [ "timers.target" ];
       partOf = [ "sleeptimer.service" ];
       timerConfig = {
         OnCalendar = "Sun..Thur 23:00";
+        Unit = "sleep_timer.service";
       };
     };
-    services.sleeptimer = {
+    user.services.sleep_timer = {
       description = "Suspend PC for Sleep";
       serviceConfig.Type = "simple";
       script = ''
-        systemctl suspend
+        ${pkgs.systemd}/bin/systemctl suspend
       '';
     };
   };
