@@ -4,7 +4,7 @@
 
   imports = 
     [
-      ../../modules/programs/firefox.nix
+      ../../modules/apps/firefox.nix
       ../../modules/dewms/hypr.nix
     ];
 
@@ -78,10 +78,10 @@
 
   # Cava settings
   programs.cava.settings = {
+    general.autosens = 1;
     input.method = "pipewire";
-    color = {
-      foreground = "green";
-    };
+    output.method = "noncurses";
+    smoothing.monstercat = 1;
   };
 
   # Let Home Manager install and manage itself.

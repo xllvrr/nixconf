@@ -28,6 +28,10 @@
   home.sessionVariables = {
   };
 
+  # Enable stylix
+  stylix.enable = true;
+  stylix.autoEnable = true;
+
   # Manage XDG Directories
   xdg = {
     enable = true;
@@ -78,10 +82,10 @@
 
   # Cava settings
   programs.cava.settings = {
+    general.autosens = 1;
     input.method = "pipewire";
-    color = {
-      foreground = "green";
-    };
+    output.method = "noncurses";
+    smoothing.monstercat = 1;
   };
 
   # Let Home Manager install and manage itself.
