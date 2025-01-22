@@ -133,6 +133,9 @@
         backupFileExtension = "backup";
     };
 
+    # Shell
+    programs.zsh.enable = true;
+
     ## Packages ##
 
     # Allow unfree packages

@@ -23,6 +23,7 @@
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home.file = {
+        "${config.xdg.configHome}/ohmyposh/omp.toml".source = ../../modules/extraconfs/omp.toml;
     };
 
     home.sessionVariables = {
@@ -31,12 +32,6 @@
     # Enable stylix
     stylix.enable = true;
     stylix.autoEnable = true;
-
-    # Allow home manager to manage shell
-    programs.zsh.enable = true;
-
-    # Allow ssh
-    programs.ssh.startAgent = true;
 
     # Manage XDG Directories
     xdg = {
@@ -51,8 +46,9 @@
         };
     };
 
-    # Oh My Posh
-    programs.oh-my-posh.enable = true;
+    # Shell Related
+    programs.zsh.enable = true;
+    programs.zsh.enableCompletion = true;
 
     # Nix Helper
     programs.nh = {
