@@ -10,6 +10,17 @@
         variant = "";
     };
 
+    # Enable documentation
+    documentation = {
+        enable = true;
+        man = {
+            enable = true;
+            man-db.enable = false;
+            mandoc.enable = true;
+            generateCaches = true;
+        };
+    };
+
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
@@ -60,6 +71,9 @@
         wev
         lazygit
         htop
+        linux-manual
+        man-pages
+        man-pages-posix
 
         # Programming Languages
         gcc
