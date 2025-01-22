@@ -20,9 +20,6 @@
     boot.loader.efi.canTouchEfiVariables = true;
 
     networking.hostName = "NixDesktop"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Enable networking
     networking.networkmanager.enable = true;
 
     # Set your time zone.
@@ -85,8 +82,10 @@
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.displayManager.gdm = {
+        enable = true;
+        wayland = true;
+    };
 
     # Enable the Hyprland Window Manager
     programs.hyprland = {
