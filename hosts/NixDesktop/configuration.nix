@@ -97,7 +97,7 @@
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
-    ## Hardware ##
+    ## Services ##
 
     # Enable bluetooth
     hardware.bluetooth.enable = true;
@@ -118,6 +118,10 @@
             };
         };
     };
+
+    # Enable SSH
+    services.openssh.enable = true;
+    programs.ssh.startAgent = true;
 
 
     ## User Settings ##

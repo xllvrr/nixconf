@@ -30,7 +30,6 @@
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     home.file = {
-        "${config.xdg.configHome}/ohmyposh/omp.toml".source = ../../modules/extraconfs/omp.toml;
     };
 
     # Home Manager can export variables for the session so that it's agnostic
@@ -90,14 +89,13 @@
         initExtra = ''
             eval "$(fzf --zsh)"
             eval "$(zoxide init --cmd cd zsh)"
+            eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${../../modules/extraconfs/omp.toml})"
 
-            eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/omp.toml)"
+            batman () {
+                man $1 | col -bx | bat -l man -p
+            }
         '';
     };
-    # programs.oh-my-posh = {
-    #     enable = true;
-    #     enableZshIntegration = true;
-    # };
 
     # Nix Helper
     programs.nh = {

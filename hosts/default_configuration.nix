@@ -58,6 +58,7 @@
         # Version Control
         git
         stow
+        openssh
 
         # Terminal
         kitty
@@ -71,9 +72,12 @@
         wev
         lazygit
         htop
+
+        # Documentation
         linux-manual
         man-pages
         man-pages-posix
+        bat
 
         # Programming Languages
         gcc
