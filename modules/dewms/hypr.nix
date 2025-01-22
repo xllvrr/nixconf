@@ -27,7 +27,7 @@ in
       "$term" = "kitty";
       "$browser" = "firefox";
       "$menu" = "fuzzel";
-      "$filemanager" = "pcmanfm";
+      "$filemanager" = "thunar";
       "$primaryscreen" = "DP-2";
       "$secondaryscreen" = "DP-3";
       "$scriptsdir" = "~/repos/scripts";

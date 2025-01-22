@@ -81,7 +81,7 @@
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
-    # Enable the GNOME Desktop Environment.
+    # Enable the GDM
     services.xserver.displayManager.gdm = {
         enable = true;
         wayland = true;
@@ -94,6 +94,12 @@
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
+
+    # Enable Thunar
+    programs.thunar.enable = true;
+    programs.xfconf.enable = true;
+    services.gvfs.enable = true;
+    services.tumbler.enable = true;
 
     ## Services ##
 
@@ -157,12 +163,6 @@
     };
 
     environment.sessionVariables = {
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
-        FLAKE = "/home/xllvr/nixos";
-        GTK_IM_MODULE = "fcitx";
-        QT_IM_MODULE = "fcitx";
-        SDL_IM_MODULE = "fcitx";
-        XMODIFIERS = "@im=fcitx";
     };
 
     # System version
