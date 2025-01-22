@@ -2,7 +2,11 @@
 
 {
     # Always installed GUIs
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
+
+        # Productivity
+        obsidian
+        syncthing
 
         # Health
         safeeyes
@@ -14,6 +18,12 @@
         tidal-hifi
         pulsemixer
         qpwgraph
+
+        # Security
+        mullvad-vpn
+
+        # Terminal
+        kitty
 
     ];
 }

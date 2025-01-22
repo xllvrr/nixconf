@@ -4,9 +4,11 @@
 
     imports = 
         [
-            ../../modules/apps/browser/firefox.nix
-            ../../modules/apps/shell/zsh.nix
             ../../modules/dewms/hypr.nix
+            ../../modules/apps/default_gui.nix # Import default guis
+            ../../modules/apps/default_cli.nix # Import default clis
+            ../../modules/apps/shell/zsh.nix
+            ../../modules/apps/browser/firefox.nix
         ];
 
     # Home Manager needs a bit of information about you and the paths it should
@@ -25,7 +27,16 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    home.packages = [
+    home.packages = with pkgs; [
+
+        # Screenshots
+        grim
+        slurp
+        hyprshot
+
+        # Communications
+        vesktop
+
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -88,6 +99,12 @@
         aliases = {
             cm = "commit -am";
         };
+    };
+
+    # SSH Settings
+    programs.ssh = {
+        enable = true;
+        addKeysToAgent = "yes";
     };
 
     # Mako settings

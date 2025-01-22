@@ -11,7 +11,6 @@
             ../default_configuration.nix # Import default configs
             ../../modules/config/stylix.nix # Import stylix
             ../../modules/config/gaming.nix # Import gaming module
-            ../../modules/apps/default_gui.nix # Import default guis
         ];
 
     ## OS ##
@@ -151,19 +150,6 @@
 
     # Host-specific packages
     environment.systemPackages = with pkgs; [
-
-        # Screenshots
-        grim
-        slurp
-        hyprshot
-
-        # Communications
-        vesktop
-
-        # Productivity
-        obsidian
-        syncthing
-
     ];
 
     # Hyprshot settings
