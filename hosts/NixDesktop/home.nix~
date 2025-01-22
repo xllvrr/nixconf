@@ -6,6 +6,7 @@
     [
       ../../modules/apps/firefox.nix
       ../../modules/dewms/hypr.nix
+      ../../modules/config/stylix.nix
     ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -27,6 +28,10 @@
 
   home.sessionVariables = {
   };
+
+  # Enable stylix
+  stylix.enable = true;
+  stylix.autoEnable = true;
 
   # Manage XDG Directories
   xdg = {
