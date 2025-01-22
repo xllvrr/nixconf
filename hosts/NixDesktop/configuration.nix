@@ -112,6 +112,11 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
+        extraConfig.pipewire.adjust-sample-rate = {
+            "context.properties" = {
+                "default.clock.allowed-rates" = [ 32000 44100 48000 88200 96000 192000 ];
+            };
+        };
     };
 
 
@@ -122,7 +127,6 @@
         isNormalUser = true;
         description = "Xllvr";
         extraGroups = [ "networkmanager" "wheel" ];
-        packages = with pkgs; [];
         shell = pkgs.zsh;
     };
 

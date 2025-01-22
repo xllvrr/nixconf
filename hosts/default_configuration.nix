@@ -46,11 +46,11 @@
 
         # Version Control
         git
-
-        # Dotfiles
         stow
 
-        # CLI Tools
+        # Terminal
+        kitty
+        oh-my-posh
         eza
         fzf
         ripgrep
@@ -60,9 +60,6 @@
         wev
         lazygit
         htop
-
-        # Terminal
-        kitty
 
         # Programming Languages
         gcc

@@ -12,6 +12,13 @@
     # manage.
     home.username = "xllvr";
     home.homeDirectory = "/home/xllvr";
+    home.sessionPath = [
+        "$HOME/.local/bin" 
+        "$HOME/.config/nvim"
+        "$HOME/.config/lsp"
+        "$HOME/repos/scripts"
+        "/usr/share/pkgconfig"
+    ];
 
     home.stateVersion = "24.11"; # Please read the comment before changing.
 
@@ -26,7 +33,23 @@
         "${config.xdg.configHome}/ohmyposh/omp.toml".source = ../../modules/extraconfs/omp.toml;
     };
 
+    # Home Manager can export variables for the session so that it's agnostic
+    # from the shell chosen
     home.sessionVariables = {
+        EDITOR="nvim";
+        TERMINAL="kitty";
+    };
+
+    # In the same vein, home.shellAliases allows defining shell-agnostic aliases
+    home.shellAliases = {
+        # Applications
+        v = "nvim";
+        ex = "eza -a";
+        waybar = "pkill waybar;waybar &!";
+        # System Tools
+        grep = "grep --color";
+        cp = "cp -i";
+        df = "df -h";
     };
 
     # Enable stylix
@@ -46,9 +69,35 @@
         };
     };
 
-    # Shell Related
-    programs.zsh.enable = true;
-    programs.zsh.enableCompletion = true;
+    # Disable home manager defaulting to man-db
+    programs.man.enable = false;
+
+    # Zsh
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        completionInit = (builtins.readFile ../../modules/extraconfs/zshcompletion);
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        history.ignoreAllDups = true;
+        zplug = {
+            enable = true;
+            plugins = [
+                { name = "jeffreytse/zsh-vi-mode" ; }
+                { name = "Aloxaf/fzf-tab" ; }
+            ];
+        };
+        initExtra = ''
+            eval "$(fzf --zsh)"
+            eval "$(zoxide init --cmd cd zsh)"
+
+            eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/omp.toml)"
+        '';
+    };
+    # programs.oh-my-posh = {
+    #     enable = true;
+    #     enableZshIntegration = true;
+    # };
 
     # Nix Helper
     programs.nh = {
