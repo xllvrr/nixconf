@@ -9,7 +9,7 @@ in
   {
 
   imports = [
-    ../apps/waybar.nix
+    ../apps/os/waybar.nix
   ];
 
   waybar.enable = true;

@@ -16,7 +16,7 @@
 
         @define-color base08 ${base08}; @define-color base09 ${base09}; @define-color base0A ${base0A}; @define-color base0B ${base0B};
         @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
-        '' + builtins.readFile ../extraconfs/waybar-style.css;
+        '' + builtins.readFile ../../extraconfs/os/waybar-style.css;
       settings = {
         bar = {
           # Set position

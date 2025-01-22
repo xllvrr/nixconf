@@ -4,7 +4,8 @@
 
     imports = 
         [
-            ../../modules/apps/firefox.nix
+            ../../modules/apps/browser/firefox.nix
+            ../../modules/apps/shell/zsh.nix
             ../../modules/dewms/hypr.nix
         ];
 
@@ -70,32 +71,6 @@
 
     # Disable home manager defaulting to man-db
     programs.man.enable = false;
-
-    # Zsh
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        completionInit = (builtins.readFile ../../modules/extraconfs/zshcompletion);
-        autosuggestion.enable = true;
-        syntaxHighlighting.enable = true;
-        history.ignoreAllDups = true;
-        zplug = {
-            enable = true;
-            plugins = [
-                { name = "jeffreytse/zsh-vi-mode" ; }
-                { name = "Aloxaf/fzf-tab" ; }
-            ];
-        };
-        initExtra = ''
-            eval "$(fzf --zsh)"
-            eval "$(zoxide init --cmd cd zsh)"
-            eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${../../modules/extraconfs/omp.toml})"
-
-            batman () {
-                man $1 | col -bx | bat -l man -p
-            }
-        '';
-    };
 
     # Nix Helper
     programs.nh = {
