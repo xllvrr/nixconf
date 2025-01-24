@@ -66,7 +66,6 @@
         eza
         fzf
         ripgrep
-        zoxide
         unzip
         tree
         wev

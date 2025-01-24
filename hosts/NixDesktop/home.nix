@@ -7,8 +7,8 @@
             ../../modules/dewms/hypr.nix
             ../../modules/apps/default_gui.nix # Import default guis
             ../../modules/apps/default_cli.nix # Import default clis
-            ../../modules/apps/shell/zsh.nix
             ../../modules/apps/browser/firefox.nix
+            ../../modules/apps/shell/zsh.nix
         ];
 
     # Home Manager needs a bit of information about you and the paths it should
@@ -111,6 +111,12 @@
     programs.ssh = {
         enable = true;
         addKeysToAgent = "yes";
+        matchBlocks = {
+            github = {
+                hostname = "dan@dtsa.email";
+                identityFile = "/home/xllvr/.ssh/github_rsa";
+            };
+        };
     };
 
     # Mako settings

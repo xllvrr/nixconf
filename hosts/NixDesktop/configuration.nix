@@ -56,26 +56,6 @@
     # Align nix path
     nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-    # System timers
-    systemd = {
-        timers.sleep_timer = {
-            description = "Sleep Timer";
-            wantedBy = [ "timers.target" ];
-            partOf = [ "sleeptimer.service" ];
-            timerConfig = {
-                OnCalendar = "Sun..Thur 23:00";
-                Unit = "sleep_timer.service";
-            };
-        };
-        user.services.sleep_timer = {
-            description = "Suspend PC for Sleep";
-            serviceConfig.Type = "simple";
-            script = ''
-                ${pkgs.systemd}/bin/systemctl suspend
-            '';
-        };
-    };
-
     ## Software ##
 
     # Enable the X11 windowing system.
