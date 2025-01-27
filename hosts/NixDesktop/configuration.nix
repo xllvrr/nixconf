@@ -107,6 +107,9 @@
     services.openssh.enable = true;
     programs.ssh.startAgent = true;
 
+    # Enable Mullvad
+    services.mullvad-vpn.enable = true;
+
 
     ## User Settings ##
 

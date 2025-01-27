@@ -7,6 +7,7 @@
         # Productivity
         obsidian
         syncthing
+        zathura
 
         # Health
         safeeyes
