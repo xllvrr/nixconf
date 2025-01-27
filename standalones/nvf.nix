@@ -3,6 +3,7 @@
 {
 
     vim = {
+
         theme = {
             enable = true;
             name = "gruvbox";
@@ -14,21 +15,34 @@
             shiftwidth = 4;
         };
 
-        utility = {
-            surround.enable = true;
-        };
-
+        # Copy to system clipboard for ease
         useSystemClipboard = true;
 
+        # Added functionality
+        mini.ai.enable = true;
+        mini.align.enable = true;
+        mini.splitjoin.enable = true;
+        mini.operators.enable = true;
+        mini.bracketed.enable = true;
+        mini.pick.enable = true;
+
+        # Brackets
+        mini.pairs.enable = true;
+        mini.surround.enable = true;
+
+        # File management
+        mini.files.enable = true;
+
+        # Autocompletion
+        mini.completion.enable = true;
+        mini.icons.enable = true;
+
         statusline.lualine.enable = true;
-        telescope.enable = true;
-        filetree.neo-tree.enable = true;
+        # telescope.enable = true;
 
-        autopairs.nvim-autopairs.enable = true;
-
-        autocomplete.nvim-cmp.enable = true;
         ui.colorizer.enable = true;
 
+        # LSP settings
         languages = {
             enableLSP = true;
             enableTreesitter = true;
