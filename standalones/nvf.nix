@@ -34,7 +34,7 @@
         mini.files.enable = true;
 
         # Autocompletion
-        mini.completion.enable = true;
+        autocomplete.nvim-cmp.enable = true;
         mini.icons.enable = true;
 
         statusline.lualine.enable = true;
