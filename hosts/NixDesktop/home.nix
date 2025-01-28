@@ -8,7 +8,7 @@
             ../../modules/apps/default_gui.nix # Import default guis
             ../../modules/apps/default_cli.nix # Import default clis
             ../../modules/apps/browser/firefox.nix
-            ../../modules/apps/shell/zsh.nix
+            ../../modules/apps/shell/shell.nix
         ];
 
     # Home Manager needs a bit of information about you and the paths it should

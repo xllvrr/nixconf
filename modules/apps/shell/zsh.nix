@@ -20,10 +20,6 @@
         initExtra = ''
             # Setup fzf and ohmyposh
             eval "$(fzf --zsh)"
-            eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${../../extraconfs/shell/omp.toml})"
-
-            # For auto-adding github ssh key
-            eval "$(${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_rsa)"
 
             # For colored man pages
             batman () {
@@ -41,12 +37,6 @@
             add-zsh-hook precmd precmd_center
 
         '';
-    };
-
-    # Zoxide
-    programs.zoxide = {
-        enable = true;
-        enableZshIntegration = true;
     };
 
 }

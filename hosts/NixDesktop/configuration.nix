@@ -118,7 +118,7 @@
         isNormalUser = true;
         description = "Xllvr";
         extraGroups = [ "networkmanager" "wheel" ];
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
     };
 
     # Home manager setup
@@ -130,6 +130,7 @@
 
     # Shell
     programs.zsh.enable = true;
+    programs.fish.enable = true;
 
     ## Packages ##
 

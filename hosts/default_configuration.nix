@@ -62,7 +62,6 @@
 
         # Terminal
         kitty
-        oh-my-posh
         eza
         fzf
         ripgrep
