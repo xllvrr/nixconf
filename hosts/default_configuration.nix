@@ -94,6 +94,7 @@
         libnotify
         jq
         cliphist
+        gzip
 
         # Security
         mullvad-vpn
