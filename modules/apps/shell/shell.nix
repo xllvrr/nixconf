@@ -5,6 +5,7 @@
         [
             ./zsh.nix
             ./fish.nix
+            ./nnn.nix
         ];
 
     # Zoxide

@@ -15,6 +15,8 @@
 
         # Terminal
         lazygit
+        nsxiv
+        dragon
 
         # Programming Languages
         gcc
