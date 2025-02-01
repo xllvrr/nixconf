@@ -60,11 +60,11 @@
             { key = "<C-K>"; mode = "n"; silent = true; action = "<C-W>K"; }
             { key = "<C-L>"; mode = "n"; silent = true; action = "<C-W>L"; }
             # Using Mini.Files
-            { key = "<leader>e"; mode = "n"; silent = true; action = ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))"; desc = "Opens Mini.Files in directory of current file"; }
-            { key = "<leader>E"; mode = "n"; silent = true; action = ":lua MiniFiles.open()"; desc = "Opens Mini.Files in cwd"; }
+            { key = "<leader>e"; mode = "n"; silent = true; action = ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>"; desc = "Opens Mini.Files in current dir"; }
+            { key = "<leader>E"; mode = "n"; silent = true; action = ":lua MiniFiles.open()<CR>"; desc = "Opens Mini.Files in cwd"; }
             # Using Mini.Pick
-            { key = "<leader>ff"; mode = "n"; silent = true; action = ":Pick files"; desc = "Opens file picker"; }
-            { key = "<leader>fg"; mode = "n"; silent = true; action = ":Pick grep_live"; desc = "Picks based on grep with live results"; }
+            { key = "<leader>ff"; mode = "n"; silent = true; action = ":Pick files<CR>"; desc = "Opens file picker"; }
+            { key = "<leader>fg"; mode = "n"; silent = true; action = ":Pick grep_live<CR>"; desc = "Picks based on grep with live results"; }
         ];
 
     };
