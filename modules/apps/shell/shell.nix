@@ -24,4 +24,27 @@
                 builtins.readFile "${../../extraconfs/shell/omp.toml}"
             ) );
     };
+
+    # Git Settings
+    programs.git = {
+        enable = true;
+        userName = "xllvrr";
+        userEmail = "dan@dtsa.email";
+        aliases = {
+            cm = "commit -am";
+        };
+    };
+
+    # SSH Settings
+    programs.ssh = {
+        enable = true;
+        addKeysToAgent = "yes";
+        matchBlocks = {
+            github = {
+                hostname = "dan@dtsa.email";
+                identityFile = "/home/xllvr/.ssh/github_rsa";
+            };
+        };
+    };
+
 }
