@@ -73,6 +73,7 @@
     # Enable stylix
     stylix.enable = true;
     stylix.autoEnable = true;
+    stylix.targets.qt.platform = "qtct";
 
     # Manage XDG Directories
     xdg = {

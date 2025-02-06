@@ -9,7 +9,6 @@
 
             # For nnn previews
             allow_remote_control = "yes";
-            listen_on = "unix:$TMPDIR/kitty";
             enable_layouts = "splits";
 
             # Tabs
@@ -20,7 +19,6 @@
 
             # Appearance
             window_padding_width = "15 15";
-            background_opaicty = 0.8;
 
             # Other functionality
             copy_on_select = "yes";
