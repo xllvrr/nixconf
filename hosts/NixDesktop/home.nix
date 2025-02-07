@@ -50,12 +50,13 @@
     home.sessionVariables = {
         EDITOR="nvim";
         TERMINAL="kitty";
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
-        FLAKE = "/home/xllvr/nixos";
-        GTK_IM_MODULE = "fcitx";
-        QT_IM_MODULE = "fcitx";
-        SDL_IM_MODULE = "fcitx";
-        XMODIFIERS = "@im=fcitx";
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS="~/.steam/root/compatibilitytools.d";
+        FLAKE="/home/xllvr/nixos";
+        GTK_IM_MODULE="fcitx";
+        QT_IM_MODULE="fcitx";
+        SDL_IM_MODULE="fcitx";
+        XMODIFIERS="@im=fcitx";
+        NNN_FIFO="/tmp/nnn.fifo";
     };
 
     # In the same vein, home.shellAliases allows defining shell-agnostic aliases
@@ -68,6 +69,7 @@
         grep = "grep --color";
         cp = "cp -i";
         df = "df -h";
+        cd = "z";
     };
 
     # Enable stylix
