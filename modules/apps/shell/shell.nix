@@ -12,6 +12,7 @@
     programs.zoxide = {
         enable = true;
         enableZshIntegration = true;
+        enableFishIntegration = true;
     };
 
     # Oh My Posh settings
