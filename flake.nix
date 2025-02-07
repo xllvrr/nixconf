@@ -56,16 +56,6 @@
                     }
                 ];
             };
-
-            # homeConfigurations.NixDesktop = home-manager.lib.homeManagerConfiguration {
-            #     inherit pkgs;
-            #     extraSpecialArgs = { inherit inputs; };
-            #     modules = [ 
-            #         ./hosts/NixDesktop/home.nix 
-            #         {wayland.windowManager.hyprland.enable = true;}
-            #     ];
-            # };
-
         };
 
 }
