@@ -38,6 +38,9 @@
         # Communications
         vesktop
 
+        # Programming
+        distrobox
+
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -97,7 +100,7 @@
     programs.nh = {
         enable = true;
         clean.enable = true;
-        clean.extraArgs = "--keep-since=5d --keep 5";
+        clean.extraArgs = "--keep-since 5d --keep 5";
         flake = "/home/xllvr/nixos";
     };
 

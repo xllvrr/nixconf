@@ -9,8 +9,9 @@
         [ 
             ./hardware.nix # Import hardware for host
             ../default_configuration.nix # Import default configs
-            ../../modules/config/stylix.nix # Import stylix
-            ../../modules/config/gaming.nix # Import gaming module
+            ../../modules/config/system/stylix.nix # Import stylix
+            ../../modules/config/system/gaming.nix # Import gaming module
+            ../../modules/config/programming/languages.nix # Import programming languages module
         ];
 
     ## OS ##

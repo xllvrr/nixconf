@@ -20,7 +20,6 @@
 
         # Programming Languages
         gcc
-        R
 
     ];
 }
