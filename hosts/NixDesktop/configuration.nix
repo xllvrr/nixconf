@@ -92,26 +92,6 @@
 
     ## Services ##
 
-    # Enable bluetooth
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
-    services.blueman.enable = true;
-
-    # Enable sound with pipewire.
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-        extraConfig.pipewire.adjust-sample-rate = {
-            "context.properties" = {
-                "default.clock.allowed-rates" = [ 32000 44100 48000 88200 96000 192000 ];
-            };
-        };
-    };
-
     # Enable SSH
     services.openssh.enable = true;
     programs.ssh.startAgent = true;

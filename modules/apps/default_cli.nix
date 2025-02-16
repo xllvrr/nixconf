@@ -17,6 +17,7 @@
         lazygit
         nsxiv
         dragon
+        devenv
 
         # Programming Languages
         gcc

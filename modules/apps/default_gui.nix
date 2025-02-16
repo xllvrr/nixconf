@@ -8,6 +8,7 @@
         obsidian
         syncthing
         zathura
+        system-config-printer
 
         # Health
         safeeyes
