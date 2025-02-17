@@ -20,7 +20,7 @@
       settings = {
         bar = {
           # Set position
-          layer = "top";
+          layer = "bottom";
           position = "top";
           height = 40;
           spacing = 8;
