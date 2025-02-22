@@ -123,9 +123,6 @@
 
     ## Packages ##
 
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
     # Host-specific packages
     environment.systemPackages = with pkgs; [
     ];
