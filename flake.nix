@@ -27,12 +27,22 @@
 
     };
 
-    outputs = { self, nixpkgs, home-manager, nvf, hyprland, ... }@inputs:
+    outputs = { self, nixpkgs, stylix, home-manager, nvf, hyprland, ... }@inputs:
 
         let
 
+            unfree = [
+                "steam"
+                "steam-unwrapped"
+            ];
+
             system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs {
+                inherit system;
+                config.allowUnfreePredicate = (pkg:
+                    builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
+                );
+            };
             customNvim = nvf.lib.neovimConfiguration {
                 inherit pkgs;
                 modules = [ standalones/nvf.nix ];
@@ -43,14 +53,14 @@
             packages.${system}.my-neovim = customNvim.neovim;
 
             nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
+                pkgs = pkgs;
                 specialArgs = { inherit inputs; };
                 modules = [
                     ./hosts/NixDesktop/configuration.nix
-                    inputs.stylix.nixosModules.stylix
-                    inputs.home-manager.nixosModules.default
+                    stylix.nixosModules.stylix
+                    # home-manager.nixosModules.default
                     {environment.systemPackages = [customNvim.neovim];}
                     home-manager.nixosModules.home-manager {
-                        home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
                         home-manager.users.xllvr = import ./hosts/NixDesktop/home.nix;
                     }

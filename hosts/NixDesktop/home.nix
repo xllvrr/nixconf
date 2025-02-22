@@ -28,6 +28,8 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
+    # And allow for unfree packages within
+    nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
 
         # Screenshots
@@ -74,11 +76,6 @@
         df = "df -h";
         cd = "z";
     };
-
-    # Enable stylix
-    stylix.enable = true;
-    stylix.autoEnable = true;
-    stylix.targets.qt.platform = "qtct";
 
     # Manage XDG Directories
     xdg = {
