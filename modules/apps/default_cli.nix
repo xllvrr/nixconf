@@ -12,6 +12,7 @@
         libnotify
         jq
         cliphist
+        gh
 
         # Terminal
         lazygit
