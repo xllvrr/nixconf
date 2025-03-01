@@ -9,6 +9,10 @@
         functions = {
             batman = "man $argv | col -bx | bat -l man -p";
         };
+        shellAbbrs = {
+            n = "nnn";
+            lg = "lazygit";
+        };
         shellInit = "${pkgs.openssh}/bin/ssh-add ~/.ssh/github_rsa";
         interactiveShellInit = ''
             # Set Vi Mode
