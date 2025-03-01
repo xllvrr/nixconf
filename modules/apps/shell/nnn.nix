@@ -14,7 +14,6 @@
                 + "/plugins";
             mappings = {
                 c = "fzcd";
-                d = "dragdrop";
                 v = "imgview";
                 p = "preview-tui";
             };

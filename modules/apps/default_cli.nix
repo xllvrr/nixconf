@@ -17,7 +17,6 @@
         # Terminal
         lazygit
         nsxiv
-        dragon
         devenv
         direnv
 
