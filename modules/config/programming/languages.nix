@@ -2,9 +2,9 @@
 
 {
     imports = [
-        ./R.nix
+        # ./R.nix
     ];
 
-    programs.R.enable = true;
+    # programs.R.enable = true;
 
 }

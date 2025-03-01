@@ -21,9 +21,6 @@
         pulsemixer
         qpwgraph
 
-        # Security
-        mullvad-vpn
-
         # Terminal
         kitty
 

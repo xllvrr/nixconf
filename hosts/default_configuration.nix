@@ -97,9 +97,6 @@
         cliphist
         gzip
 
-        # Security
-        mullvad-vpn
-
     ];
 
 
