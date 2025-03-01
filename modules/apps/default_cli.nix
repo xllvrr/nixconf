@@ -19,6 +19,7 @@
         nsxiv
         dragon
         devenv
+        direnv
 
         # Programming Languages
         gcc
