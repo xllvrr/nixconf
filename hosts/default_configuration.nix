@@ -27,6 +27,7 @@
     # Fonts
     fonts.packages = with pkgs; [
         jetbrains-mono
+        dejavu_fonts
         nerd-fonts.symbols-only
         # East Asian Fonts
         noto-fonts-cjk-sans

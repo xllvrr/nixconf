@@ -29,6 +29,9 @@
         # Minecraft
         prismlauncher
 
+        # Communications
+        vesktop
+
     ];
 
 }
