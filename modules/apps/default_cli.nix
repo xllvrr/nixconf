@@ -18,10 +18,15 @@
         lazygit
         nsxiv
         devenv
-        direnv
 
         # Programming Languages
         gcc
 
     ];
+
+    programs.direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+    };
+
 }

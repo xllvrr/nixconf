@@ -97,8 +97,8 @@
     programs.ssh.startAgent = true;
 
     # Enable Mullvad
-    # services.mullvad-vpn.enable = true;
-
+    services.mullvad-vpn.enable = true;
+    services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
     ## User Settings ##
 
