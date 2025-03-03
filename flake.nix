@@ -58,7 +58,6 @@
                 modules = [
                     ./hosts/NixDesktop/configuration.nix
                     stylix.nixosModules.stylix
-                    # home-manager.nixosModules.default
                     {environment.systemPackages = [customNvim.neovim];}
                     home-manager.nixosModules.home-manager {
                         home-manager.useUserPackages = true;
