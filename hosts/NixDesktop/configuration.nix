@@ -19,6 +19,7 @@
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.initrd.kernelModules = [ "amdgpu" ];
 
     networking.hostName = "NixDesktop"; # Define your hostname.
     networking.networkmanager.enable = true;
@@ -77,6 +78,7 @@
     # Enable the Hyprland Window Manager
     programs.hyprland = {
         enable = true;
+        withUWSM = true;
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };

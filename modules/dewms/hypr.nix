@@ -20,8 +20,6 @@ in
         xwayland.enable = true;
         systemd.enable = true;
 
-        plugins = with pkgs.hyprlandPlugins; [ hy3 ];
-
         settings = {
 
             # Setup variables
@@ -61,7 +59,7 @@ in
                 "col.active_border" = lib.mkForce "rgba(ff7f50ee) rgba(9400d3ee) 60deg";
                 "col.inactive_border" = lib.mkForce "rgba(ffffffee)";
 
-                layout = "hy3";
+                layout = "master";
             };
 
             # Decorations
@@ -122,16 +120,16 @@ in
                 "$mod ALT, S, exec, systemctl suspend"
                 "$mod ALT, L, exec, hyprctl dispatch exit"
                 # Window controls
-                "$mod, C, hy3:killactive"
+                "$mod, C, killactive"
                 "$mod, V, togglefloating"
                 "$mod, F, fullscreen"
                 "$mod, J, togglesplit"
                 "ALT, TAB, cyclenext"
                 ## Focus
-                "$mod, $left, hy3:movefocus, l"
-                "$mod, $right, hy3:movefocus, r"
-                "$mod, $up, hy3:movefocus, u"
-                "$mod, $down, hy3:movefocus, d"
+                "$mod, $left, movefocus, l"
+                "$mod, $right, movefocus, r"
+                "$mod, $up, movefocus, u"
+                "$mod, $down, movefocus, d"
 
                 # Workspace controls
                 ## Move workspace to different monitor
@@ -201,33 +199,6 @@ in
 
         };
         
-        extraConfig = ''
-        # HY3 Settings
-        bind = $mod ALT, G, submap, h3
-        submap = h3
-
-        ## Make groups
-        bind = , V, hy3:makegroup, v, ephemeral
-        bind = , H, hy3:makegroup, h, ephemeral
-        bind = , T, hy3:makegroup, tab, ephemeral
-
-        # Change group setting
-        bind = SHIFT, T, hy3:changegroup, toggletab
-        bind = , E, hy3:setephemeral, true
-
-        # Move window to group
-        bind = , $left, hy3:movewindow, l
-        bind = , $up, hy3:movewindow, u
-        bind = , $down, hy3:movewindow, d
-        bind = , $right, hy3:movewindow, r
-
-        bind = , escape, submap, reset
-        submap = reset
-
-        bind = $mod, TAB, hy3:focustab, right
-        bind = $mod SHIFT, TAB, hy3:focustab, left
-        '';
-
     };
 
 }
