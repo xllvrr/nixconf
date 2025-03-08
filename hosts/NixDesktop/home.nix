@@ -37,9 +37,12 @@
         slurp
         hyprshot
 
+        # Keyboard
+        via
+        vial
+
         # Others
         zoom-us
-        vial
 
     ];
 

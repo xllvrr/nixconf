@@ -43,14 +43,28 @@
         { device = "/dev/disk/by-uuid/3fb9f454-d0fe-42ee-8fa1-3bd92ae7cdf0";
         };
 
-    # Mouse setup for Elecom Huge
-    services.udev.extraHwdb = ''
-    evdev:input:b*v056Ep010C*
-      KEYBOARD_KEY_90008=btn_middle
-      KEYBOARD_KEY_90005=btn_side
-      KEYBOARD_KEY_90004=btn_extra
-    '';
 
+    # Setup external devices
+    services.udev = {
+        
+        # Packages for keyboards
+        packages = with pkgs; [
+            qmk
+            qmk-udev-rules
+            qmk_hid
+            via
+            vial
+        ];
+
+    # Mouse setup for Elecom Huge
+        extraHwdb = ''
+            evdev:input:b*v056Ep010C*
+            KEYBOARD_KEY_90008=btn_middle
+            KEYBOARD_KEY_90005=btn_side
+            KEYBOARD_KEY_90004=btn_extra
+        '';
+
+    };
 
     # Enable printing
     services.printing = {
