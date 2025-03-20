@@ -40,9 +40,11 @@
         # Keyboard
         via
         vial
+        qmk
 
         # Others
         zoom-us
+        qbittorent-enhanced
 
     ];
 

@@ -16,7 +16,7 @@
 
         # Terminal
         lazygit
-        nsxiv
+        feh
         devenv
 
         # Programming Languages
