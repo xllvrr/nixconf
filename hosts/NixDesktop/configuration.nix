@@ -132,6 +132,7 @@
 
     # Host-specific packages
     environment.systemPackages = with pkgs; [
+        qbittorrent-enhanced
     ];
 
     # Hyprshot settings
