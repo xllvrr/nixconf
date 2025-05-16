@@ -16,7 +16,7 @@
     };
 
     # Copy to system clipboard for ease
-    useSystemClipboard = true;
+    clipboard.registers = "unnamedplus";
 
     # Added functionality
     mini.ai.enable = true;
