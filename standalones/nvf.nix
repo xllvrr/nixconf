@@ -42,13 +42,13 @@
 
     ui.colorizer.enable = true;
 
+    # LSP settings
     lsp = {
       enable = true;
       formatOnSave = true;
       inlayHints.enable = true;
     };
 
-    # LSP settings
     languages = {
       enableTreesitter = true;
       enableFormat = true;
@@ -56,6 +56,11 @@
       nix.enable = true;
       r.enable = true;
       lua.enable = true;
+    };
+
+    # Formatting
+    formatter.conform-nvim = {
+      enable = true;
     };
 
     keymaps = [
