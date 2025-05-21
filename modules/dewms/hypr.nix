@@ -20,6 +20,8 @@ in {
     systemd.enable = true;
 
     settings = {
+      debug.disable_logs = false;
+
       # Setup variables
       "$mod" = "SUPER";
       "$term" = "kitty";

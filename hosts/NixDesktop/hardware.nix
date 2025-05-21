@@ -99,7 +99,7 @@
   networking.useDHCP = lib.mkDefault true;
 
   # Enable openGL
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
