@@ -109,6 +109,9 @@
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
+  # Enable polkit
+  security.polkit.enable = true;
+
   ## User Settings ##
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
