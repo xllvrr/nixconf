@@ -1,32 +1,21 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  # Always installed CLIs
+  home.packages = with pkgs; [
+    # System Tools
+    grim
+    slurp
 
-{
-    # Always installed CLIs
-    home.packages = with pkgs; [
+    # Terminal
+    lazygit
+    feh
+    devenv
 
-        # System Tools
-        fuzzel
-        wl-clipboard
-        evtest
-        usbutils
-        libnotify
-        jq
-        cliphist
-        gh
+    # Programming Languages
+    gcc
+  ];
 
-        # Terminal
-        lazygit
-        feh
-        devenv
-
-        # Programming Languages
-        gcc
-
-    ];
-
-    programs.direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-    };
-
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }

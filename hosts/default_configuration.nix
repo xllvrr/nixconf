@@ -1,103 +1,96 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  # Enable flakes
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
-{
-    # Enable flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
 
-    # Configure keymap in X11
-    services.xserver.xkb = {
-        layout = "us";
-        variant = "";
+  # Enable documentation
+  documentation = {
+    enable = true;
+    man = {
+      enable = true;
+      man-db.enable = false;
+      mandoc.enable = true;
+      generateCaches = true;
     };
+  };
 
-    # Enable documentation
-    documentation = {
-        enable = true;
-        man = {
-            enable = true;
-            man-db.enable = false;
-            mandoc.enable = true;
-            generateCaches = true;
-        };
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    dejavu_fonts
+    nerd-fonts.symbols-only
+    # East Asian Fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+  ];
+
+  # Redshift
+  services.redshift = {
+    enable = true;
+    temperature = {
+      day = 5500;
+      night = 3700;
     };
+  };
+  services.geoclue2.enable = true;
+  location.provider = "geoclue2";
 
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
+  # Always installed packages
+  environment.systemPackages = with pkgs; [
+    # Editors
+    vim
+    neovim
 
-    # Fonts
-    fonts.packages = with pkgs; [
-        jetbrains-mono
-        dejavu_fonts
-        nerd-fonts.symbols-only
-        # East Asian Fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-    ];
+    # Download
+    curl
+    wget
 
-    # Redshift
-    services.redshift = {
-        enable = true;
-        temperature = {
-            day = 5500;
-            night = 3700;
-        };
-    };
-    services.geoclue2.enable = true;
-    location.provider = "geoclue2";
+    # Version Control
+    git
+    stow
+    openssh
 
-    # Always installed packages
-    environment.systemPackages = with pkgs; [
+    # Terminal
+    eza
+    fzf
+    ripgrep
+    unzip
+    tree
+    wev
+    lazygit
+    htop
 
-        # Editors
-        vim
-        neovim
+    # Documentation
+    linux-manual
+    man-pages
+    man-pages-posix
+    bat
 
-        # Download
-        curl
-        wget
+    # Programming Languages
+    gcc
+    R
 
-        # Version Control
-        git
-        stow
-        openssh
+    # Nix Tools
+    home-manager
+    nix-output-monitor
+    nvd
 
-        # Terminal
-        kitty
-        eza
-        fzf
-        ripgrep
-        unzip
-        tree
-        wev
-        lazygit
-        htop
-
-        # Documentation
-        linux-manual
-        man-pages
-        man-pages-posix
-        bat
-
-        # Programming Languages
-        gcc
-        R
-
-        # Nix Tools
-        home-manager
-        nix-output-monitor
-        nvd
-
-        # System Tools
-        fuzzel
-        wl-clipboard
-        evtest
-        usbutils
-        libnotify
-        jq
-        cliphist
-        gzip
-
-    ];
-
-
+    # System Tools
+    wl-clipboard
+    evtest
+    usbutils
+    libnotify
+    jq
+    cliphist
+    gzip
+    gh
+  ];
 }
