@@ -120,6 +120,33 @@
     };
   };
 
+  # Kanshi settings
+  services.kanshi = {
+    enable = true;
+
+    settings = [
+      {
+        profile.name = "desktop";
+        profile.outputs = [
+          {
+            criteria = "DP-2";
+            mode = "1920x1080@60Hz";
+            scale = 1.0;
+            status = "enable";
+            position = "0,0";
+          }
+          {
+            criteria = "DP-3";
+            mode = "1680x1050@60.00";
+            scale = 1.0;
+            status = "enable";
+            position = "1920,0";
+          }
+        ];
+      }
+    ];
+  };
+
   # Cava settings
   programs.cava.settings = {
     general.autosens = 1;
