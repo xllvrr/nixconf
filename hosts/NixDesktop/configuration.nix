@@ -12,6 +12,7 @@
     ../default_configuration.nix # Import default configs
     ../../modules/config/system/stylix.nix # Import stylix
     ../../modules/config/system/gaming.nix # Import gaming module
+    ../../modules/config/system/greetd.nix # Import greeter
     ../../modules/config/programming/languages.nix # Import programming languages module
   ];
 
@@ -71,18 +72,18 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GDM
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
-
-  # Enable the Hyprland Window Manager
+  # Enable Hyprland
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  # Enable Sway
+  programs.sway = {
+    enable = true;
+    xwayland.enable = true;
   };
 
   # Enable Thunar
