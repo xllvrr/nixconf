@@ -39,10 +39,10 @@ in {
       "$right" = "l";
 
       # Monitors
-      # monitor = [
-      #   "DP-2, 1920x1080@59.93, 0x0, 1"
-      #   "DP-3, 1680x1050@60.00, 1920x0, 1"
-      # ];
+      monitor = [
+        "DP-2, 1920x1080@59.93, 0x0, 1"
+        "DP-3, 1680x1050@60.00, 1920x0, 1"
+      ];
 
       # Inputs
       input = {
@@ -190,12 +190,12 @@ in {
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
         "${startupScript}/bin/Startup"
         "export SSH_AUTH_SOCK"
-        "safeeyes"
         "bluetoothctl trust 28:D0:EA:94:0C:A9"
         "bluetoothctl power on"
         "bluetoothctl connect 28:D0:EA:94:0C:A9"
       ];
       exec = [
+        "safeeyes"
         "mako"
         "xrdb -load ~/.Xdefaults"
       ];
