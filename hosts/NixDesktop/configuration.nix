@@ -13,7 +13,6 @@
     ../../modules/config/system/stylix.nix # Import stylix
     ../../modules/config/system/gaming.nix # Import gaming module
     ../../modules/config/system/greetd.nix # Import greeter
-    ../../modules/config/programming/languages.nix # Import programming languages module
   ];
 
   ## OS ##

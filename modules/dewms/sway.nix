@@ -63,10 +63,10 @@ in {
 
           "${mod}+a" = "focus parent";
           "${mod}+f" = "fullscreen toggle";
-          "${mod}+x" = "floating toggle";
+          "${mod}+z" = "floating toggle";
           "${mod}+g" = "split h";
           "${mod}+v" = "split v";
-          "${mod}+e" = "layout toggle split";
+          "${mod}+x" = "layout toggle split";
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
 
@@ -78,6 +78,7 @@ in {
 
           "${mod}+Alt+f" = "exec thunar";
           "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
+          "${mod}+e" = "exec kitty --detach yazi";
         }
       ];
       focus.followMouse = true;
@@ -88,7 +89,7 @@ in {
           command = "mako";
           always = true;
         }
-        {command = "vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";}
+        {command = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";}
         {command = "syncthing";}
         {command = "kitty --detach musikcube";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
@@ -138,7 +139,7 @@ in {
         "1" = [{title = "^Discord.*";}];
         "2" = [{title = "^Firefox$";}];
         "6" = [{class = "obsidian";}];
-        "7" = [{title = ".*Musikcube.*";}];
+        "7" = [{title = "^musikcube$";}];
       };
       window = {
         border = 3;
