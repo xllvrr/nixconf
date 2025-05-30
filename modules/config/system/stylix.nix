@@ -18,12 +18,12 @@
         name = "DejaVu Serif";
       };
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.fira;
+        name = "Fira Sans";
       };
       monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "Jet Brains Mono";
+        package = pkgs.fira;
+        name = "Fira Code";
       };
       emoji = {
         package = pkgs.nerd-fonts.symbols-only;
