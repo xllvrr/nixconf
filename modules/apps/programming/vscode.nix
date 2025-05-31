@@ -5,7 +5,7 @@
 }: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       # language agnostic
       vscodevim.vim
       mhutchie.git-graph
@@ -18,6 +18,7 @@
       christian-kohler.path-intellisense
       gruntfuggly.todo-tree
       vscode-icons-team.vscode-icons
+      mkhl.direnv
 
       # r
       reditorsupport.r
