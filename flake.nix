@@ -27,6 +27,10 @@
     nixcord = {
       url = "github:kaylorben/nixcord";
     };
+
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+    };
   };
 
   outputs = {

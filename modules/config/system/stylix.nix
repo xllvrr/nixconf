@@ -14,16 +14,16 @@
 
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        package = pkgs.montserrat;
+        name = "Montserrat Regular";
       };
       sansSerif = {
-        package = pkgs.fira;
-        name = "Fira Sans";
+        package = pkgs.montserrat;
+        name = "Montserrat Regular";
       };
       monospace = {
-        package = pkgs.fira;
-        name = "Fira Code";
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono Medium";
       };
       emoji = {
         package = pkgs.nerd-fonts.symbols-only;

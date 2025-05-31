@@ -138,6 +138,7 @@
   # Host-specific packages
   environment.systemPackages = with pkgs; [
     qbittorrent-enhanced
+    inputs.zen-browser.packages."${system}".specific
   ];
 
   # Hyprshot settings
