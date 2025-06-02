@@ -22,8 +22,8 @@
         name = "Montserrat Regular";
       };
       monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "JetBrains Mono Medium";
+        package = pkgs.nerd-fonts.terminess-ttf;
+        name = "Terminess Nerd Font Regular";
       };
       emoji = {
         package = pkgs.nerd-fonts.symbols-only;
