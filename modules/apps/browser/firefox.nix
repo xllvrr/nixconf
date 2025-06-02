@@ -1,14 +1,16 @@
 # Firefox Setup
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.firefox = {
-
     enable = true;
 
     profiles.xllvr = {
-
-      /* Extensions */
+      /*
+      Extensions
+      */
 
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
@@ -19,27 +21,38 @@
 
       search.engines = {
         "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
           definedAliases = ["@np"];
         };
         "Youtube" = {
-          urls = [{
-            template = "https://youtube.com/results?search_query={searchTerms}";
-          }];
+          urls = [
+            {
+              template = "https://youtube.com/results?search_query={searchTerms}";
+            }
+          ];
           definedAliases = ["@yt"];
         };
       };
       search.force = true;
-
     };
 
-    /* Policies */
+    /*
+    Policies
+    */
 
     policies = {
       DisableTelemetry = true;
@@ -57,7 +70,7 @@
       DontCheckDefaultBrowser = true;
       SearchBar = "unified";
     };
-
-
   };
+
+  stylix.targets.firefox.profileNames = ["xllvr"];
 }
