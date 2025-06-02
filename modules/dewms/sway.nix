@@ -9,6 +9,12 @@
   primaryscreen = "DP-2";
   secondaryscreen = "DP-3";
 in {
+  imports = [
+    ../apps/os/waybar.nix
+  ];
+
+  waybar.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -112,7 +118,7 @@ in {
         criteria = [
           {class = "nmtui";}
           {class = "Pavucontrol";}
-          {class = "^mako$";}
+          {class = ".*mako.*";}
           {class = ".*blueman.*";}
           {title = "Steam - Update News";}
         ];
