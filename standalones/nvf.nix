@@ -37,10 +37,13 @@
     autocomplete.nvim-cmp.enable = true;
     mini.icons.enable = true;
 
+    # Status Line
     statusline.lualine.enable = true;
-    # telescope.enable = true;
 
+    # Colorizer
     ui.colorizer.enable = true;
+
+    # Jupyter
 
     # LSP settings
     lsp = {
