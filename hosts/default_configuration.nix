@@ -46,7 +46,6 @@
   # Always installed packages
   environment.systemPackages = with pkgs; [
     # Editors
-    vim
     neovim
 
     # Download
@@ -92,5 +91,7 @@
     cliphist
     gzip
     gh
+    caligula
+    pastel
   ];
 }
