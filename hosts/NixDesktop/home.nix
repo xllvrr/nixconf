@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    # ../../modules/dewms/hypr.nix
     ../../modules/dewms/sway.nix
     ../../modules/apps/default_gui.nix # Import default guis
     ../../modules/apps/default_cli.nix # Import default clis

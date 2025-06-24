@@ -138,6 +138,8 @@
   # Host-specific packages
   environment.systemPackages = with pkgs; [
     qbittorrent-enhanced
+    libreoffice-fresh
+    zed-editor
   ];
 
   # Hyprshot settings
