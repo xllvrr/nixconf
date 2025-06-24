@@ -4,9 +4,8 @@
   inputs,
   ...
 }: {
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-
     profiles.xllvr = {
       /*
       Extensions
@@ -20,23 +19,13 @@
       ];
 
       search.engines = {
-        "Nix Packages" = {
+        "MyNixOS" = {
           urls = [
             {
-              template = "https://search.nixos.org/packages";
-              params = [
-                {
-                  name = "type";
-                  value = "packages";
-                }
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
+              template = "https://mynixos.com/search?q={searchTerms}";
             }
           ];
-          definedAliases = ["@np"];
+          definedAliases = ["@myn"];
         };
         "Youtube" = {
           urls = [
@@ -45,6 +34,14 @@
             }
           ];
           definedAliases = ["@yt"];
+        };
+        "Jisho" = {
+          urls = [
+            {
+              template = "https://jisho.org/search/{searchTerms}";
+            }
+          ];
+          definedAliases = ["@jsh"];
         };
       };
       search.force = true;
@@ -72,5 +69,5 @@
     };
   };
 
-  stylix.targets.firefox.profileNames = ["xllvr"];
+  stylix.targets.librewolf.profileNames = ["xllvr"];
 }
