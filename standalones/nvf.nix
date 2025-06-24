@@ -35,6 +35,7 @@
 
     # Autocompletion
     autocomplete.nvim-cmp.enable = true;
+    autocomplete.blink-cmp.friendly-snippets.enable = true;
     mini.icons.enable = true;
 
     # Status Line
@@ -42,8 +43,6 @@
 
     # Colorizer
     ui.colorizer.enable = true;
-
-    # Jupyter
 
     # LSP settings
     lsp = {
@@ -63,6 +62,11 @@
 
     # Formatting
     formatter.conform-nvim = {
+      enable = true;
+    };
+
+    # Snippets
+    mini.snippets = {
       enable = true;
     };
 

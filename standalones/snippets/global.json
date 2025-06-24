@@ -1,0 +1,6 @@
+{
+    "Basic": {
+        "prefix": "main",
+        "body": "def main() -> None:\n\n\n``if __name__ = '__main__':\nmain()"
+    }
+}
