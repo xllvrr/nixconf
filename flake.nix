@@ -53,7 +53,7 @@
     };
     customNvim = nvf.lib.neovimConfiguration {
       inherit pkgs;
-      modules = [standalones/nvf.nix];
+      modules = [standalones/nvf/nvf.nix];
     };
   in {
     packages.${system}.my-neovim = customNvim.neovim;
