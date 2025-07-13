@@ -38,11 +38,6 @@
     slurp
     hyprshot
 
-    # Keyboard
-    via
-    vial
-    qmk
-
     # Others
     zoom-us
     anki
@@ -145,7 +140,6 @@
       useQuickCss = true;
       frameless = true;
       plugins = {
-        betterFolders.enable = true;
         betterGifPicker.enable = true;
         callTimer.enable = true;
         clearURLs.enable = true;
