@@ -99,6 +99,14 @@
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
+  # Enable LD
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      uv
+    ];
+  };
+
   ## Services ##
 
   # Enable SSH
