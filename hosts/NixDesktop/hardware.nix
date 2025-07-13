@@ -52,7 +52,7 @@
     qmk
     qmk-udev-rules
     qmk_hid
-    via
+    # via
     vial
   ];
 
