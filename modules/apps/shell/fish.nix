@@ -17,6 +17,7 @@
     shellAbbrs = {
       n = "nnn";
       lg = "lazygit";
+      cd = "z";
     };
     shellInit = "${pkgs.openssh}/bin/ssh-add ~/.ssh/github_rsa";
     interactiveShellInit = ''
