@@ -34,8 +34,10 @@
     mini.files.enable = true;
 
     # Autocompletion
-    autocomplete.nvim-cmp.enable = true;
-    autocomplete.blink-cmp.friendly-snippets.enable = true;
+    autocomplete = {
+      # nvim-cmp.enable = true;
+      blink-cmp.enable = true;
+    };
     mini.icons.enable = true;
 
     # Status Line
@@ -66,8 +68,14 @@
     };
 
     # Snippets
+    autocomplete.blink-cmp.friendly-snippets.enable = true;
     mini.snippets = {
       enable = true;
+      setupOpts = {
+        snippets = {
+          from_file = "snippets/global.json";
+        };
+      };
     };
 
     keymaps = [
