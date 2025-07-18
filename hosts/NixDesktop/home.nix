@@ -12,6 +12,7 @@
     ../../modules/apps/browser/firefox.nix
     ../../modules/apps/terminal/kitty.nix
     ../../modules/apps/shell/shell.nix
+    ../../modules/apps/programming/vscode.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

@@ -35,8 +35,8 @@
 
     # Autocompletion
     autocomplete = {
-      # nvim-cmp.enable = true;
-      blink-cmp.enable = true;
+      nvim-cmp.enable = true;
+      # blink-cmp.enable = true;
     };
     mini.icons.enable = true;
 
@@ -68,7 +68,7 @@
     };
 
     # Snippets
-    autocomplete.blink-cmp.friendly-snippets.enable = true;
+    # autocomplete.blink-cmp.friendly-snippets.enable = true;
     mini.snippets = {
       enable = true;
       setupOpts = {
