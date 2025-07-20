@@ -33,15 +33,15 @@
   ];
 
   # Redshift
-  # services.redshift = {
-  #   enable = true;
-  #   temperature = {
-  #     day = 5500;
-  #     night = 3700;
-  #   };
-  # };
-  # services.geoclue2.enable = true;
-  # location.provider = "geoclue2";
+  services.redshift = {
+    enable = true;
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
+  services.geoclue2.enable = true;
+  location.provider = "geoclue2";
 
   # Always installed packages
   environment.systemPackages = with pkgs; [
@@ -81,6 +81,7 @@
     home-manager
     nix-output-monitor
     nvd
+    hydra-check
 
     # System Tools
     wl-clipboard

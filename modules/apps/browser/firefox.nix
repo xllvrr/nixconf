@@ -43,6 +43,14 @@
           ];
           definedAliases = ["@jsh"];
         };
+        "KBBI" = {
+          urls = [
+            {
+              template = "https://kbbi.web.id/{searchTerms}";
+            }
+          ];
+          definedAliases = ["@kbb"];
+        };
       };
       search.force = true;
     };

@@ -135,21 +135,21 @@
   };
 
   # Discord settings
-  programs.vesktop.enable = true;
-  # programs.nixcord = {
-  #   enable = true;
-  #   config = {
-  #     useQuickCss = true;
-  #     frameless = true;
-  #     plugins = {
-  #       betterGifPicker.enable = true;
-  #       callTimer.enable = true;
-  #       clearURLs.enable = true;
-  #       copyUserURLs.enable = true;
-  #       userMessagesPronouns.enable = true;
-  #     };
-  #   };
-  # };
+  # programs.vesktop.enable = true;
+  programs.nixcord = {
+    enable = true;
+    config = {
+      useQuickCss = true;
+      frameless = true;
+      plugins = {
+        betterGifPicker.enable = true;
+        callTimer.enable = true;
+        clearURLs.enable = true;
+        copyUserURLs.enable = true;
+        userMessagesPronouns.enable = true;
+      };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
