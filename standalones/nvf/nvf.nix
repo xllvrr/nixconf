@@ -16,7 +16,11 @@
     };
 
     # Copy to system clipboard for ease
-    clipboard.registers = "unnamedplus";
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
 
     # Added functionality
     mini.ai.enable = true;
@@ -49,6 +53,7 @@
     # LSP settings
     lsp = {
       enable = true;
+      trouble.enable = true;
       formatOnSave = true;
       inlayHints.enable = true;
     };
@@ -60,7 +65,10 @@
       nix.enable = true;
       r.enable = true;
       lua.enable = true;
+      python.enable = true;
     };
+
+    diagnostics.enable = true;
 
     # Formatting
     formatter.conform-nvim = {
@@ -133,6 +141,21 @@
         silent = true;
         action = ":Pick grep_live<CR>";
         desc = "Picks based on grep with live results";
+      }
+      # Using trouble
+      {
+        key = "<leader>xx";
+        mode = "n";
+        silent = true;
+        action = "<cmd>Trouble diagnostics toggle<CR>";
+        desc = "Diagnostics (Trouble)";
+      }
+      {
+        key = "<leader>cl";
+        mode = "n";
+        silent = true;
+        action = "<cmd>Trouble lsp toggle focus=false win.position=right<CR>";
+        desc = "LSP definitions, references, ... (Trouble)";
       }
     ];
   };

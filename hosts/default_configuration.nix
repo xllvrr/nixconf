@@ -54,6 +54,7 @@
 
     # Version Control
     git
+    git-filter-repo
     stow
     openssh
 
@@ -76,6 +77,7 @@
     # Programming Languages
     gcc
     R
+    cargo
 
     # Nix Tools
     home-manager

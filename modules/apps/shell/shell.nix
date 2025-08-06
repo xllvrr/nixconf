@@ -39,6 +39,9 @@
     aliases = {
       cm = "commit -am";
     };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   # SSH Settings

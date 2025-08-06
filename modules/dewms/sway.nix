@@ -146,6 +146,7 @@ in {
         "2" = [{title = "^Firefox$";}];
         "6" = [{class = "obsidian";}];
         "7" = [{title = "^musikcube$";}];
+        "8" = [{class = "zathura";}];
       };
       window = {
         border = 3;

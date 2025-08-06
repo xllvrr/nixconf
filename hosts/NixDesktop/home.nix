@@ -134,8 +134,7 @@
     ];
   };
 
-  # Discord settings
-  # programs.vesktop.enable = true;
+  # nixcord
   programs.nixcord = {
     enable = true;
     config = {
