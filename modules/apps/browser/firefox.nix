@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  programs.librewolf = {
+  programs.firefox = {
     enable = true;
     profiles.xllvr = {
       /*
@@ -77,5 +77,5 @@
     };
   };
 
-  stylix.targets.librewolf.profileNames = ["xllvr"];
+  stylix.targets.firefox.profileNames = ["xllvr"];
 }

@@ -83,7 +83,7 @@ in {
           "${mod}+Shift+s" = "exec ${scriptsdir}/fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
-          "${mod}+b" = "exec ${pkgs.librewolf}/bin/librewolf";
+          "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+e" = "exec kitty --detach yazi";
         }
       ];
@@ -105,7 +105,7 @@ in {
         {command = "fcitx5 -d --replace";}
         {command = "fcitx5-remote -r";}
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
-        {command = "${pkgs.librewolf}/bin/librewolf";}
+        {command = "${pkgs.firefox}/bin/firefox";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
       ];
       workspaceAutoBackAndForth = true;
