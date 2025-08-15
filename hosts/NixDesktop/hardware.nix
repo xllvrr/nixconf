@@ -17,20 +17,20 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c94d7fef-f10a-4070-b8bc-4beaf45d3a47";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/c94d7fef-f10a-4070-b8bc-4beaf45d3a47";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DD60-1132";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/DD60-1132";
+    fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
+  };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/e5bd98a0-8c1a-4edd-9d1a-42a857fa7419"; }
-    ];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/e5bd98a0-8c1a-4edd-9d1a-42a857fa7419";}
+  ];
 
   # Automount game drive
   fileSystems."/run/media/xllvr/Games" = {
@@ -88,9 +88,17 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    extraConfig.pipewire.adjust-sample-rate = {
-      "context.properties" = {
-        "default.clock.allowed-rates" = [32000 44100 48000 88200 96000 192000];
+    extraConfig.pipewire = {
+      "10-clock-rate" = {
+        "context.properties" = {
+          "default.clock.rate" = 192000;
+          "default.clock.allowed-rates" = [32000 44100 48000 88200 96000 192000];
+        };
+      };
+      "11-no-upmixing" = {
+        "stream.properties" = {
+          "channelmix.upmix" = false;
+        };
       };
     };
   };
