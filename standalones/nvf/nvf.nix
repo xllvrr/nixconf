@@ -25,27 +25,39 @@
     # Added functionality
     mini.ai.enable = true;
     mini.align.enable = true;
+    mini.cursorword.enable = true;
     mini.splitjoin.enable = true;
     mini.operators.enable = true;
-    mini.bracketed.enable = true;
     mini.pick.enable = true;
+    mini.indentscope.enable = true;
+    mini.diff.enable = true;
+    mini.move.enable = true;
+    mini.jump.enable = true;
+    mini.extra.enable = true;
 
     # Brackets
     mini.pairs.enable = true;
     mini.surround.enable = true;
+    mini.bracketed.enable = true;
 
     # File management
     mini.files.enable = true;
+    mini.fuzzy.enable = true;
 
     # Autocompletion
     autocomplete = {
       # nvim-cmp.enable = true;
-      blink-cmp.enable = true;
+      blink-cmp = {
+        enable = true;
+        setupOpts = {
+          keymap.preset = "super-tab";
+        };
+      };
     };
     mini.icons.enable = true;
 
     # Status Line
-    statusline.lualine.enable = true;
+    mini.statusline.enable = true;
 
     # Colorizer
     ui.colorizer.enable = true;
