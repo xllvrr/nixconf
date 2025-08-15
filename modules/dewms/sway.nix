@@ -104,7 +104,7 @@ in {
         {command = "bluetoothctl connect 28:D0:EA:94:0C:A9";}
         {command = "fcitx5 -d --replace";}
         {command = "fcitx5-remote -r";}
-        {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_rsa";}
+        {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
         {command = "${pkgs.librewolf}/bin/librewolf";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
       ];

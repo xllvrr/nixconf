@@ -19,7 +19,7 @@
       lg = "lazygit";
       cd = "z";
     };
-    shellInit = "${pkgs.openssh}/bin/ssh-add ~/.ssh/github_rsa";
+    shellInit = "${pkgs.openssh}/bin/ssh-add ~/.ssh/github_key";
     interactiveShellInit = ''
       # Set Vi Mode
       set -g fish_key_bindings fish_vi_key_bindings
