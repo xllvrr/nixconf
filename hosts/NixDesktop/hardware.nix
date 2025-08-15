@@ -17,20 +17,20 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/99351504-d799-41e0-bbab-24a1435e06e1";
-    fsType = "ext4";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/c94d7fef-f10a-4070-b8bc-4beaf45d3a47";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6481-B611";
-    fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/DD60-1132";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/8d8d33ae-aeb7-4e2f-83e1-51b81669fa45";}
-  ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/e5bd98a0-8c1a-4edd-9d1a-42a857fa7419"; }
+    ];
 
   # Automount game drive
   fileSystems."/run/media/xllvr/Games" = {
