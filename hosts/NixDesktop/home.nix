@@ -15,6 +15,9 @@
     ../../modules/apps/programming/vscode.nix
   ];
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "xllvr";
@@ -133,23 +136,4 @@
       evafast
     ];
   };
-
-  # nixcord
-  programs.nixcord = {
-    enable = true;
-    config = {
-      useQuickCss = true;
-      frameless = true;
-      plugins = {
-        betterGifPicker.enable = true;
-        callTimer.enable = true;
-        clearURLs.enable = true;
-        copyUserURLs.enable = true;
-        userMessagesPronouns.enable = true;
-      };
-    };
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
