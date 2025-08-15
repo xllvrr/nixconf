@@ -35,7 +35,7 @@
           # Set modules
           modules-left = ["sway/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["tray" "pulseaudio" "bluetooth" "network"];
+          modules-right = ["tray" "network" "pulseaudio" "bluetooth"];
           # Workspaces
           "sway/workspaces" = {
             "disable-scroll" = true;
