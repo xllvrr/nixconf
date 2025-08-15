@@ -95,7 +95,6 @@ in {
           command = "mako";
           always = true;
         }
-        {command = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";}
         {command = "syncthing";}
         {command = "kitty --detach musikcube";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
@@ -142,8 +141,6 @@ in {
         }
       ];
       assigns = {
-        "1" = [{title = "^Discord.*";}];
-        "2" = [{title = "^Firefox$";}];
         "6" = [{class = "obsidian";}];
         "7" = [{title = "^musikcube$";}];
         "8" = [{class = "zathura";}];
