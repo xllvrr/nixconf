@@ -2,7 +2,7 @@
   description = "Nixos Config Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     hyprland.url = "github:hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
@@ -10,7 +10,10 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvf.url = "github:notashelf/nvf";
 
