@@ -71,7 +71,6 @@
     # Applications
     v = "nvim";
     ex = "eza -a";
-    waybar = "pkill waybar;waybar &!";
     # System Tools
     grep = "grep --color";
     cp = "cp -i";
