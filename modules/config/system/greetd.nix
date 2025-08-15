@@ -19,7 +19,7 @@
           "--time"
           # Make sure theme is wrapped in single quotes. See https://github.com/apognu/tuigreet/issues/147
           "--theme 'border=blue;text=cyan;prompt=green;time=red;action=blue;button=white;container=black;input=red'"
-          "--cmd Hyprland"
+          "--cmd sway"
         ];
         flags = lib.concatStringsSep " " tuigreetOptions;
       in {
