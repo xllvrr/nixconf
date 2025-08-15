@@ -33,47 +33,30 @@
           margin-left = 8;
           margin-right = 8;
           # Set modules
-          modules-left = ["hyprland/workspaces" "sway/workspaces"];
+          modules-left = ["sway/workspaces"];
           modules-center = ["clock"];
           modules-right = ["tray" "pulseaudio" "bluetooth" "network"];
           # Workspaces
-          "hyprland/workspaces" = {
-            "disable-scroll" = true;
-            "all-outputs" = false;
-            "format" = "{icon}";
-            "format-icons" = {
-              "1" = "";
-              "2" = "";
-              "3" = "󰈹";
-              "4" = "";
-              "5" = "󰍳";
-              "6" = "󱞁";
-              "7" = "󰽰";
-              "8" = "";
-              "9" = "";
-            };
-            "on-click" = "activate";
-          };
           "sway/workspaces" = {
             "disable-scroll" = true;
             "all-outputs" = false;
             "format" = "{icon}";
             "format-icons" = {
-              "1" = "";
-              "2" = "";
-              "3" = "󰈹";
+              "1" = "";
+              "2" = "󰈹";
+              "3" = "";
               "4" = "";
-              "5" = "󰍳";
+              "5" = "";
               "6" = "󱞁";
               "7" = "󰽰";
-              "8" = "";
+              "8" = "";
               "9" = "";
             };
             "on-click" = "activate";
           };
           # Modules
           "tray" = {
-            icon-size = 24;
+            icon-size = 18;
             spacing = 10;
           };
           "clock" = {
