@@ -51,6 +51,14 @@
           ];
           definedAliases = ["@kbb"];
         };
+        "ProtonDB" = {
+          urls = [
+            {
+              template = "https://www.protondb.com/search?q={searchTerms}";
+            }
+          ];
+          definedAliases = ["@pro"];
+        };
       };
       search.force = true;
     };
