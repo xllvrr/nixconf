@@ -4,7 +4,7 @@
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/eris.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
 
     image = ./Wallpaper.png;
 
