@@ -6,8 +6,8 @@
   mod = "Mod4";
   scriptsdir = "/home/xllvr/repos/scripts";
 
-  primaryscreen = "DP-2";
-  secondaryscreen = "DP-3";
+  primaryscreen = "DP-1";
+  secondaryscreen = "HDMI-A-1";
 in {
   imports = [
     ../apps/os/waybar.nix
@@ -20,11 +20,11 @@ in {
     config = {
       ## Hardware
       output = {
-        DP-2 = {
+        DP-1 = {
           mode = "1920x1080";
           pos = "0 0";
         };
-        DP-3 = {
+        HDMI-A-1 = {
           mode = "1680x1050";
           pos = "1920 0";
         };
