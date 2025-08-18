@@ -96,5 +96,9 @@
     gh
     caligula
     pastel
+
+    # GUI
+    gnomeExtensions.appindicator
+    gnomeExtensions.tray-icons-reloaded
   ];
 }
