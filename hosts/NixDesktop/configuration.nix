@@ -147,6 +147,8 @@
   environment.systemPackages = with pkgs; [
     qbittorrent-enhanced
     libreoffice-fresh
+    eyedropper
+    gimp3
   ];
 
   # Hyprshot settings
