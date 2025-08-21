@@ -67,7 +67,10 @@
   # Enable printing
   services.printing = {
     enable = true;
-    drivers = [pkgs.hplip pkgs.gutenprint];
+    drivers = with pkgs; [
+      hplip
+      gutenprint
+    ];
   };
   services.avahi = {
     enable = true;
