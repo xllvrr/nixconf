@@ -4,7 +4,7 @@
   ...
 }: let
   mod = "Mod4";
-  scriptsdir = "/home/xllvr/repos/scripts";
+  scriptsdir = "/home/xllvr/nixconf/scripts";
 
   primaryscreen = "DP-1";
   secondaryscreen = "HDMI-A-1";
