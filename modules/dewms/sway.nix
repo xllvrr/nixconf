@@ -85,6 +85,7 @@ in {
           "${mod}+Alt+f" = "exec thunar";
           "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+e" = "exec kitty --detach yazi";
+          "${mod}+r" = "exec ${scriptsdir}/record_audio_output_pw";
         }
       ];
       focus.followMouse = true;
