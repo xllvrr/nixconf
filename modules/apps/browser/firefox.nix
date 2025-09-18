@@ -18,6 +18,10 @@
         vimium-c
       ];
 
+      /*
+      Search Engines
+      */
+
       search.engines = {
         "MyNixOS" = {
           urls = [
