@@ -63,9 +63,9 @@ in {
           "Alt+space" = "exec --no-startup-id fuzzel";
 
           "${mod}+c" = "kill";
-          "${mod}+Alt+o" = "exec systemctl poweroff";
-          "${mod}+Alt+r" = "exec systemctl reboot";
-          "${mod}+Alt+s" = "exec systemctl suspend";
+          # "${mod}+Alt+o" = "exec systemctl poweroff";
+          # "${mod}+Alt+r" = "exec systemctl reboot";
+          # "${mod}+Alt+s" = "exec systemctl suspend";
 
           "${mod}+a" = "focus parent";
           "${mod}+f" = "fullscreen toggle";
@@ -75,6 +75,9 @@ in {
           "${mod}+x" = "layout toggle split";
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
+
+          "${mod}+m" = "move scratchpad";
+          "${mod}+Shift+m" = "scratchpad show";
 
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
