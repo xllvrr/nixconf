@@ -13,6 +13,7 @@
     ../../modules/apps/terminal/kitty.nix
     ../../modules/apps/shell/shell.nix
     ../../modules/apps/programming/vscode.nix
+    ../../modules/config/system/audio.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -116,33 +117,5 @@
       padding = "10";
       width = "300";
     };
-  };
-
-  # mpv settings
-  programs.mpv = {
-    enable = true;
-    config = {
-      gpu-api = "vulkan";
-    };
-    scripts = with pkgs.mpvScripts; [
-      evafast
-    ];
-  };
-
-  # mpd settings
-  services.mpd = {
-    enable = true;
-    musicDirectory = "/run/media/xllvr/Media/Music";
-    extraConfig = ''
-      audio_output {
-          type "pipewire"
-          name "Pipewire MPD"
-      }
-    '';
-  };
-
-  # rmpc
-  programs.rmpc = {
-    enable = true;
   };
 }
