@@ -45,6 +45,7 @@
     # Others
     zoom-us
     anki
+    mpc
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -126,6 +127,18 @@
     scripts = with pkgs.mpvScripts; [
       evafast
     ];
+  };
+
+  # mpd settings
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/run/media/xllvr/Media/Music";
+    extraConfig = ''
+      audio_output {
+          type "pipewire"
+          name "Pipewire MPD"
+      }
+    '';
   };
 
   # rmpc
