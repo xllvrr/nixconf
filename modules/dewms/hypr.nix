@@ -105,7 +105,6 @@ in {
         "workspace 1, class:^(vesktop)$"
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
-        "workspace 7 silent, class:^(musikcube)$"
         "pseudo, class:fcitx"
         "float, class:^(mako)$"
         "float, class:.*(blueman-manager).*"

@@ -117,14 +117,6 @@
     };
   };
 
-  # Cava settings
-  programs.cava.settings = {
-    general.autosens = 1;
-    input.method = "pipewire";
-    output.method = "noncurses";
-    smoothing.monstercat = 1;
-  };
-
   # mpv settings
   programs.mpv = {
     enable = true;
@@ -134,5 +126,10 @@
     scripts = with pkgs.mpvScripts; [
       evafast
     ];
+  };
+
+  # rmpc
+  programs.rmpc = {
+    enable = true;
   };
 }

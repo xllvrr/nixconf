@@ -100,7 +100,6 @@ in {
           always = true;
         }
         {command = "syncthing";}
-        {command = "kitty --detach musikcube";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
@@ -146,7 +145,6 @@ in {
       ];
       assigns = {
         "6" = [{class = "obsidian";}];
-        "7" = [{title = "^musikcube$";}];
         "8" = [{class = "zathura";}];
       };
       window = {

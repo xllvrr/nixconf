@@ -12,7 +12,6 @@
     redshift
 
     # Music
-    musikcube
     cava
     tidal-hifi
     pulsemixer
