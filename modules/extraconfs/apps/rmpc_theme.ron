@@ -1,0 +1,13 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+
+(
+  progress_bar: (
+    // [start, elapsed, thumb, track, end]
+    symbols: ["│", "█", "●", "·", "│"],
+    track_style:   (fg: "gray"),
+    elapsed_style: (fg: "light_cyan"),
+    thumb_style:   (fg: "white"),
+  ),
+)

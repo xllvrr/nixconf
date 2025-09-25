@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hyprland.url = "github:hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
@@ -35,6 +36,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     stylix,
     home-manager,
     nvf,
@@ -54,6 +56,10 @@
           builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
       );
     };
+    pkgsUnstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfreePredicate = pkg: builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree;
+    };
     customNvim = nvf.lib.neovimConfiguration {
       inherit pkgs;
       modules = [standalones/nvf/nvf.nix];
@@ -63,7 +69,7 @@
 
     nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
       pkgs = pkgs;
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs pkgsUnstable;};
       modules = [
         ./hosts/NixDesktop/configuration.nix
         stylix.nixosModules.stylix
@@ -71,6 +77,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {inherit pkgsUnstable;};
           home-manager.users.xllvr = import ./hosts/NixDesktop/home.nix;
           home-manager.sharedModules = [inputs.nixcord.homeModules.nixcord];
         }

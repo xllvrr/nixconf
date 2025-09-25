@@ -100,6 +100,7 @@ in {
           always = true;
         }
         {command = "syncthing";}
+        {command = "${pkgs.kitty}/bin/kitty --detach rmpc";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
@@ -132,7 +133,7 @@ in {
         }
         {
           workspace = "7";
-          output = "${primaryscreen}";
+          output = "${secondaryscreen}";
         }
         {
           workspace = "2";
@@ -145,6 +146,7 @@ in {
       ];
       assigns = {
         "6" = [{class = "obsidian";}];
+        "7" = [{class = "rmpc";}];
         "8" = [{class = "zathura";}];
       };
       window = {
