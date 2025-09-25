@@ -42,7 +42,6 @@
   };
 
   # rmpc
-  home.file.".config/rmpc/themes/theme.ron".source = inputs.self + "../../extraconfs/apps/rmpc_theme.ron";
   programs.rmpc = {
     enable = true;
     package = pkgsUnstable.rmpc; # you already set this
@@ -52,10 +51,9 @@
       #![enable(unwrap_variant_newtypes)]
 
       (
-        theme: Some("theme"),
         address: "127.0.0.1:6600",
         password: None,
-        theme: None,                    // stays None unless you also want layout borders (see note below)
+        theme: None,
         cache_dir: None,
         on_song_change: None,
         volume_step: 5,
