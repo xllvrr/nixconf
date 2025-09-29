@@ -55,18 +55,20 @@
     # Version Control
     git
     git-filter-repo
-    stow
+    lazygit
+    gh
     openssh
 
     # Terminal
     eza
     fzf
     ripgrep
+    fd
     unzip
     tree
     wev
-    lazygit
     htop
+    tmux
 
     # Documentation
     linux-manual
@@ -78,6 +80,10 @@
     gcc
     R
     cargo
+
+    # System Tools
+    grim
+    slurp
 
     # Nix Tools
     home-manager
@@ -93,9 +99,9 @@
     jq
     cliphist
     gzip
-    gh
     caligula
     pastel
+    feh
 
     # GUI
     gnomeExtensions.appindicator

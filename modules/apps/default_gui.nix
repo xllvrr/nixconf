@@ -9,7 +9,6 @@
 
     # Health
     safeeyes
-    redshift
 
     # Music
     cava
