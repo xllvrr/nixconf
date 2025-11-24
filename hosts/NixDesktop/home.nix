@@ -52,6 +52,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".config/rmpc/themes/rmpc_theme.ron".source = ../../modules/extraconfs/apps/rmpc_theme.ron;
   };
 
   # Home Manager can export variables for the session so that it's agnostic

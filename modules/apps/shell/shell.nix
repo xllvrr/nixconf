@@ -1,8 +1,7 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./zsh.nix
     ./fish.nix
-    # ./nnn.nix
   ];
 
   # Yazi
@@ -57,5 +56,19 @@
         identityFile = "/home/xllvr/.ssh/github_rsa";
       };
     };
+  };
+
+  # Tmux Settings
+  programs.tmux = {
+    enable = true;
+    terminal = "screen-256color";
+    sensibleOnTop = true;
+    keyMode = "vi";
+    plugins = with pkgs; [
+      tmuxPlugins.sidebar
+      tmuxPlugins.tmux-fzf
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.jump
+    ];
   };
 }

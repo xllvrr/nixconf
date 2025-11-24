@@ -68,7 +68,6 @@
     tree
     wev
     htop
-    tmux
 
     # Documentation
     linux-manual

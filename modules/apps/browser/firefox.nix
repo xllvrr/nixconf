@@ -23,6 +23,14 @@
       */
 
       search.engines = {
+        "Startpage" = {
+          urls = [
+            {
+              template = "https://www.startpage.com/sp/search?query={searchTerms}&language=auto";
+            }
+          ];
+          definedAliases = ["@s"];
+        };
         "MyNixOS" = {
           urls = [
             {
@@ -65,6 +73,7 @@
         };
       };
       search.force = true;
+      search.default = "Startpage";
     };
 
     /*

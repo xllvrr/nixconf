@@ -4,7 +4,7 @@
 
 (
   progress_bar: (
-    // [start, elapsed, thumb, track, end]
+    // [start, elapsed, thumb, track, end]  (v0.9+)
     symbols: ["│", "█", "●", "·", "│"],
     track_style:   (fg: "gray"),
     elapsed_style: (fg: "light_cyan"),
