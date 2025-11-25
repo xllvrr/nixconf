@@ -149,6 +149,7 @@
     libreoffice-fresh
     eyedropper
     gimp3
+    spotify
   ];
 
   # Hyprshot settings

@@ -12,7 +12,6 @@
 
     # Music
     cava
-    tidal-hifi
     pulsemixer
     qpwgraph
 
