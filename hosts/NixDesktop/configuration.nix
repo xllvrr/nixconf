@@ -150,6 +150,7 @@
     eyedropper
     gimp3
     spotify
+    audacity
   ];
 
   # Hyprshot settings
