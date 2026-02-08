@@ -18,6 +18,7 @@
       n = "nnn";
       lg = "lazygit";
       cd = "z";
+      bt = "but-cli";
     };
     shellInit = "${pkgs.openssh}/bin/ssh-add ~/.ssh/github_key";
     interactiveShellInit = ''
