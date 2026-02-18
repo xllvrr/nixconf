@@ -31,6 +31,10 @@
     nixcord = {
       url = "github:kaylorben/nixcord";
     };
+
+    claude-code = {
+      url = "github:sadjow/claude-code-nix";
+    };
   };
 
   outputs = {
@@ -41,6 +45,7 @@
     home-manager,
     nvf,
     hyprland,
+    claude-code,
     ...
   } @ inputs: let
     unfree = [
