@@ -95,7 +95,6 @@
     ];
   };
   programs.xfconf.enable = true;
-  programs.file-roller.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
@@ -151,6 +150,7 @@
     gimp3
     spotify
     audacity
+    file-roller
   ];
 
   # Hyprshot settings
