@@ -71,7 +71,4 @@
       tmuxPlugins.jump
     ];
   };
-
-  # Additional packages
-  home.packages = [pkgs.claude-code];
 }

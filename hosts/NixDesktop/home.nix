@@ -14,6 +14,7 @@
     ../../modules/apps/shell/shell.nix
     ../../modules/apps/programming/vscode.nix
     ../../modules/config/system/audio.nix
+    ../../modules/config/system/notifications.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -103,20 +104,5 @@
     clean.enable = true;
     clean.extraArgs = "--keep-since 5d --keep 5";
     flake = "/home/xllvr/nixconf";
-  };
-
-  # Mako settings
-  services.mako = {
-    enable = true;
-    settings = {
-      anchor = "top-right";
-      borderRadius = "8";
-      borderSize = "1";
-      icons = "true";
-      layer = "overlay";
-      maxVisible = "3";
-      padding = "10";
-      width = "300";
-    };
   };
 }
