@@ -31,10 +31,6 @@
     nixcord = {
       url = "github:kaylorben/nixcord";
     };
-
-    claude-code = {
-      url = "github:sadjow/claude-code-nix";
-    };
   };
 
   outputs = {
@@ -45,7 +41,6 @@
     home-manager,
     nvf,
     hyprland,
-    claude-code,
     ...
   } @ inputs: let
     unfree = [
@@ -53,7 +48,6 @@
       "steam"
       "steam-unwrapped"
       "spotify"
-      "claude-code"
     ];
 
     system = "x86_64-linux";
@@ -82,10 +76,6 @@
         ./hosts/NixDesktop/configuration.nix
         stylix.nixosModules.stylix
         {environment.systemPackages = [customNvim.neovim];}
-        {
-          nixpkgs.overlays = [claude-code.overlays.default];
-          environment.systemPackages = [pkgs.claude-code];
-        }
         home-manager.nixosModules.home-manager
         {
           home-manager.useUserPackages = true;

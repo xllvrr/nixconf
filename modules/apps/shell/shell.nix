@@ -78,4 +78,9 @@
       tmuxPlugins.jump
     ];
   };
+
+  # Claude Code
+  programs.claude-code = {
+    enable = true;
+  };
 }
