@@ -35,25 +35,32 @@
   # Git Settings
   programs.git = {
     enable = true;
-    delta.enable = true;
-    userName = "xllvrr";
-    userEmail = "dan@dtsa.email";
-    aliases = {
-      cm = "commit -am";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "xllvrr";
+        email = "dan@dtsa.email";
+      };
+      aliases = {
+        cm = "commit -am";
+      };
       init.defaultBranch = "main";
     };
   };
+  programs.delta.enable = true;
 
   # SSH Settings
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
     matchBlocks = {
       github = {
         hostname = "dan@dtsa.email";
         identityFile = "/home/xllvr/.ssh/github_rsa";
+        addKeysToAgent = "yes";
+        forwardAgent = false;
+        compression = false;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
       };
     };
   };

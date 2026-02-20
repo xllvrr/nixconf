@@ -70,7 +70,7 @@
     htop
 
     # Documentation
-    linux-manual
+    # linux-manual
     man-pages
     man-pages-posix
     bat

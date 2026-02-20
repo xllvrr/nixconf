@@ -8,7 +8,7 @@
     enable = true;
     settings = {
       default_session = let
-        tuigreet = "${lib.getExe pkgs.greetd.tuigreet}";
+        tuigreet = "${lib.getExe pkgs.tuigreet}";
         baseSessionsDir = "${config.services.displayManager.sessionData.desktops}";
         xSessions = "${baseSessionsDir}/share/xsessions";
         waylandSessions = "${baseSessionsDir}/share/wayland-sessions";
