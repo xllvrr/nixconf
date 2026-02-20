@@ -44,7 +44,6 @@
     ...
   } @ inputs: let
     unfree = [
-      "gitbutler"
       "steam"
       "steam-unwrapped"
       "spotify"

@@ -56,7 +56,6 @@
     git
     git-filter-repo
     lazygit
-    gitbutler
     openssh
 
     # Terminal
