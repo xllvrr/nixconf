@@ -122,15 +122,6 @@
   };
 
   # Spotify
-  services.spotifyd = {
-    enable = true;
-    settings = {
-      global = {
-        username = "media@dtsa.email";
-        device_name = "nix";
-      };
-    };
-  };
   programs.spotify-player = {
     enable = true;
     settings = {
