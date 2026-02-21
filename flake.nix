@@ -46,7 +46,6 @@
     unfree = [
       "steam"
       "steam-unwrapped"
-      "spotify"
     ];
 
     system = "x86_64-linux";

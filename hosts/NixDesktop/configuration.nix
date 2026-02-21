@@ -148,7 +148,6 @@
     libreoffice-fresh
     eyedropper
     gimp3
-    spotify
     audacity
     file-roller
   ];
