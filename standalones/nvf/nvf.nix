@@ -78,6 +78,7 @@
       r.enable = true;
       lua.enable = true;
       python.enable = true;
+      bash.enable = true;
     };
 
     diagnostics.enable = true;
