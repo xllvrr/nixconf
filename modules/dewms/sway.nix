@@ -100,7 +100,6 @@ in {
           always = true;
         }
         {command = "syncthing";}
-        {command = "${pkgs.kitty}/bin/kitty --detach rmpc";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
