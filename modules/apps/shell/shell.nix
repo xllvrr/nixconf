@@ -69,6 +69,7 @@
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
+    prefix = "C-a";
     sensibleOnTop = true;
     keyMode = "vi";
     plugins = with pkgs; [

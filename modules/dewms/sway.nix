@@ -100,6 +100,8 @@ in {
           always = true;
         }
         {command = "syncthing";}
+        {command = "${pkgs.kitty}/bin/kitty --class music --detach ${scriptsdir}/tmux-music.sh";}
+        {command = "${pkgs.kitty}/bin/kitty --class nixconf --detach ${scriptsdir}/tmux-nixconf.sh";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
@@ -108,7 +110,7 @@ in {
         {command = "fcitx5 -d --replace";}
         {command = "fcitx5-remote -r";}
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
-        {command = "${pkgs.firefox}/bin/firefox";}
+        {command = "swaymsg workspace 1 && ${pkgs.firefox}/bin/firefox";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
       ];
       workspaceAutoBackAndForth = true;
@@ -145,8 +147,9 @@ in {
       ];
       assigns = {
         "6" = [{class = "obsidian";}];
-        "7" = [{class = "rmpc";}];
+        "7" = [{class = "music";}];
         "8" = [{class = "zathura";}];
+        "9" = [{class = "nixconf";}];
       };
       window = {
         border = 3;
