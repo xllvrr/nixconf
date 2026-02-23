@@ -4,7 +4,6 @@
   ...
 }: let
   mod = "Mod4";
-  scriptsdir = "/home/xllvr/nixconf/scripts";
 
   primaryscreen = "DP-1";
   secondaryscreen = "HDMI-A-1";
@@ -82,13 +81,13 @@ in {
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
 
-          "${mod}+Alt+v" = "exec ${scriptsdir}/fuzzclip";
-          "${mod}+Shift+s" = "exec ${scriptsdir}/fuzzshot";
+          "${mod}+Alt+v" = "exec fuzzclip";
+          "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
           "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+e" = "exec kitty --detach yazi";
-          "${mod}+r" = "exec ${scriptsdir}/record_audio_output_pw";
+          "${mod}+r" = "exec record-audio";
         }
       ];
       focus.followMouse = true;
@@ -100,8 +99,8 @@ in {
           always = true;
         }
         {command = "syncthing";}
-        {command = "${pkgs.kitty}/bin/kitty --class music --detach ${scriptsdir}/tmux-music.sh";}
-        {command = "${pkgs.kitty}/bin/kitty --class nixconf --detach ${scriptsdir}/tmux-nixconf.sh";}
+        {command = "${pkgs.kitty}/bin/kitty --class music --detach tmux-music";}
+        {command = "${pkgs.kitty}/bin/kitty --class nixconf --detach tmux-nixconf";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
