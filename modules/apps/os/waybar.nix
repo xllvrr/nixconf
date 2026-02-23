@@ -66,7 +66,7 @@
             format-wifi = "{essid} ";
             format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
             format-disconnected = "Disconnected ⚠";
-            on-click = "kitty --detach --class floating nmtui";
+            on-click = "fuzzwifi";
           };
           "pulseaudio" = {
             format = " {volume}%";
