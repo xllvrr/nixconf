@@ -25,5 +25,8 @@
 
     # Minecraft
     prismlauncher
+
+    # Emulators
+    melonDS
   ];
 }
