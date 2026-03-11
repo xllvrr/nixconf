@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  claude-desktop,
+  ...
+}: {
   imports = [
     ./zsh.nix
     ./fish.nix
@@ -82,13 +86,6 @@
     ];
   };
 
-  # Claude Code
-  programs.claude-code = {
-    enable = true;
-  };
-
-  # MCP Services
-  home.packages = [pkgs.mcp-nixos];
   programs.mcp = {
     enable = true;
     servers = {
