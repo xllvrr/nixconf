@@ -28,5 +28,6 @@
 
     # Emulators
     melonDS
+    mgba
   ];
 }
