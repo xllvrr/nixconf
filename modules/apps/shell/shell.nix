@@ -85,18 +85,4 @@
       tmuxPlugins.jump
     ];
   };
-
-  programs.mcp = {
-    enable = true;
-    servers = {
-      nixos = {
-        command = "uvx";
-        args = ["mcp-nixos"];
-      };
-      notebooklm = {
-        command = "uvx";
-        args = ["notebooklm-mcp-server"];
-      };
-    };
-  };
 }

@@ -2,7 +2,6 @@
   description = "Nixos Config Flake";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -31,14 +30,6 @@
 
     nixcord = {
       url = "github:kaylorben/nixcord";
-    };
-
-    claude-desktop = {
-      url = "github:k3d3/claude-desktop-linux-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
     };
   };
 
@@ -85,7 +76,6 @@
         {
           environment.systemPackages = [
             customNvim.neovim
-            inputs.claude-desktop.packages.${system}.claude-desktop-with-fhs
           ];
         }
         home-manager.nixosModules.home-manager
