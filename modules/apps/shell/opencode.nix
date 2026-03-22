@@ -1,0 +1,24 @@
+{pkgs, ...}: {
+  programs.opencode = {
+    enable = true;
+    enableMcpIntegration = true;
+    settings = {
+      provider = {
+        ollama = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "Ollama (local)";
+          options = {baseURL = "http://localhost:11434/v1";};
+          models = {
+            "qwen2.5-coder:7b" = {name = "Qwen 2.5 Coder 7B";};
+            "qwen2.5-coder:14b" = {name = "Qwen 2.5 Coder 14B";};
+          };
+        };
+      };
+    };
+  };
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+}

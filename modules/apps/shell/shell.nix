@@ -6,6 +6,7 @@
   imports = [
     ./zsh.nix
     ./fish.nix
+    ./opencode.nix
   ];
 
   # Yazi
