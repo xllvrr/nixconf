@@ -9,15 +9,17 @@
 
   fuzzshot = pkgs.writeShellApplication {
     name = "fuzzshot";
-    runtimeInputs = [pkgs.fuzzel pkgs.hyprshot];
+    runtimeInputs = [pkgs.fuzzel pkgs.grim pkgs.slurp pkgs.wl-clipboard pkgs.xdg-user-dirs];
     text = ''
-      case "$(printf "copy area\ncopy window\ncopy screen\nsave area\nsave window\nsave screen" | fuzzel -d -p 'Screenshot target')" in
-          "copy area") hyprshot -m region --clipboard-only;;
-          "copy window") hyprshot -m window --clipboard-only;;
-          "copy screen") hyprshot -m output --clipboard-only;;
-          "save area") hyprshot -m region;;
-          "save window") hyprshot -m window;;
-          "save screen") hyprshot -m output;;
+      screenshot_dir="$(xdg-user-dir PICTURES)/Screenshots"
+      mkdir -p "$screenshot_dir"
+      timestamp="$(date +%Y-%m-%d_%H-%M-%S)"
+
+      case "$(printf "copy area\ncopy screen\nsave area\nsave screen" | fuzzel -d -p 'Screenshot target')" in
+          "copy area") grim -g "$(slurp)" - | wl-copy;;
+          "copy screen") grim - | wl-copy;;
+          "save area") grim -g "$(slurp)" "$screenshot_dir/area_$timestamp.png";;
+          "save screen") grim "$screenshot_dir/screen_$timestamp.png";;
       esac
     '';
   };

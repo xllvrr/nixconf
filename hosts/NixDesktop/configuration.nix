@@ -61,29 +61,22 @@
 
   ## Software ##
 
-  # Enable cachix
+  # Enable cache and trusted users
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     trusted-users = ["root" "xllvr"];
   };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
   # Enable Sway
   programs.sway = {
     enable = true;
     xwayland.enable = true;
   };
+
+  # Enable River (kept alongside Sway for parallel migration testing)
+  programs.river.enable = true;
 
   # Enable Thunar
   programs.thunar = {
@@ -151,11 +144,6 @@
     audacity
     file-roller
   ];
-
-  # Hyprshot settings
-  environment.variables = {
-    HYPRSHOT_DIR = "/run/media/xllvr/Media/Pictures/Screenshots/";
-  };
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
