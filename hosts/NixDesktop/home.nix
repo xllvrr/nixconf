@@ -42,7 +42,6 @@
     # Screenshots
     grim
     slurp
-    hyprshot
 
     # Others
     zoom-us
