@@ -60,7 +60,6 @@
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   ## Software ##
-
   # Enable cache and trusted users
   nix.settings = {
     trusted-users = ["root" "xllvr"];

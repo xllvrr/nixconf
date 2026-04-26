@@ -9,17 +9,27 @@
 
   fuzzshot = pkgs.writeShellApplication {
     name = "fuzzshot";
-    runtimeInputs = [pkgs.fuzzel pkgs.grim pkgs.slurp pkgs.wl-clipboard pkgs.xdg-user-dirs];
+    runtimeInputs = [
+      pkgs.fuzzel
+      pkgs.grim
+      pkgs.slurp
+      pkgs.wl-clipboard
+      pkgs.coreutils
+    ];
     text = ''
-      screenshot_dir="$(xdg-user-dir PICTURES)/Screenshots"
-      mkdir -p "$screenshot_dir"
-      timestamp="$(date +%Y-%m-%d_%H-%M-%S)"
+      screenshots_dir="''${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
+      mkdir -p "$screenshots_dir"
 
-      case "$(printf "copy area\ncopy screen\nsave area\nsave screen" | fuzzel -d -p 'Screenshot target')" in
+      target="$(printf "copy area\ncopy window\ncopy screen\nsave area\nsave window\nsave screen" | fuzzel -d -p 'Screenshot target')"
+      file="$screenshots_dir/$(date +%Y-%m-%d_%H-%M-%S).png"
+
+      case "$target" in
           "copy area") grim -g "$(slurp)" - | wl-copy;;
-          "copy screen") grim - | wl-copy;;
-          "save area") grim -g "$(slurp)" "$screenshot_dir/area_$timestamp.png";;
-          "save screen") grim "$screenshot_dir/screen_$timestamp.png";;
+          "copy window") grim -g "$(slurp)" - | wl-copy;;
+          "copy screen") grim -o "$(slurp -o | cut -d' ' -f1)" - | wl-copy;;
+          "save area") grim -g "$(slurp)" "$file";;
+          "save window") grim -g "$(slurp)" "$file";;
+          "save screen") grim -o "$(slurp -o | cut -d' ' -f1)" "$file";;
       esac
     '';
   };
