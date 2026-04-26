@@ -9,15 +9,27 @@
 
   fuzzshot = pkgs.writeShellApplication {
     name = "fuzzshot";
-    runtimeInputs = [pkgs.fuzzel pkgs.hyprshot];
+    runtimeInputs = [
+      pkgs.fuzzel
+      pkgs.grim
+      pkgs.slurp
+      pkgs.wl-clipboard
+      pkgs.coreutils
+    ];
     text = ''
-      case "$(printf "copy area\ncopy window\ncopy screen\nsave area\nsave window\nsave screen" | fuzzel -d -p 'Screenshot target')" in
-          "copy area") hyprshot -m region --clipboard-only;;
-          "copy window") hyprshot -m window --clipboard-only;;
-          "copy screen") hyprshot -m output --clipboard-only;;
-          "save area") hyprshot -m region;;
-          "save window") hyprshot -m window;;
-          "save screen") hyprshot -m output;;
+      screenshots_dir="''${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
+      mkdir -p "$screenshots_dir"
+
+      target="$(printf "copy area\ncopy window\ncopy screen\nsave area\nsave window\nsave screen" | fuzzel -d -p 'Screenshot target')"
+      file="$screenshots_dir/$(date +%Y-%m-%d_%H-%M-%S).png"
+
+      case "$target" in
+          "copy area") grim -g "$(slurp)" - | wl-copy;;
+          "copy window") grim -g "$(slurp)" - | wl-copy;;
+          "copy screen") grim -o "$(slurp -o | cut -d' ' -f1)" - | wl-copy;;
+          "save area") grim -g "$(slurp)" "$file";;
+          "save window") grim -g "$(slurp)" "$file";;
+          "save screen") grim -o "$(slurp -o | cut -d' ' -f1)" "$file";;
       esac
     '';
   };
