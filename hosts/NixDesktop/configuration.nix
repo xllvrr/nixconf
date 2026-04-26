@@ -74,9 +74,6 @@
     xwayland.enable = true;
   };
 
-  # Enable River (kept alongside Sway for parallel migration testing)
-  programs.river.enable = true;
-
   # Enable Thunar
   programs.thunar = {
     enable = true;
