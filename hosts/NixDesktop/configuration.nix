@@ -60,7 +60,8 @@
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   ## Software ##
-  # Enable cache and trusted users
+
+  # Enable trusted users for nix
   nix.settings = {
     trusted-users = ["root" "xllvr"];
   };
@@ -73,9 +74,6 @@
     enable = true;
     xwayland.enable = true;
   };
-
-  # Enable River (kept alongside Sway for parallel migration testing)
-  programs.river.enable = true;
 
   # Enable Thunar
   programs.thunar = {
