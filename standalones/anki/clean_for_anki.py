@@ -36,13 +36,13 @@ def read_rows(path: Path) -> list[RawRow]:
     return rows
 
 
-def clean_rows(raw_rows: RawRow) -> Row:
-    """Read in raw rows and clean the values"""
+def clean_rows(raw_rows: list[RawRow]) -> list[Row]:
+    """Normalize required field whitespace, validate non-empty values, and return cleaned rows for duplicate checks and writing."""
     # Instantiate cleaned rows
     cleaned_rows = []
 
-    for row_num, row in enumerate(raw_rows, start=2):
-        row = {field: clean_text(raw_rows[field]) for field in FIELDS}
+    for row_num, row in enumerate(raw_rows, start=2):  # Row 1 is the CSV header.
+        row = {field: clean_text(row[field]) for field in FIELDS}
         missing_fields = [field for field, value in row.items() if not value]
         if missing_fields:
             raise SystemExit(f"Row {row_num} missing: {', '.join(missing_fields)}")
