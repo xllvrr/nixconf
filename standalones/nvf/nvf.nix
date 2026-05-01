@@ -13,6 +13,8 @@
     options = {
       tabstop = 4;
       shiftwidth = 4;
+      softtabstop = 4;
+      expandtab = true;
     };
 
     # Copy to system clipboard for ease
@@ -76,16 +78,55 @@
 
       nix.enable = true;
       r.enable = true;
-      lua.enable = true;
       python.enable = true;
+      lua.enable = true;
       bash.enable = true;
     };
 
     diagnostics.enable = true;
 
+    # LSP Settings
+    luaConfigRC.basedpyright_and_conform_tuning = ''
+      -- Keep basedpyright inlay hints, but disable them while actively typing
+      -- so they do not interfere with cursor/editing flow.
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if not (client and client.name == "basedpyright") then
+            return
+          end
+
+          local bufnr = args.buf
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+          local group = vim.api.nvim_create_augroup("BasedPyrightInlayHintMode" .. bufnr, { clear = true })
+          vim.api.nvim_create_autocmd("InsertEnter", {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+            end,
+          })
+          vim.api.nvim_create_autocmd("InsertLeave", {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end,
+          })
+        end,
+      })
+    '';
+
     # Formatting
     formatter.conform-nvim = {
       enable = true;
+      setupOpts = {
+        format_on_save = {
+          timeout_ms = 500;
+          lsp_fallback = true;
+        };
+      };
     };
 
     # Snippets
@@ -154,6 +195,14 @@
         silent = true;
         action = ":Pick grep_live<CR>";
         desc = "Picks based on grep with live results";
+      }
+      # Using conform
+      {
+        key = "<leader>cf";
+        mode = "n";
+        silent = true;
+        action = ":lua require('conform').format({ async = true, lsp_fallback = true })<CR>";
+        desc = "Format current buffer";
       }
       # Using trouble
       {
