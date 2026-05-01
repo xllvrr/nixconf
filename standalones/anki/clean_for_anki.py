@@ -13,7 +13,7 @@ FIELDS: list[str, ...] = ["ID", "Sentence", "Target Word", "Translation"]
 
 
 def clean_text(text: str | None) -> str:
-    """Strip whitespace and rejoin text with a space"""
+    """Normalize cell text so Anki imports stable, space-collapsed values."""
     if text is None:
         return ""
 
@@ -23,13 +23,13 @@ def clean_text(text: str | None) -> str:
 
 
 def read_rows(path: Path) -> list[RawRow]:
-    """Read in rows from the csv"""
-    with path.open(newline="", encoding="utf-8-sig") as file:
+    """Read CSV rows and stop if headers differ from the required Anki schema."""
+    with path.open(newline="", encoding="utf-8-sig") as file:  # Handles optional UTF-8 BOM from spreadsheet exports.
         reader = csv.DictReader(file)
         rows = list(reader)
         fieldnames = reader.fieldnames
 
-    # Add guard in case the columns are not per expectation
+    # Enforce an exact header match so Anki fields map predictably on import.
     if fieldnames != FIELDS:
         raise SystemExit(f"Expected columns: {FIELDS}\nGot: {fieldnames}")
 
@@ -37,11 +37,10 @@ def read_rows(path: Path) -> list[RawRow]:
 
 
 def clean_rows(raw_rows: RawRow) -> Row:
-    """Read in raw rows and clean the values"""
-    # Instantiate cleaned rows
+    """Clean each row and raise SystemExit when any required field is blank."""
     cleaned_rows = []
 
-    for row_num, row in enumerate(raw_rows, start=2):
+    for row_num, row in enumerate(raw_rows, start=2):  # Start at 2 because row 1 is the CSV header.
         row = {field: clean_text(raw_rows[field]) for field in FIELDS}
         missing_fields = [field for field, value in row.items() if not value]
         if missing_fields:
@@ -52,7 +51,7 @@ def clean_rows(raw_rows: RawRow) -> Row:
 
 
 def check_duplicate_ids(rows: list[Row]) -> None:
-    """Check if any ID appears more than once and throw an error"""
+    """Raise SystemExit if a card ID repeats, reporting both conflicting row numbers."""
     seen = {}
 
     for row_num, row in enumerate(raw_rows, start=2):
@@ -68,7 +67,7 @@ def check_duplicate_ids(rows: list[Row]) -> None:
 
 
 def check_duplicate_cards(rows: list[Row]) -> None:
-    """Stop if the same Sentence + Target Word appears more than once."""
+    """Raise SystemExit when Sentence + Target Word duplicates would create duplicate notes."""
 
     seen = {}
 
@@ -91,7 +90,7 @@ def check_duplicate_cards(rows: list[Row]) -> None:
 
 
 def write_rows(path: Path, rows: list[Row]) -> None:
-    """Write the cleaned CSV that will be imported into Anki."""
+    """Write validated rows to the final CSV in Anki-ready column order."""
 
     with path.open("w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=FIELDS)
@@ -100,7 +99,7 @@ def write_rows(path: Path, rows: list[Row]) -> None:
 
 
 def main() -> None:
-    """Convert a Google Sheet CSV export into a validated Anki import CSV."""
+    """Run CSV cleanup workflow and raise SystemExit on bad args or validation failures."""
 
     if len(sys.argv) != 3:
         raise SystemExit("Usage: clean_for_anki.py sheet_raw.csv anki_import.csv")
