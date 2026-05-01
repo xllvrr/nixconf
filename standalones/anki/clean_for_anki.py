@@ -52,19 +52,20 @@ def clean_rows(raw_rows: list[RawRow]) -> list[Row]:
 
 
 def check_duplicate_ids(rows: list[Row]) -> None:
-    """Check if any ID appears more than once and throw an error"""
+    """Stop if the same ID appears more than once."""
     seen = {}
 
-    for row_num, row in enumerate(raw_rows, start=2):
+    # Row numbering starts at 2 because row 1 is the CSV header.
+    for row_num, row in enumerate(rows, start=2):
         key = row["ID"]
 
         if key in seen:
             first_row = seen[key]
             raise SystemExit(
-                f"Duplicate ID found: {id_value}\n- First seen on row {first_row}\n- Repeated on row {row_num}"
+                f"Duplicate ID found: {key}\n- First seen on row {first_row}\n- Repeated on row {row_num}"
             )
 
-    seen[id_value] = row_num
+        seen[key] = row_num
 
 
 def check_duplicate_cards(rows: list[Row]) -> None:
