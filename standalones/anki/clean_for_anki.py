@@ -9,7 +9,10 @@ from typing import TypeAlias
 Row: TypeAlias = dict[str, str]
 RawRow: TypeAlias = dict[str, str | None]
 
-FIELDS: list[str, ...] = ["ID", "Sentence", "Target Word", "Translation"]
+# Schema field order is intentional: we validate incoming CSV headers in this
+# exact order and use the same order when writing output for deterministic
+# imports.
+FIELDS: tuple[str, ...] = ("ID", "Sentence", "Target Word", "Translation")
 
 
 def clean_text(text: str | None) -> str:
@@ -29,12 +32,12 @@ def read_rows(path: Path) -> list[RawRow]:
         rows = list(reader)
         fieldnames = reader.fieldnames
 
-    # Enforce an exact header match so Anki fields map predictably on import.
-    if fieldnames != FIELDS:
+    # Guard against schema drift: both field names and field order are part of
+    # validation expectations.
+    if tuple(fieldnames or ()) != FIELDS:
         raise SystemExit(f"Expected columns: {FIELDS}\nGot: {fieldnames}")
 
     return rows
-
 
 def clean_rows(raw_rows: RawRow) -> Row:
     """Clean each row and raise SystemExit when any required field is blank."""
@@ -54,16 +57,17 @@ def check_duplicate_ids(rows: list[Row]) -> None:
     """Raise SystemExit if a card ID repeats, reporting both conflicting row numbers."""
     seen = {}
 
-    for row_num, row in enumerate(raw_rows, start=2):
+    # Row numbering starts at 2 because row 1 is the CSV header.
+    for row_num, row in enumerate(rows, start=2):
         key = row["ID"]
 
         if key in seen:
             first_row = seen[key]
             raise SystemExit(
-                f"Duplicate ID found: {id_value}\n- First seen on row {first_row}\n- Repeated on row {row_num}"
+                f"Duplicate ID found: {key}\n- First seen on row {first_row}\n- Repeated on row {row_num}"
             )
 
-    seen[id_value] = row_num
+        seen[key] = row_num
 
 
 def check_duplicate_cards(rows: list[Row]) -> None:
