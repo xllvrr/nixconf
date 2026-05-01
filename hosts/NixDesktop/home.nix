@@ -7,9 +7,9 @@
 }: {
   imports = [
     ../../modules/dewms/sway.nix
+    ../../modules/scripts.nix
     ../../modules/apps/default_gui.nix # Import default guis
     ../../modules/apps/default_cli.nix # Import default clis
-    ../../modules/apps/scripts.nix
     ../../modules/apps/browser/firefox.nix
     ../../modules/apps/terminal/kitty.nix
     ../../modules/apps/shell/shell.nix
