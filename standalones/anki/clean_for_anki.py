@@ -9,7 +9,10 @@ from typing import TypeAlias
 Row: TypeAlias = dict[str, str]
 RawRow: TypeAlias = dict[str, str | None]
 
-FIELDS: list[str, ...] = ["ID", "Sentence", "Target Word", "Translation"]
+# Schema field order is intentional: we validate incoming CSV headers in this
+# exact order and use the same order when writing output for deterministic
+# imports.
+FIELDS: tuple[str, ...] = ("ID", "Sentence", "Target Word", "Translation")
 
 
 def clean_text(text: str | None) -> str:
@@ -29,8 +32,9 @@ def read_rows(path: Path) -> list[RawRow]:
         rows = list(reader)
         fieldnames = reader.fieldnames
 
-    # Add guard in case the columns are not per expectation
-    if fieldnames != FIELDS:
+    # Guard against schema drift: both field names and field order are part of
+    # validation expectations.
+    if tuple(fieldnames or ()) != FIELDS:
         raise SystemExit(f"Expected columns: {FIELDS}\nGot: {fieldnames}")
 
     return rows
