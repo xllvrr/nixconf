@@ -34,6 +34,39 @@
     '';
   };
 
+  fuzzwifi = pkgs.writeShellApplication {
+    name = "fuzzwifi";
+    runtimeInputs = [pkgs.networkmanager pkgs.fuzzel pkgs.libnotify];
+    text = ''
+      # Get list of available networks
+      networks=$(nmcli -t -f SSID,SIGNAL,SECURITY device wifi list | grep -v '^:' | sort -t: -k2 -nr | awk -F: '{
+        lock = ($3 != "") ? "󰌾" : "󰌿";
+        printf "%s %s\n", $1, lock
+      }')
+
+      # Show in fuzzel
+      selected=$(echo "$networks" | fuzzel -d -p 'Select WiFi:')
+
+      # Extract SSID (everything before the lock icon)
+      ssid=$(echo "$selected" | sed 's/ 󰌾$//' | sed 's/ 󰌿$//')
+
+      if [ -n "$ssid" ]; then
+        # Try to connect (will prompt for password if needed via nmcli agent)
+        if nmcli device wifi connect "$ssid"; then
+          notify-send "WiFi" "Connected to $ssid"
+        else
+          # If connection fails, might need password - prompt via fuzzel
+          pass=$(fuzzel -d -p "Password for $ssid:" --password)
+          if nmcli device wifi connect "$ssid" password "$pass"; then
+            notify-send "WiFi" "Connected to $ssid"
+          else
+            notify-send "WiFi" "Failed to connect to $ssid"
+          fi
+        fi
+      fi
+    '';
+  };
+
   record-audio = pkgs.writeShellApplication {
     name = "record-audio";
     runtimeInputs = [
@@ -77,39 +110,6 @@
       tmux has-session -t nixconf 2>/dev/null || \
         tmux new-session -d -s nixconf -c "$HOME/nixconf"
       tmux attach -t nixconf
-    '';
-  };
-
-  fuzzwifi = pkgs.writeShellApplication {
-    name = "fuzzwifi";
-    runtimeInputs = [pkgs.networkmanager pkgs.fuzzel pkgs.libnotify];
-    text = ''
-      # Get list of available networks
-      networks=$(nmcli -t -f SSID,SIGNAL,SECURITY device wifi list | grep -v '^:' | sort -t: -k2 -nr | awk -F: '{
-        lock = ($3 != "") ? "󰌾" : "󰌿";
-        printf "%s %s\n", $1, lock
-      }')
-
-      # Show in fuzzel
-      selected=$(echo "$networks" | fuzzel -d -p 'Select WiFi:')
-
-      # Extract SSID (everything before the lock icon)
-      ssid=$(echo "$selected" | sed 's/ 󰌾$//' | sed 's/ 󰌿$//')
-
-      if [ -n "$ssid" ]; then
-        # Try to connect (will prompt for password if needed via nmcli agent)
-        if nmcli device wifi connect "$ssid"; then
-          notify-send "WiFi" "Connected to $ssid"
-        else
-          # If connection fails, might need password - prompt via fuzzel
-          pass=$(fuzzel -d -p "Password for $ssid:" --password)
-          if nmcli device wifi connect "$ssid" password "$pass"; then
-            notify-send "WiFi" "Connected to $ssid"
-          else
-            notify-send "WiFi" "Failed to connect to $ssid"
-          fi
-        fi
-      fi
     '';
   };
 in {
