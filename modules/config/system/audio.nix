@@ -20,7 +20,7 @@
   # mpd settings
   services.mpd = {
     enable = true;
-    musicDirectory = "/run/media/xllvr/Media/Music";
+    musicDirectory = "/mnt/media/Music";
     extraConfig = ''
       audio_output {
       type "pipewire"

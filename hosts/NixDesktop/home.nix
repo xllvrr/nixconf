@@ -86,11 +86,11 @@
     enable = true;
     userDirs = {
       enable = true;
-      download = "/run/media/xllvr/Storage/Downloads";
-      documents = "/run/media/xllvr/Storage/Documents";
-      music = "/run/media/xllvr/Media/Music";
-      videos = "/run/media/xllvr/Media/Movies";
-      pictures = "/run/media/xllvr/Media/Pictures";
+      download = "/mnt/storage/Downloads";
+      documents = "/mnt/storage/Documents";
+      music = "/mnt/media/Music";
+      videos = "/mnt/media/Movies";
+      pictures = "/mnt/media/Pictures";
     };
   };
 

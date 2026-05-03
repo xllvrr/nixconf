@@ -32,19 +32,22 @@
     {device = "/dev/disk/by-uuid/e5bd98a0-8c1a-4edd-9d1a-42a857fa7419";}
   ];
 
-  # Automount game drive
-  fileSystems."/run/media/xllvr/Games" = {
+  fileSystems."/mnt/games" = {
     device = "/dev/disk/by-uuid/32e168a3-3ef4-4a95-83e0-a95a6f15617b";
+    fsType = "ext4";
+    options = ["defaults" "nofail"];
   };
 
-  # Automount media
-  fileSystems."/run/media/xllvr/Media" = {
+  fileSystems."/mnt/media" = {
     device = "/dev/disk/by-uuid/f59d9bbb-5513-46ca-9051-ba7214900e12";
+    fsType = "ext4";
+    options = ["defaults" "nofail"];
   };
 
-  # Automount storage
-  fileSystems."/run/media/xllvr/Storage" = {
+  fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/3fb9f454-d0fe-42ee-8fa1-3bd92ae7cdf0";
+    fsType = "ext4";
+    options = ["defaults" "nofail"];
   };
 
   # Packages for keyboards
