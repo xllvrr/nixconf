@@ -13,6 +13,7 @@
     ../../modules/config/system/stylix.nix # Import stylix
     ../../modules/config/system/gaming.nix # Import gaming module
     ../../modules/config/system/greetd.nix # Import greeter
+    ../../modules/apps/audio/nicotine.nix # Import nicotine
   ];
 
   ## OS ##
@@ -24,8 +25,6 @@
 
   networking.hostName = "NixDesktop"; # Define your hostname.
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [2234];
-  networking.firewall.allowedUDPPorts = [2234];
 
   # Set your time zone.
   time.timeZone = "Asia/Singapore";
@@ -140,6 +139,7 @@
     eyedropper
     gimp3
     audacity
+    picard
     file-roller
   ];
 
