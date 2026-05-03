@@ -117,6 +117,19 @@
           (name: "Playlists",     pane: Pane(Playlists)),
           (name: "Search",        pane: Pane(Search)),
         ],
+
+        song_table_format: [
+            (
+                prop: (
+                    kind: Group([
+                        (kind: Property(Title)),
+                    ]),
+                    default: (kind: Property(Filename))
+                ),
+                width: "100%",
+            )
+        ]
+
       )
     '';
   };
