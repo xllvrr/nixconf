@@ -9,7 +9,7 @@
   imports = [
     ../../apps/audio/mpv.nix
     ../../apps/audio/rmpc.nix
-    ../../apps/audio/spotify.nix
+    # ../../apps/audio/spotify.nix
   ];
 
   # mpd settings
