@@ -64,6 +64,7 @@
     ripgrep
     fd
     unzip
+    unrar-free
     tree
     wev
     htop
