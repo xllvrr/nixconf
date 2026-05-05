@@ -111,6 +111,7 @@ in {
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
         {command = "swaymsg workspace 1 && ${pkgs.firefox}/bin/firefox";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
+        {command = "${pkgs.nicotine-plus}/bin/nicotine-plus";}
       ];
       workspaceAutoBackAndForth = true;
 
