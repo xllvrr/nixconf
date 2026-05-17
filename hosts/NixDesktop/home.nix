@@ -67,7 +67,6 @@
     SDL_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     NNN_FIFO = "/tmp/nnn.fifo";
-    WINE_BIN = "$(dirname $(readlink $(which wine)))/.wine /path/to/latest/winetricks";
   };
 
   # In the same vein, home.shellAliases allows defining shell-agnostic aliases
