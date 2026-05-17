@@ -15,6 +15,7 @@
     enable = true;
     extraCompatPackages = [pkgs.proton-ge-bin];
     gamescopeSession.enable = true;
+    protontricks.enable = true;
   };
 
   # Install other gaming related packages
@@ -24,6 +25,7 @@
     protonup-qt
     lutris
     bottles
+    r2modman
 
     # Minecraft
     prismlauncher
