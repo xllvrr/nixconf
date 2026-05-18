@@ -42,17 +42,18 @@
     ];
 
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfreePredicate = (
-        pkg:
-          builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
-      );
-    };
-    pkgsUnstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfreePredicate = pkg: builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree;
-    };
+    allowUnfreePredicate = pkg:
+      builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree;
+
+    mkPkgs = nixpkgsInput:
+      import nixpkgsInput {
+        inherit system;
+        config.allowUnfreePredicate = allowUnfreePredicate;
+      };
+
+    pkgs = mkPkgs nixpkgs;
+    pkgsUnstable = mkPkgs nixpkgs-unstable;
+
     customNvim = nvf.lib.neovimConfiguration {
       inherit pkgs;
       modules = [standalones/nvf/nvf.nix];
@@ -74,9 +75,11 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {inherit pkgsUnstable;};
+          home-manager.extraSpecialArgs = {inherit inputs pkgsUnstable;};
           home-manager.users.xllvr = import ./hosts/NixDesktop/home.nix;
-          home-manager.sharedModules = [inputs.nixcord.homeModules.nixcord];
+          home-manager.sharedModules = [
+            inputs.nixcord.homeModules.nixcord
+          ];
         }
       ];
     };

@@ -1,18 +1,4 @@
-{
-  config,
-  pkgs,
-  pkgsUnstable,
-  inputs,
-  lib,
-  ...
-}: {
-  imports = [
-    ../../apps/audio/mpv.nix
-    ../../apps/audio/rmpc.nix
-    # ../../apps/audio/spotify.nix
-  ];
-
-  # mpd settings
+{...}: {
   services.mpd = {
     enable = true;
     musicDirectory = "/mnt/media/Music";
@@ -31,3 +17,4 @@
     '';
   };
 }
+

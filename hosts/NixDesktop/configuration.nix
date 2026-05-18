@@ -6,14 +6,20 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  config-root = inputs.self.outPath;
+  nixos-modules = config-root + "/modules/nixos";
+in {
   imports = [
     ./hardware.nix # Import hardware for host
-    ../default_configuration.nix # Import default configs
-    ../../modules/config/system/stylix.nix # Import stylix
-    ../../modules/config/system/gaming.nix # Import gaming module
-    ../../modules/config/system/greetd.nix # Import greeter
-    ../../modules/apps/audio/nicotine.nix # Import nicotine
+    (nixos-modules + "/common.nix") # Shared system defaults
+    (nixos-modules + "/theme/stylix.nix") # Import stylix
+    (nixos-modules + "/suites/gaming.nix") # Import gaming suite
+    (nixos-modules + "/services/greetd.nix") # Import greeter
+    (nixos-modules + "/services/ollama.nix") # Ollama daemon
+    (nixos-modules + "/services/nicotine.nix") # Nicotine+ + firewall
+    (nixos-modules + "/wm/sway.nix") # Sway session (selectable in greetd)
+    (nixos-modules + "/wm/niri.nix") # Niri session (selectable in greetd)
   ];
 
   ## OS ##
@@ -57,9 +63,6 @@
     ];
   };
 
-  # Align nix path
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
   ## Software ##
   # Enable cache and trusted users
   nix.settings = {
@@ -68,12 +71,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable Sway
-  programs.sway = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   # Enable Thunar
   programs.thunar = {
@@ -101,6 +98,8 @@
   # Enable SSH
   services.openssh.enable = true;
   programs.ssh.startAgent = true;
+  # Avoid clashing SSH agents (gcr-ssh-agent vs OpenSSH ssh-agent).
+  services.gnome.gcr-ssh-agent.enable = false;
 
   # Enable Mullvad
   services.mullvad-vpn.enable = true;
@@ -117,13 +116,6 @@
     description = "Xllvr";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.fish;
-  };
-
-  # Home manager setup
-  home-manager = {
-    extraSpecialArgs = {inherit inputs;};
-    users = {"xllvr" = import ./home.nix;};
-    backupFileExtension = "backup";
   };
 
   # Shell

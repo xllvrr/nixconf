@@ -4,18 +4,20 @@
   inputs,
   lib,
   ...
-}: {
+}: let
+  config-root = inputs.self.outPath;
+  home-modules = config-root + "/modules/home";
+in {
   imports = [
-    ../../modules/dewms/sway.nix
-    ../../modules/scripts.nix
-    ../../modules/apps/default_gui.nix # Import default guis
-    ../../modules/apps/default_cli.nix # Import default clis
-    ../../modules/apps/browser/firefox.nix
-    ../../modules/apps/terminal/kitty.nix
-    ../../modules/apps/shell/shell.nix
-    ../../modules/apps/programming/vscode.nix
-    ../../modules/config/system/audio.nix
-    ../../modules/config/system/notifications.nix
+    (home-modules + "/wm/sway.nix")
+    (home-modules + "/scripts.nix")
+    (home-modules + "/suites/defaults.nix") # Base/default apps + shell tooling
+    (home-modules + "/apps/browser/firefox.nix")
+    (home-modules + "/apps/terminal/kitty.nix")
+    (home-modules + "/apps/programming/vscode.nix")
+    (home-modules + "/suites/ai.nix")
+    (home-modules + "/suites/audio.nix")
+    (home-modules + "/services/mako.nix")
   ];
 
   # Let Home Manager install and manage itself.
@@ -48,12 +50,6 @@
     anki
     mpc
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    ".config/rmpc/themes/rmpc_theme.ron".source = ../../modules/extraconfs/apps/rmpc_theme.ron;
-  };
 
   # Home Manager can export variables for the session so that it's agnostic
   # from the shell chosen

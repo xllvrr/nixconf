@@ -100,4 +100,6 @@
       )
     '';
   };
+
+  xdg.configFile."rmpc/themes/rmpc_theme.ron".source = ./rmpc_theme.ron;
 }

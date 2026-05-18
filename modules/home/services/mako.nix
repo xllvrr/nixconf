@@ -1,12 +1,5 @@
-{
-  config,
-  pkgs,
-  pkgsUnstable,
-  inputs,
-  lib,
-  ...
-}: {
-  # Mako settings
+{...}: {
+  # Mako settings (Home Manager service)
   services.mako = {
     enable = true;
     settings = {
@@ -21,3 +14,4 @@
     };
   };
 }
+

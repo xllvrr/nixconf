@@ -1,6 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Prefer flake registry over legacy NIX_PATH
+  nix.registry = {
+    nixpkgs.flake = inputs.nixpkgs;
+    nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
