@@ -18,6 +18,7 @@ in {
     (nixos-modules + "/services/greetd.nix") # Import greeter
     (nixos-modules + "/services/ollama.nix") # Ollama daemon
     (nixos-modules + "/services/nicotine.nix") # Nicotine+ + firewall
+    (nixos-modules + "/thunar.nix") # Thunar + GVFS/Tumbler helpers
     (nixos-modules + "/wm/sway.nix") # Sway session (selectable in greetd)
     (nixos-modules + "/wm/niri.nix") # Niri session (selectable in greetd)
   ];
@@ -71,19 +72,6 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable Thunar
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-      thunar-media-tags-plugin
-    ];
-  };
-  programs.xfconf.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
 
   # Enable LD
   programs.nix-ld = {
