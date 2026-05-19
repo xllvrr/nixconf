@@ -8,12 +8,6 @@
   primaryscreen = "DP-1";
   secondaryscreen = "HDMI-A-1";
 in {
-  imports = [
-    ../apps/os/waybar.nix
-  ];
-
-  waybar.enable = true;
-
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -166,7 +160,7 @@ in {
       bars = [
         {
           position = "top";
-          command = "${pkgs.waybar}/bin/waybar";
+          command = "${pkgs.waybar}/bin/waybar -c $XDG_CONFIG_HOME/waybar/config-sway -s $XDG_CONFIG_HOME/waybar/style.css";
         }
       ];
     };

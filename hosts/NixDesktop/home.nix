@@ -10,6 +10,8 @@
 in {
   imports = [
     (home-modules + "/wm/sway.nix")
+    (home-modules + "/wm/niri.nix")
+    (home-modules + "/apps/os/waybar.nix")
     (home-modules + "/scripts.nix")
     (home-modules + "/suites/defaults.nix") # Base/default apps + shell tooling
     (home-modules + "/apps/browser/firefox.nix")
@@ -19,6 +21,8 @@ in {
     (home-modules + "/suites/audio.nix")
     (home-modules + "/services/mako.nix")
   ];
+
+  waybar.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

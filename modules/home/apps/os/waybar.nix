@@ -10,6 +10,85 @@
   };
 
   config = lib.mkIf config.waybar.enable {
+    xdg.configFile =
+      let
+        swayWorkspaceIcons = {
+          "1" = "";
+          "2" = "󰈹";
+          "3" = "";
+          "4" = "";
+          "5" = "";
+          "6" = "󱞁";
+          "7" = "󰽰";
+          "8" = "";
+          "9" = "";
+        };
+
+        baseBar = {
+          layer = "bottom";
+          position = "top";
+          height = 40;
+          spacing = 8;
+          margin-top = 6;
+          margin-left = 8;
+          margin-right = 8;
+
+          modules-center = ["clock"];
+          modules-right = ["tray" "network" "pulseaudio" "bluetooth"];
+
+          tray = {
+            icon-size = 18;
+            spacing = 10;
+          };
+          clock = {format = "{:%a %d %b %H:%M}";};
+          network = {
+            format-wifi = "{essid} ";
+            format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
+            format-disconnected = "Disconnected ⚠";
+            on-click = "fuzzwifi";
+          };
+          pulseaudio = {
+            format = " {volume}%";
+            format-bluetooth = " {volume}%";
+            format-muted = "";
+            on-click = "kitty --detach --class floating pulsemixer";
+          };
+          bluetooth = {
+            format = "";
+            on-click = "blueman-manager";
+          };
+        };
+
+        swayBar =
+          baseBar
+          // {
+            modules-left = ["sway/workspaces"];
+            "sway/workspaces" = {
+              "disable-scroll" = true;
+              "all-outputs" = false;
+              "format" = "{icon}";
+              "format-icons" = swayWorkspaceIcons;
+              "on-click" = "activate";
+            };
+          };
+
+        niriBar =
+          baseBar
+          // {
+            modules-left = ["niri/workspaces"];
+            "niri/workspaces" = {
+              "disable-click" = false;
+              "all-outputs" = false;
+              "format" = "{icon}";
+              "format-icons" = swayWorkspaceIcons;
+            };
+          };
+      in {
+        "waybar/config".text = builtins.toJSON [swayBar];
+        "waybar/config-sway".text = builtins.toJSON [swayBar];
+        "waybar/config-niri".text = builtins.toJSON [niriBar];
+      };
+
     programs.waybar = {
       enable = true;
       style = with config.lib.stylix.colors.withHashtag;
@@ -21,65 +100,6 @@
           @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
         ''
         + builtins.readFile ./waybar-style.css;
-      settings = {
-        bar = {
-          # Set position
-          layer = "bottom";
-          position = "top";
-          height = 40;
-          spacing = 8;
-          # Set margins
-          margin-top = 6;
-          margin-left = 8;
-          margin-right = 8;
-          # Set modules
-          modules-left = ["sway/workspaces"];
-          modules-center = ["clock"];
-          modules-right = ["tray" "network" "pulseaudio" "bluetooth"];
-          # Workspaces
-          "sway/workspaces" = {
-            "disable-scroll" = true;
-            "all-outputs" = false;
-            "format" = "{icon}";
-            "format-icons" = {
-              "1" = "";
-              "2" = "󰈹";
-              "3" = "";
-              "4" = "";
-              "5" = "";
-              "6" = "󱞁";
-              "7" = "󰽰";
-              "8" = "";
-              "9" = "";
-            };
-            "on-click" = "activate";
-          };
-          # Modules
-          "tray" = {
-            icon-size = 18;
-            spacing = 10;
-          };
-          "clock" = {
-            format = "{:%a %d %b %H:%M}";
-          };
-          "network" = {
-            format-wifi = "{essid} ";
-            format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
-            format-disconnected = "Disconnected ⚠";
-            on-click = "fuzzwifi";
-          };
-          "pulseaudio" = {
-            format = " {volume}%";
-            format-bluetooth = " {volume}%";
-            format-muted = "";
-            on-click = "kitty --detach --class floating pulsemixer";
-          };
-          "bluetooth" = {
-            format = "";
-            on-click = "blueman-manager";
-          };
-        };
-      };
     };
   };
 }
