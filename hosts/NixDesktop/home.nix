@@ -1,12 +1,11 @@
 {
   config,
   pkgs,
-  inputs,
+  repoRoot,
   lib,
   ...
 }: let
-  config-root = inputs.self.outPath;
-  home-modules = config-root + "/modules/home";
+  home-modules = repoRoot + "/modules/home";
 in {
   imports = [
     (home-modules + "/wm/sway.nix")

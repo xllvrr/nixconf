@@ -4,11 +4,10 @@
 {
   config,
   pkgs,
-  inputs,
+  repoRoot,
   ...
 }: let
-  config-root = inputs.self.outPath;
-  nixos-modules = config-root + "/modules/nixos";
+  nixos-modules = repoRoot + "/modules/nixos";
 in {
   imports = [
     ./hardware.nix # Import hardware for host
