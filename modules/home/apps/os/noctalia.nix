@@ -1,12 +1,18 @@
-{inputs, configRoot, ...}: {
+{
+  inputs,
+  configRoot,
+  ...
+}: {
   imports = [
     inputs.noctalia.homeModules.default
   ];
 
+  stylix.targets.noctalia-shell = {
+    enable = false;
+  };
+
   programs.noctalia-shell = {
     enable = true;
-    # Settings are tracked in this repo. Export current state with:
-    #   noctalia-shell ipc call state all | jq .settings > ~/nixconf/configs/noctalia/settings.json
-    settings = configRoot + "/noctalia/settings.json";
+    settings = (builtins.fromJSON (builtins.readFile (configRoot + "/noctalia/settings.json"))).settings;
   };
 }

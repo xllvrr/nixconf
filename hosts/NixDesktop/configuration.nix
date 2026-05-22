@@ -13,6 +13,7 @@ in {
   imports = [
     ./hardware.nix # Import hardware for host
     (nixos-modules + "/common.nix") # Shared system defaults
+    (nixos-modules + "/apps/chromium.nix") # Chromium/Chrome policies
     (nixos-modules + "/theme/stylix.nix") # Import stylix
     (nixos-modules + "/suites/gaming.nix") # Import gaming suite
     (nixos-modules + "/services/greetd.nix") # Import greeter
@@ -58,6 +59,7 @@ in {
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
+      qt6Packages.fcitx5-configtool
       fcitx5-mozc
       fcitx5-rime
       rime-data
@@ -126,6 +128,11 @@ in {
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    # GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   # System version

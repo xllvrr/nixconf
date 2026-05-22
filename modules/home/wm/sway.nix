@@ -93,11 +93,9 @@ in {
 
       ## Startup
       startup = [
-        # Noctalia is managed by Home Manager (systemd --user); don't also launch
-        # it from Sway startup.
-        #
+        {command = "noctalia-shell";}
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
-        # { command = "env QT_IM_MODULE= noctalia-shell"; }
+        # {command = "env QT_IM_MODULE= noctalia-shell";}
         {command = "syncthing";}
         {command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music";}
         {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}

@@ -117,21 +117,12 @@ window-rule {
 
 spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
-// Noctalia (Quickshell config)
-// Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
-// spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
-
-// Noctalia provides notifications; sunset mako.
-// spawn-at-startup "mako"
+spawn-at-startup "noctalia-shell"
 spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
 spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-// Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
-// spawn-sh-at-startup "bluetoothctl trust 28:D0:EA:94:0C:A9"
-// spawn-sh-at-startup "bluetoothctl power on"
-// spawn-sh-at-startup "bluetoothctl connect 28:D0:EA:94:0C:A9"
 spawn-sh-at-startup "fcitx5 -d --replace"
 spawn-sh-at-startup "fcitx5-remote -r"
 spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"

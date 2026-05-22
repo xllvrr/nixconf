@@ -29,16 +29,6 @@
       "widgets": {
         "left": [
           {
-            "colorizeSystemIcon": "none",
-            "colorizeSystemText": "none",
-            "customIconPath": "",
-            "enableColorization": false,
-            "icon": "rocket",
-            "iconColor": "none",
-            "id": "Launcher",
-            "useDistroLogo": false
-          },
-          {
             "colorizeIcons": false,
             "hideMode": "hidden",
             "id": "ActiveWindow",
@@ -49,6 +39,17 @@
             "textColor": "none",
             "useFixedWidth": false
           },
+          {
+            "clockColor": "none",
+            "customFont": "",
+            "formatHorizontal": "HH:mm ddd, MMM dd",
+            "formatVertical": "HH mm - dd MM",
+            "id": "Clock",
+            "tooltipFormat": "HH:mm ddd, MMM dd",
+            "useCustomFont": false
+          }
+        ],
+        "center": [
           {
             "characterCount": 10,
             "colorizeIcons": false,
@@ -71,24 +72,6 @@
             "unfocusedIconsOpacity": 1
           }
         ],
-        "center": [
-          {
-            "compactMode": false,
-            "hideMode": "visible",
-            "hideWhenIdle": false,
-            "id": "MediaMini",
-            "maxWidth": 145,
-            "panelShowAlbumArt": true,
-            "scrollingMode": "hover",
-            "showAlbumArt": true,
-            "showArtistFirst": true,
-            "showProgressRing": true,
-            "showVisualizer": false,
-            "textColor": "none",
-            "useFixedWidth": false,
-            "visualizerType": "linear"
-          }
-        ],
         "right": [
           {
             "blacklist": [],
@@ -100,14 +83,6 @@
             "pinned": []
           },
           {
-            "hideWhenZero": false,
-            "hideWhenZeroUnread": false,
-            "iconColor": "none",
-            "id": "NotificationHistory",
-            "showUnreadBadge": true,
-            "unreadBadgeColor": "primary"
-          },
-          {
             "displayMode": "onhover",
             "iconColor": "none",
             "id": "Volume",
@@ -115,26 +90,24 @@
             "textColor": "none"
           },
           {
-            "colorizeDistroLogo": false,
-            "colorizeSystemIcon": "none",
-            "colorizeSystemText": "none",
-            "customIconPath": "",
-            "enableColorization": false,
-            "icon": "noctalia",
-            "id": "ControlCenter",
-            "useDistroLogo": false
+            "displayMode": "onhover",
+            "iconColor": "none",
+            "id": "Bluetooth",
+            "textColor": "none"
           },
           {
-            "clockColor": "none",
-            "customFont": "",
-            "formatHorizontal": "HH:mm ddd, MMM dd",
-            "formatVertical": "HH mm - dd MM",
-            "id": "Clock",
-            "tooltipFormat": "HH:mm ddd, MMM dd",
-            "useCustomFont": false
+            "displayMode": "onhover",
+            "iconColor": "none",
+            "id": "Network",
+            "textColor": "none"
           },
           {
-            "id": "plugin:screen-recorder"
+            "hideWhenZero": false,
+            "hideWhenZeroUnread": false,
+            "iconColor": "none",
+            "id": "NotificationHistory",
+            "showUnreadBadge": true,
+            "unreadBadgeColor": "primary"
           }
         ]
       },
@@ -582,7 +555,7 @@
     },
     "colorSchemes": {
       "useWallpaperColors": false,
-      "predefinedScheme": "Kanagawa",
+      "predefinedScheme": "Eldritch",
       "darkMode": true,
       "schedulingMode": "off",
       "manualSunrise": "06:30",
@@ -689,8 +662,8 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "DP-1": "/nix/store/agf0j3aiwizb397rl05yswvn2wy4fnc3-noctalia-shell-2026-05-21_8e37cec/share/noctalia-shell/Assets/Wallpaper/noctalia.png",
-      "HDMI-A-1": "/nix/store/agf0j3aiwizb397rl05yswvn2wy4fnc3-noctalia-shell-2026-05-21_8e37cec/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
+      "DP-1": "/nix/store/p68a6ldyqmjsvp1z95m2lqwl0nrskkyc-Wallpaper.png",
+      "HDMI-A-1": "/nix/store/p68a6ldyqmjsvp1z95m2lqwl0nrskkyc-Wallpaper.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
