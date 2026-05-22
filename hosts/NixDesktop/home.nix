@@ -2,6 +2,7 @@
   config,
   pkgs,
   repoRoot,
+  configRoot,
   lib,
   ...
 }: let
@@ -94,6 +95,14 @@ in {
       videos = "/mnt/media/Movies";
       pictures = "/mnt/media/Pictures";
     };
+  };
+
+  # Noctalia settings are tracked in this repo.
+  # Export current state with:
+  #   noctalia-shell ipc call state all > ~/nixconf/configs/noctalia/settings.json
+  xdg.configFile."noctalia/settings.json" = {
+    source = configRoot + "/noctalia/settings.json";
+    force = true;
   };
 
   # Disable home manager defaulting to man-db

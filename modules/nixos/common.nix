@@ -42,14 +42,8 @@
     noto-fonts-cjk-serif
   ];
 
-  # Redshift
-  services.redshift = {
-    enable = true;
-    temperature = {
-      day = 5500;
-      night = 3700;
-    };
-  };
+  # Redshift (sunsetted; Noctalia provides night light)
+  services.redshift.enable = false;
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
 
