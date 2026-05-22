@@ -10,8 +10,14 @@
     then config.stylix.image
     else repoRoot + "/modules/nixos/theme/Wallpaper.png";
 in {
-  xdg.configFile."niri/config.kdl".source = configRoot + "/niri/config.kdl";
-  xdg.configFile."niri/wallpaper.png".source = wallpaper;
+  xdg.configFile."niri/config.kdl" = {
+    source = configRoot + "/niri/config.kdl";
+    force = true;
+  };
+  xdg.configFile."niri/wallpaper.png" = {
+    source = wallpaper;
+    force = true;
+  };
 
   home.packages = with pkgs; [
     cliphist

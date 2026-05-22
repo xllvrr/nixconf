@@ -1,12 +1,23 @@
 input {
-    focus-follows-mouse
+    // Allow focus-follows-mouse to scroll a bit to fully reveal the hovered window,
+    // but refuse large scrolls so tiny off-screen slivers don’t steal focus.
+    focus-follows-mouse max-scroll-amount="20%"
 
-    mouse {
+    trackball {
         scroll-method "on-button-down"
         scroll-button 277
         scroll-button-lock
     }
 }
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Ask clients to omit client-side decorations (titlebars/borders) where possible.
+prefer-no-csd
 
 output "DP-1" {
     mode "1920x1080"
@@ -18,13 +29,95 @@ output "HDMI-A-1" {
     position x=1920 y=0
 }
 
+workspace "music" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "code" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "gaming" {
+    open-on-output "DP-1"
+}
+
+workspace "browser" {
+    open-on-output "DP-1"
+}
+
 layout {
-    gaps 5
+    // Spacing between windows (and around the workspace edge).
+    gaps 16
+
+    // No compositor-drawn focus ring; use a border instead.
+    focus-ring {
+        off
+    }
+    border {
+        width 2
+        active-color "#7E9CD8"
+        inactive-color "#7E9CD880"
+    }
+    shadow {
+        off
+    }
+
+    always-center-single-column
+}
+
+// Rounded window corners (and rounded borders).
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Default: open new windows as a maximized column (full width).
+window-rule {
+    open-maximized true
+}
+
+// Steam and Steam-launched games should land on the "gaming" workspace.
+window-rule {
+    match app-id=r#"^(steam|Steam|steam_app_\d+)$"#
+    open-on-workspace "gaming"
+}
+
+// Firefox Picture-in-Picture should stay a small floating window.
+window-rule {
+    match app-id=r#"^firefox$"# title="Picture-in-Picture"
+    open-floating true
+    open-maximized false
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^music$"#
+    open-on-workspace "music"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^nixconf$"#
+    open-on-workspace "code"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^firefox$"#
+    open-on-workspace "browser"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^(org\.nicotine_plus\.Nicotine|nicotine-plus|nicotine)$"#
+    open-on-workspace "music"
+}
+
+window-rule {
+    match app-id=r#"(pavucontrol|blueman-manager)$"#
+    open-floating true
+    open-maximized false
 }
 
 spawn-sh-at-startup "swww-daemon"
-spawn-sh-at-startup "swww img \"$XDG_CONFIG_HOME/niri/wallpaper.png\" --transition-type none"
-spawn-sh-at-startup "waybar -c \"$XDG_CONFIG_HOME/waybar/config-niri\" -s \"$XDG_CONFIG_HOME/waybar/style.css\""
+spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
+spawn-sh-at-startup "waybar -c \"$HOME/.config/waybar/config-niri\" -s \"$HOME/.config/waybar/style.css\""
 
 spawn-at-startup "mako"
 spawn-at-startup "syncthing"
@@ -41,67 +134,91 @@ spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"
 spawn-sh-at-startup "safeeyes"
 spawn-sh-at-startup "nicotine-plus"
 
-window-rule {
-    match app-id=r#"(pavucontrol|blueman-manager)$"#
-    open-floating true
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
 }
 
 binds {
-    Super+Return { spawn "kitty"; }
-    Alt+Space { spawn "fuzzel"; }
+    Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
+    Alt+Space hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
+    Mod+O hotkey-overlay-title="Overview" { toggle-overview; }
 
-    Super+C repeat=false { close-window; }
-    Super+F repeat=false { fullscreen-window; }
-    Super+Z repeat=false { toggle-window-floating; }
+    Mod+C repeat=false hotkey-overlay-title="Close window" { close-window; }
+    Mod+F repeat=false hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
+    Mod+Z repeat=false hotkey-overlay-title="Toggle floating" { toggle-window-floating; }
+    Mod+Shift+Z repeat=false hotkey-overlay-title="Move to tiling" { move-window-to-tiling; }
 
-    Super+H { focus-column-left; }
-    Super+J { focus-window-down; }
-    Super+K { focus-window-up; }
-    Super+L { focus-column-right; }
+    Mod+H hotkey-overlay-title="Focus left" { focus-column-left; }
+    Mod+J hotkey-overlay-title="Focus down" { focus-window-down; }
+    Mod+K hotkey-overlay-title="Focus up" { focus-window-up; }
+    Mod+L hotkey-overlay-title="Focus right" { focus-column-right; }
 
-    Super+Ctrl+H { move-column-left; }
-    Super+Ctrl+J { move-window-down; }
-    Super+Ctrl+K { move-window-up; }
-    Super+Ctrl+L { move-column-right; }
+    Mod+Ctrl+H hotkey-overlay-title="Swap left" { swap-window-left; }
+    Mod+Ctrl+L hotkey-overlay-title="Swap right" { swap-window-right; }
+    Mod+Ctrl+J hotkey-overlay-title="Move down" { move-window-down; }
+    Mod+Ctrl+K hotkey-overlay-title="Move up" { move-window-up; }
+    Mod+Ctrl+Shift+H hotkey-overlay-title="Move column left" { move-column-left; }
+    Mod+Ctrl+Shift+L hotkey-overlay-title="Move column right" { move-column-right; }
 
-    Super+Shift+H { move-workspace-to-monitor-left; }
-    Super+Shift+J { move-workspace-to-monitor-down; }
-    Super+Shift+K { move-workspace-to-monitor-up; }
-    Super+Shift+L { move-workspace-to-monitor-right; }
+    Mod+Minus hotkey-overlay-title="Decrease column width" { set-column-width "-10%"; }
+    Mod+Equal hotkey-overlay-title="Increase column width" { set-column-width "+10%"; }
+    Mod+Shift+Minus hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
+    Mod+Shift+Equal hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
+    Mod+BackSpace hotkey-overlay-title="Reset window height" { reset-window-height; }
 
-    Super+1 { focus-workspace 1; }
-    Super+2 { focus-workspace 2; }
-    Super+3 { focus-workspace 3; }
-    Super+4 { focus-workspace 4; }
-    Super+5 { focus-workspace 5; }
-    Super+6 { focus-workspace 6; }
-    Super+7 { focus-workspace 7; }
-    Super+8 { focus-workspace 8; }
-    Super+9 { focus-workspace 9; }
-    Super+0 { focus-workspace 10; }
+    Mod+Alt+H repeat=false hotkey-overlay-title="Toggle merge left" { consume-or-expel-window-left; }
+    Mod+Alt+L repeat=false hotkey-overlay-title="Toggle merge right" { consume-or-expel-window-right; }
 
-    Super+Shift+1 { move-window-to-workspace 1; }
-    Super+Shift+2 { move-window-to-workspace 2; }
-    Super+Shift+3 { move-window-to-workspace 3; }
-    Super+Shift+4 { move-window-to-workspace 4; }
-    Super+Shift+5 { move-window-to-workspace 5; }
-    Super+Shift+6 { move-window-to-workspace 6; }
-    Super+Shift+7 { move-window-to-workspace 7; }
-    Super+Shift+8 { move-window-to-workspace 8; }
-    Super+Shift+9 { move-window-to-workspace 9; }
-    Super+Shift+0 { move-window-to-workspace 10; }
+    Mod+Alt+J hotkey-overlay-title="Consume into column" { consume-window-into-column; }
+    Mod+Alt+K hotkey-overlay-title="Expel from column" { expel-window-from-column; }
 
-    Super+M { move-window-to-floating; }
-    Super+Shift+M { focus-floating; }
+    Mod+W hotkey-overlay-title="Toggle tabbed" { toggle-column-tabbed-display; }
 
-    Super+Shift+R { spawn-sh "niri msg action load-config-file"; }
-    Super+Ctrl+Q repeat=false { quit; }
+    Mod+Shift+F hotkey-overlay-title="Maximize column" { maximize-column; }
+    Mod+Shift+E hotkey-overlay-title="Expand column width" { expand-column-to-available-width; }
 
-    Super+Alt+V { spawn "fuzzclip"; }
-    Super+Shift+S { spawn "fuzzshot"; }
+    Mod+Shift+H hotkey-overlay-title="Move workspace to monitor left" { move-workspace-to-monitor-left; }
+    Mod+Shift+J hotkey-overlay-title="Move workspace to monitor down" { move-workspace-to-monitor-down; }
+    Mod+Shift+K hotkey-overlay-title="Move workspace to monitor up" { move-workspace-to-monitor-up; }
+    Mod+Shift+L hotkey-overlay-title="Move workspace to monitor right" { move-workspace-to-monitor-right; }
 
-    Super+Alt+F { spawn "thunar"; }
-    Super+B { spawn "firefox"; }
-    Super+E { spawn "kitty" "--detach" "yazi"; }
-    Super+R { spawn "record-audio"; }
+    Mod+Comma hotkey-overlay-title="Focus previous monitor" { focus-monitor-previous; }
+    Mod+Period hotkey-overlay-title="Focus next monitor" { focus-monitor-next; }
+
+    Mod+1 hotkey-overlay-title="Workspace 1" { focus-workspace 1; }
+    Mod+2 hotkey-overlay-title="Workspace 2" { focus-workspace 2; }
+    Mod+3 hotkey-overlay-title="Workspace 3" { focus-workspace 3; }
+    Mod+4 hotkey-overlay-title="Workspace 4" { focus-workspace 4; }
+    Mod+5 hotkey-overlay-title="Workspace 5" { focus-workspace 5; }
+    Mod+6 hotkey-overlay-title="Workspace 6" { focus-workspace 6; }
+    Mod+7 hotkey-overlay-title="Workspace 7" { focus-workspace 7; }
+    Mod+8 hotkey-overlay-title="Workspace 8" { focus-workspace 8; }
+    Mod+9 hotkey-overlay-title="Workspace 9" { focus-workspace 9; }
+    Mod+0 hotkey-overlay-title="Workspace 10" { focus-workspace 10; }
+
+    Mod+Shift+1 hotkey-overlay-title="Move to workspace 1" { move-window-to-workspace 1; }
+    Mod+Shift+2 hotkey-overlay-title="Move to workspace 2" { move-window-to-workspace 2; }
+    Mod+Shift+3 hotkey-overlay-title="Move to workspace 3" { move-window-to-workspace 3; }
+    Mod+Shift+4 hotkey-overlay-title="Move to workspace 4" { move-window-to-workspace 4; }
+    Mod+Shift+5 hotkey-overlay-title="Move to workspace 5" { move-window-to-workspace 5; }
+    Mod+Shift+6 hotkey-overlay-title="Move to workspace 6" { move-window-to-workspace 6; }
+    Mod+Shift+7 hotkey-overlay-title="Move to workspace 7" { move-window-to-workspace 7; }
+    Mod+Shift+8 hotkey-overlay-title="Move to workspace 8" { move-window-to-workspace 8; }
+    Mod+Shift+9 hotkey-overlay-title="Move to workspace 9" { move-window-to-workspace 9; }
+    Mod+Shift+0 hotkey-overlay-title="Move to workspace 10" { move-window-to-workspace 10; }
+
+    Mod+M hotkey-overlay-title="Move to floating" { move-window-to-floating; }
+    Mod+Shift+M hotkey-overlay-title="Focus floating" { focus-floating; }
+
+    Mod+Shift+R hotkey-overlay-title="Reload config" { spawn-sh "niri msg action load-config-file"; }
+    Mod+Ctrl+Q repeat=false hotkey-overlay-title="Quit niri" { quit; }
+
+    Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn "fuzzclip"; }
+    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "fuzzshot"; }
+
+    Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "firefox"; }
+    Mod+E hotkey-overlay-title="Yazi" { spawn "kitty" "--detach" "yazi"; }
+    Mod+R hotkey-overlay-title="Record audio" { spawn "record-audio"; }
 }

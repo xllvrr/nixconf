@@ -79,6 +79,7 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-bak";
           home-manager.extraSpecialArgs = {
             inherit inputs pkgsUnstable repoRoot configRoot;
           };

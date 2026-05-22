@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   lib,
   ...
 }: let
@@ -7,6 +8,10 @@
 
   primaryscreen = "DP-1";
   secondaryscreen = "HDMI-A-1";
+  configHome =
+    if config.xdg.enable or false
+    then config.xdg.configHome
+    else "${config.home.homeDirectory}/.config";
 in {
   wayland.windowManager.sway = {
     enable = true;
@@ -160,7 +165,7 @@ in {
       bars = [
         {
           position = "top";
-          command = "${pkgs.waybar}/bin/waybar -c $XDG_CONFIG_HOME/waybar/config-sway -s $XDG_CONFIG_HOME/waybar/style.css";
+          command = "${pkgs.waybar}/bin/waybar -c ${configHome}/waybar/config-sway -s ${configHome}/waybar/style.css";
         }
       ];
     };
