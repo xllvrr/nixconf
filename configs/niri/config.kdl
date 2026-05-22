@@ -119,7 +119,7 @@ spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
 // Noctalia (Quickshell config)
 // Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
-spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
+// spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
 
 // Noctalia provides notifications; sunset mako.
 // spawn-at-startup "mako"

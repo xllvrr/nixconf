@@ -12,6 +12,7 @@ in {
     (home-modules + "/wm/sway.nix")
     (home-modules + "/wm/niri.nix")
     (home-modules + "/apps/os/waybar.nix")
+    (home-modules + "/apps/os/noctalia.nix")
     (home-modules + "/scripts.nix")
     (home-modules + "/suites/defaults.nix") # Base/default apps + shell tooling
     (home-modules + "/apps/browser/firefox.nix")
@@ -95,14 +96,6 @@ in {
       videos = "/mnt/media/Movies";
       pictures = "/mnt/media/Pictures";
     };
-  };
-
-  # Noctalia settings are tracked in this repo.
-  # Export current state with:
-  #   noctalia-shell ipc call state all > ~/nixconf/configs/noctalia/settings.json
-  xdg.configFile."noctalia/settings.json" = {
-    source = configRoot + "/noctalia/settings.json";
-    force = true;
   };
 
   # Disable home manager defaulting to man-db
