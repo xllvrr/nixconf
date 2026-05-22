@@ -26,7 +26,7 @@ in {
       "$mod" = "SUPER";
       "$term" = "kitty";
       "$browser" = "firefox";
-      "$menu" = "fuzzel";
+      "$menu" = "${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
       "$filemanager" = "thunar";
       "$primaryscreen" = "DP-2";
       "$secondaryscreen" = "DP-3";
@@ -106,7 +106,6 @@ in {
         "workspace 2 silent, class:^(Firefox)$"
         "workspace 6 silent, class:^(obsidian)$"
         "pseudo, class:fcitx"
-        "float, class:^(mako)$"
         "float, class:.*(blueman-manager).*"
         "float, class:floating"
       ];
@@ -144,7 +143,7 @@ in {
           "$mod, B, exec, $browser"
 
           # Tools
-          "ALT, SPACE, exec, fuzzel"
+          "ALT, SPACE, exec, $menu"
           "$mod ALT, V, exec, $scriptsdir/fuzzclip"
           "$mod SHIFT, S, exec, $scriptsdir/fuzzshot"
         ]
@@ -189,13 +188,10 @@ in {
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"
         "${startupScript}/bin/Startup"
         "export SSH_AUTH_SOCK"
-        "bluetoothctl trust 28:D0:EA:94:0C:A9"
-        "bluetoothctl power on"
-        "bluetoothctl connect 28:D0:EA:94:0C:A9"
+        # Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
       ];
       exec = [
         "safeeyes"
-        "mako"
         "xrdb -load ~/.Xdefaults"
       ];
     };

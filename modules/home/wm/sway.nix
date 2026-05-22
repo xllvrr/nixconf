@@ -58,7 +58,7 @@ in {
 
         {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
-          "Alt+space" = "exec --no-startup-id fuzzel";
+          "Alt+space" = "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
 
           "${mod}+c" = "kill";
           # "${mod}+Alt+o" = "exec systemctl poweroff";
@@ -80,7 +80,7 @@ in {
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
 
-          "${mod}+Alt+v" = "exec fuzzclip";
+          "${mod}+Alt+v" = "exec ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher clipboard || fuzzclip'";
           "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
@@ -94,17 +94,15 @@ in {
       ## Startup
       startup = [
         {
-          command = "mako";
-          always = true;
+          # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
+          command = "env QT_IM_MODULE= noctalia-shell";
         }
         {command = "syncthing";}
-        {command = "${pkgs.kitty}/bin/kitty --class music --detach tmux-music";}
-        {command = "${pkgs.kitty}/bin/kitty --class nixconf --detach tmux-nixconf";}
+        {command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music";}
+        {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        {command = "bluetoothctl trust 28:D0:EA:94:0C:A9";}
-        {command = "bluetoothctl power on";}
-        {command = "bluetoothctl connect 28:D0:EA:94:0C:A9";}
+        # Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
         {command = "fcitx5 -d --replace";}
         {command = "fcitx5-remote -r";}
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
@@ -121,7 +119,6 @@ in {
         criteria = [
           {class = "nmtui";}
           {class = "Pavucontrol";}
-          {class = ".*mako.*";}
           {class = ".*blueman.*";}
           {title = "Steam - Update News";}
         ];
@@ -146,9 +143,9 @@ in {
       ];
       assigns = {
         "6" = [{class = "obsidian";}];
-        "7" = [{class = "music";}];
+        "7" = [{app_id = "kitty"; title = "^music$";}];
         "8" = [{class = "zathura";}];
-        "9" = [{class = "nixconf";}];
+        "9" = [{app_id = "kitty"; title = "^nixconf$";}];
       };
       window = {
         border = 3;
@@ -162,12 +159,7 @@ in {
       };
 
       ## Bars
-      bars = [
-        {
-          position = "top";
-          command = "${pkgs.waybar}/bin/waybar -c ${configHome}/waybar/config-sway -s ${configHome}/waybar/style.css";
-        }
-      ];
+      bars = [];
     };
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};

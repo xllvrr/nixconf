@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  inputs,
   config,
   pkgs,
   repoRoot,
@@ -120,6 +121,7 @@ in {
     audacity
     picard
     file-roller
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   environment.sessionVariables = {
@@ -127,5 +129,5 @@ in {
   };
 
   # System version
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 }

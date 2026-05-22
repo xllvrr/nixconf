@@ -22,8 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixcord = {
-      url = "github:kaylorben/nixcord";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -84,9 +85,6 @@
             inherit inputs pkgsUnstable repoRoot configRoot;
           };
           home-manager.users.xllvr = import ./hosts/NixDesktop/home.nix;
-          home-manager.sharedModules = [
-            inputs.nixcord.homeModules.nixcord
-          ];
         }
       ];
     };

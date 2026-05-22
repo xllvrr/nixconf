@@ -90,12 +90,12 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id=r#"^music$"#
+    match at-startup=true app-id=r#"^kitty$"# title="music"
     open-on-workspace "music"
 }
 
 window-rule {
-    match at-startup=true app-id=r#"^nixconf$"#
+    match at-startup=true app-id=r#"^kitty$"# title="nixconf"
     open-on-workspace "code"
 }
 
@@ -117,17 +117,21 @@ window-rule {
 
 spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
-spawn-sh-at-startup "waybar -c \"$HOME/.config/waybar/config-niri\" -s \"$HOME/.config/waybar/style.css\""
+// Noctalia (Quickshell config)
+// Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
+spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
 
-spawn-at-startup "mako"
+// Noctalia provides notifications; sunset mako.
+// spawn-at-startup "mako"
 spawn-at-startup "syncthing"
-spawn-sh-at-startup "kitty --class music --detach tmux-music"
-spawn-sh-at-startup "kitty --class nixconf --detach tmux-nixconf"
+spawn-sh-at-startup "kitty --title music --detach tmux-music"
+spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-spawn-sh-at-startup "bluetoothctl trust 28:D0:EA:94:0C:A9"
-spawn-sh-at-startup "bluetoothctl power on"
-spawn-sh-at-startup "bluetoothctl connect 28:D0:EA:94:0C:A9"
+// Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
+// spawn-sh-at-startup "bluetoothctl trust 28:D0:EA:94:0C:A9"
+// spawn-sh-at-startup "bluetoothctl power on"
+// spawn-sh-at-startup "bluetoothctl connect 28:D0:EA:94:0C:A9"
 spawn-sh-at-startup "fcitx5 -d --replace"
 spawn-sh-at-startup "fcitx5-remote -r"
 spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"
@@ -141,7 +145,7 @@ hotkey-overlay {
 
 binds {
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
-    Alt+Space hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
+    Alt+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle || fuzzel"; }
     Mod+O hotkey-overlay-title="Overview" { toggle-overview; }
 
     Mod+C repeat=false hotkey-overlay-title="Close window" { close-window; }
@@ -214,7 +218,7 @@ binds {
     Mod+Shift+R hotkey-overlay-title="Reload config" { spawn-sh "niri msg action load-config-file"; }
     Mod+Ctrl+Q repeat=false hotkey-overlay-title="Quit niri" { quit; }
 
-    Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn "fuzzclip"; }
+    Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn-sh "noctalia-shell ipc call launcher clipboard || fuzzclip"; }
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "fuzzshot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }

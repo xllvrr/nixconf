@@ -18,10 +18,11 @@ in {
     (home-modules + "/apps/programming/vscode.nix")
     (home-modules + "/suites/ai.nix")
     (home-modules + "/suites/audio.nix")
-    (home-modules + "/services/mako.nix")
+    # Noctalia provides notifications; sunset mako.
+    # (home-modules + "/services/mako.nix")
   ];
 
-  waybar.enable = true;
+  waybar.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -61,10 +62,12 @@ in {
     TERMINAL = "kitty";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
     FLAKE = "/home/xllvr/nixos";
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    SDL_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
+    # Noctalia warned about these being set; try letting NixOS manage IM vars via
+    # `i18n.inputMethod` instead of hardcoding them in the HM session.
+    # GTK_IM_MODULE = "fcitx";
+    # QT_IM_MODULE = "fcitx";
+    # SDL_IM_MODULE = "fcitx";
+    # XMODIFIERS = "@im=fcitx";
     NNN_FIFO = "/tmp/nnn.fifo";
   };
 
