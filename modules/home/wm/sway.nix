@@ -84,7 +84,7 @@ in {
           "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
-          "${mod}+b" = "exec ${pkgs.firefox}/bin/firefox";
+          "${mod}+b" = "exec ${pkgs.chromium}/bin/chromium";
           "${mod}+e" = "exec kitty --detach yazi";
           "${mod}+r" = "exec record-audio";
         }
@@ -93,19 +93,16 @@ in {
 
       ## Startup
       startup = [
-        {command = "noctalia-shell";}
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
-        # {command = "env QT_IM_MODULE= noctalia-shell";}
+        {command = "env QT_IM_MODULE= noctalia-shell";}
         {command = "syncthing";}
         {command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music";}
         {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
         # Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
-        {command = "fcitx5 -d --replace";}
-        {command = "fcitx5-remote -r";}
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
-        {command = "swaymsg workspace 1 && ${pkgs.firefox}/bin/firefox";}
+        {command = "swaymsg workspace 1 && ${pkgs.chromium}/bin/chromium";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
         {command = "${pkgs.nicotine-plus}/bin/nicotine-plus";}
       ];

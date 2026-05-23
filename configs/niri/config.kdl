@@ -82,9 +82,9 @@ window-rule {
     open-on-workspace "gaming"
 }
 
-// Firefox Picture-in-Picture should stay a small floating window.
+// Chromium Picture-in-Picture should stay a small floating window.
 window-rule {
-    match app-id=r#"^firefox$"# title="Picture-in-Picture"
+    match app-id=r#"^chromium$"# title="Picture-in-Picture"
     open-floating true
     open-maximized false
 }
@@ -100,7 +100,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id=r#"^firefox$"#
+    match at-startup=true app-id=r#"^chromium$"#
     open-on-workspace "browser"
 }
 
@@ -117,14 +117,14 @@ window-rule {
 
 spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
-spawn-at-startup "noctalia-shell"
+// Noctalia (Qt6) can clash with fcitx5-qt (segfault / inputcontext issues).
+// Keep fcitx enabled globally, but start Noctalia with QT_IM_MODULE unset.
+spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
 spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
 spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
-spawn-sh-at-startup "fcitx5 -d --replace"
-spawn-sh-at-startup "fcitx5-remote -r"
 spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"
 spawn-sh-at-startup "safeeyes"
 spawn-sh-at-startup "nicotine-plus"
@@ -213,7 +213,7 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "fuzzshot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }
-    Mod+B hotkey-overlay-title="Browser" { spawn "firefox"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "chromium"; }
     Mod+E hotkey-overlay-title="Yazi" { spawn "kitty" "--detach" "yazi"; }
     Mod+R hotkey-overlay-title="Record audio" { spawn "record-audio"; }
 }

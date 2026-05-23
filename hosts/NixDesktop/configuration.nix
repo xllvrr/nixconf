@@ -5,10 +5,19 @@
   inputs,
   config,
   pkgs,
+  pkgsUnstable,
   repoRoot,
+  lib,
   ...
 }: let
   nixos-modules = repoRoot + "/modules/nixos";
+  fcitx5Addons = with pkgs; [
+    fcitx5-gtk
+    kdePackages.fcitx5-configtool
+    fcitx5-mozc
+    fcitx5-rime
+    rime-data
+  ];
 in {
   imports = [
     ./hardware.nix # Import hardware for host
@@ -57,14 +66,14 @@ in {
     type = "fcitx5";
     enable = true;
     fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-      qt6Packages.fcitx5-configtool
-      fcitx5-mozc
-      fcitx5-rime
-      rime-data
-    ];
+    fcitx5.addons = fcitx5Addons;
   };
+
+  # Keep the Qt inputcontext plugin ABI aligned with Noctalia (nixpkgs-unstable / Qt 6.11),
+  # without mixing unstable GTK/GLib into the stable GTK immodule cache build.
+  environment.variables.QT_PLUGIN_PATH = lib.mkAfter [
+    "${pkgsUnstable.qt6Packages.fcitx5-qt}/${pkgsUnstable.qt6.qtbase.qtPluginPrefix}"
+  ];
 
   ## Software ##
   # Enable cache and trusted users
@@ -124,6 +133,7 @@ in {
     picard
     file-roller
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgsUnstable.qt6Packages.fcitx5-qt
   ];
 
   environment.sessionVariables = {
