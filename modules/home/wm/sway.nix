@@ -61,9 +61,6 @@ in {
           "Alt+space" = "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
 
           "${mod}+c" = "kill";
-          # "${mod}+Alt+o" = "exec systemctl poweroff";
-          # "${mod}+Alt+r" = "exec systemctl reboot";
-          # "${mod}+Alt+s" = "exec systemctl suspend";
 
           "${mod}+a" = "focus parent";
           "${mod}+f" = "fullscreen toggle";
@@ -100,7 +97,6 @@ in {
         {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
         {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        # Noctalia can manage connectivity; stop hardcoding bluetoothctl autoconnect.
         {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
         {command = "swaymsg workspace 1 && ${pkgs.chromium}/bin/chromium";}
         {command = "${pkgs.safeeyes}/bin/safeeyes";}
@@ -139,9 +135,19 @@ in {
       ];
       assigns = {
         "6" = [{class = "obsidian";}];
-        "7" = [{app_id = "kitty"; title = "^music$";}];
+        "7" = [
+          {
+            app_id = "kitty";
+            title = "^music$";
+          }
+        ];
         "8" = [{class = "zathura";}];
-        "9" = [{app_id = "kitty"; title = "^nixconf$";}];
+        "9" = [
+          {
+            app_id = "kitty";
+            title = "^nixconf$";
+          }
+        ];
       };
       window = {
         border = 3;

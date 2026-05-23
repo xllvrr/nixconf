@@ -9,6 +9,10 @@
       DefaultBrowserSettingEnabled = false;
       BlockThirdPartyCookies = true;
 
+      # Startup behavior: restore the last session ("Continue where you left off").
+      # See `chrome://policy` -> RestoreOnStartup.
+      RestoreOnStartup = 1;
+
       # Default search engine (Startpage).
       DefaultSearchProviderEnabled = true;
       DefaultSearchProviderName = "Startpage";
