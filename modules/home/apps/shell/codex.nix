@@ -9,10 +9,10 @@
     enable = true;
 
     settings = {
-      # Keep Codex config declarative; HM writes this to ~/.codex/config.toml.
       model = "gpt-5.2";
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
+      sandbox_workspace_write.network_access = true;
 
       mcp_servers = {
         context7 = {
