@@ -26,6 +26,7 @@
     lutris
     bottles
     r2modman
+    rusty-path-of-building
 
     # Minecraft
     prismlauncher
