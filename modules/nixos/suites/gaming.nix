@@ -1,5 +1,5 @@
 # Gaming Settings
-{pkgs, ...}: {
+{pkgs, pkgsUnstable, ...}: {
   # Enable openGL for gaming
   hardware.graphics = {
     enable = true;
@@ -26,7 +26,7 @@
     lutris
     bottles
     r2modman
-    rusty-path-of-building
+    pkgsUnstable.rusty-path-of-building
 
     # Minecraft
     prismlauncher
