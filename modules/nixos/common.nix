@@ -71,7 +71,7 @@
     unrar-free
     tree
     wev
-    htop
+    btop
 
     # Documentation
     # linux-manual
