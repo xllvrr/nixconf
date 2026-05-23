@@ -8,6 +8,9 @@
 }: let
   home-modules = repoRoot + "/modules/home";
 in {
+  # =============================================================================
+  # IMPORTS
+  # =============================================================================
   imports = [
     (home-modules + "/wm/sway.nix")
     (home-modules + "/wm/niri.nix")
@@ -24,8 +27,14 @@ in {
     # (home-modules + "/services/mako.nix")
   ];
 
+  # =============================================================================
+  # FEATURE FLAGS
+  # =============================================================================
   waybar.enable = false;
 
+  # =============================================================================
+  # HOME MANAGER
+  # =============================================================================
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -42,6 +51,9 @@ in {
 
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
+  # =============================================================================
+  # PACKAGES
+  # =============================================================================
   # The home.packages option allows you to install Nix packages into your
   # environment.
   # And allow for unfree packages within
@@ -57,6 +69,9 @@ in {
     mpc
   ];
 
+  # =============================================================================
+  # SESSION / ENV
+  # =============================================================================
   # Home Manager can export variables for the session so that it's agnostic
   # from the shell chosen
   home.sessionVariables = {
@@ -73,6 +88,9 @@ in {
     NNN_FIFO = "/tmp/nnn.fifo";
   };
 
+  # =============================================================================
+  # SHELL
+  # =============================================================================
   # In the same vein, home.shellAliases allows defining shell-agnostic aliases
   home.shellAliases = {
     # Applications
@@ -85,6 +103,9 @@ in {
     cd = "z";
   };
 
+  # =============================================================================
+  # XDG DIRECTORIES
+  # =============================================================================
   # Manage XDG Directories
   xdg = {
     enable = true;
@@ -98,6 +119,9 @@ in {
     };
   };
 
+  # =============================================================================
+  # MISC
+  # =============================================================================
   # Disable home manager defaulting to man-db
   programs.man.enable = false;
 

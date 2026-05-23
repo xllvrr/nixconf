@@ -3,6 +3,9 @@
   inputs,
   ...
 }: {
+  # =============================================================================
+  # NIX
+  # =============================================================================
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -12,12 +15,18 @@
     nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
   };
 
+  # =============================================================================
+  # LOCALE / INPUT
+  # =============================================================================
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
+  # =============================================================================
+  # DOCUMENTATION
+  # =============================================================================
   # Enable documentation
   documentation = {
     enable = true;
@@ -29,9 +38,15 @@
     };
   };
 
+  # =============================================================================
+  # SERVICES
+  # =============================================================================
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # =============================================================================
+  # FONTS
+  # =============================================================================
   # Fonts
   fonts.packages = with pkgs; [
     jetbrains-mono
@@ -42,11 +57,17 @@
     noto-fonts-cjk-serif
   ];
 
+  # =============================================================================
+  # LOCATION / NIGHT LIGHT
+  # =============================================================================
   # Redshift (sunsetted; Noctalia provides night light)
   services.redshift.enable = false;
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
 
+  # =============================================================================
+  # BASE PACKAGES
+  # =============================================================================
   # Always installed packages
   environment.systemPackages = with pkgs; [
     # Editors

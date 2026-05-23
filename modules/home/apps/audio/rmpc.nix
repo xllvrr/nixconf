@@ -3,15 +3,20 @@
   pkgsUnstable,
   ...
 }: {
-  # cava
+  # =============================================================================
+  # CAVA
+  # =============================================================================
   programs.cava = {
     enable = true;
   };
 
-  # rmpc
+  # =============================================================================
+  # RMPC
+  # =============================================================================
   programs.rmpc = {
     enable = true;
-    package = pkgsUnstable.rmpc; # you already set this
+    # Pull rmpc from nixpkgs-unstable while keeping the rest of the system stable.
+    package = pkgsUnstable.rmpc;
     config = ''
       #![enable(implicit_some)]
       #![enable(unwrap_newtypes)]
@@ -101,5 +106,8 @@
     '';
   };
 
+  # =============================================================================
+  # THEME FILES
+  # =============================================================================
   xdg.configFile."rmpc/themes/rmpc_theme.ron".source = ./rmpc_theme.ron;
 }

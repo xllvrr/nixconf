@@ -11,7 +11,11 @@
   };
 
   config = lib.mkIf config.waybar.enable {
+    # =============================================================================
+    # WAYBAR CONFIG (JSON)
+    # =============================================================================
     xdg.configFile = let
+      # Icons for sway workspaces (numeric workspace -> glyph).
       swayWorkspaceIcons = {
         "1" = "";
         "2" = "󰈹";
@@ -24,6 +28,7 @@
         "9" = "";
       };
 
+      # Shared bar configuration used for both sway and niri variants.
       baseBar = {
         layer = "bottom";
         position = "top";
@@ -59,6 +64,7 @@
         };
       };
 
+      # Sway-specific modules
       swayBar =
         baseBar
         // {
@@ -72,6 +78,7 @@
           };
         };
 
+      # Niri-specific modules
       niriBar =
         baseBar
         // {
@@ -89,6 +96,9 @@
       "waybar/config-niri".text = builtins.toJSON [niriBar];
     };
 
+    # =============================================================================
+    # WAYBAR THEME (CSS)
+    # =============================================================================
     programs.waybar = {
       enable = true;
       style = with config.lib.stylix.colors.withHashtag;

@@ -4,6 +4,9 @@
   lib,
   ...
 }: let
+  # =============================================================================
+  # GLOBALS
+  # =============================================================================
   mod = "Mod4";
 
   primaryscreen = "DP-1";
@@ -16,7 +19,9 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      ## Hardware
+      # =============================================================================
+      # HARDWARE (OUTPUTS / INPUTS)
+      # =============================================================================
       output = {
         DP-1 = {
           mode = "1920x1080";
@@ -35,9 +40,12 @@ in {
         };
       };
 
-      ## Keybinds
+      # =============================================================================
+      # KEYBINDS
+      # =============================================================================
       modifier = mod;
       keybindings = lib.attrsets.mergeAttrsList [
+        # Workspace switching / moving (1..10)
         (lib.attrsets.mergeAttrsList (map (num: let
           ws = toString num;
         in {
@@ -45,6 +53,7 @@ in {
           "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
         }) [1 2 3 4 5 6 7 8 9 0]))
 
+        # Vim-like focus/move, plus moving workspaces across outputs
         (lib.attrsets.concatMapAttrs (key: direction: {
             "${mod}+${key}" = "focus ${direction}";
             "${mod}+Ctrl+${key}" = "move ${direction}";
@@ -56,6 +65,7 @@ in {
             l = "right";
           })
 
+        # Everything else
         {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
           "Alt+space" = "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
@@ -88,7 +98,9 @@ in {
       ];
       focus.followMouse = true;
 
-      ## Startup
+      # =============================================================================
+      # STARTUP
+      # =============================================================================
       startup = [
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
         {command = "env QT_IM_MODULE= noctalia-shell";}
@@ -104,7 +116,9 @@ in {
       ];
       workspaceAutoBackAndForth = true;
 
-      ## Window Rules
+      # =============================================================================
+      # WINDOW RULES
+      # =============================================================================
       floating = {
         titlebar = false;
         border = 3;
@@ -154,13 +168,17 @@ in {
         titlebar = false;
       };
 
-      ## Aesthetics
+      # =============================================================================
+      # AESTHETICS
+      # =============================================================================
       gaps = {
         inner = 5;
         outer = 10;
       };
 
-      ## Bars
+      # =============================================================================
+      # BARS (WAYBAR HANDLED SEPARATELY)
+      # =============================================================================
       bars = [];
     };
     systemd.enable = true;

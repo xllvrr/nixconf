@@ -10,6 +10,9 @@
   lib,
   ...
 }: let
+  # =============================================================================
+  # MODULE PATHS / HELPERS
+  # =============================================================================
   nixos-modules = repoRoot + "/modules/nixos";
   fcitx5Addons = with pkgs; [
     fcitx5-gtk
@@ -19,6 +22,9 @@
     rime-data
   ];
 in {
+  # =============================================================================
+  # IMPORTS
+  # =============================================================================
   imports = [
     ./hardware.nix # Import hardware for host
     (nixos-modules + "/common.nix") # Shared system defaults
@@ -33,13 +39,18 @@ in {
     (nixos-modules + "/wm/niri.nix") # Niri session (selectable in greetd)
   ];
 
-  ## OS ##
+  # =============================================================================
+  # OS / BOOT
+  # =============================================================================
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = ["amdgpu"];
 
+  # =============================================================================
+  # NETWORKING / LOCALE
+  # =============================================================================
   networking.hostName = "NixDesktop"; # Define your hostname.
   networking.networkmanager.enable = true;
 
@@ -61,6 +72,9 @@ in {
     LC_TIME = "en_SG.UTF-8";
   };
 
+  # =============================================================================
+  # INPUT METHODS (FCITX)
+  # =============================================================================
   # Languages (Fcitx)
   i18n.inputMethod = {
     type = "fcitx5";
@@ -75,12 +89,17 @@ in {
     "${pkgsUnstable.qt6Packages.fcitx5-qt}/${pkgsUnstable.qt6.qtbase.qtPluginPrefix}"
   ];
 
-  ## Software ##
+  # =============================================================================
+  # NIX SETTINGS
+  # =============================================================================
   # Enable cache and trusted users
   nix.settings = {
     trusted-users = ["root" "xllvr"];
   };
 
+  # =============================================================================
+  # DISPLAY / COMPAT
+  # =============================================================================
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -92,7 +111,9 @@ in {
     ];
   };
 
-  ## Services ##
+  # =============================================================================
+  # SERVICES
+  # =============================================================================
 
   # Enable SSH
   services.openssh.enable = true;
@@ -107,7 +128,9 @@ in {
   # Enable polkit
   security.polkit.enable = true;
 
-  ## User Settings ##
+  # =============================================================================
+  # USERS / SHELLS
+  # =============================================================================
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.xllvr = {
@@ -121,7 +144,9 @@ in {
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
-  ## Packages ##
+  # =============================================================================
+  # PACKAGES
+  # =============================================================================
 
   # Host-specific packages
   environment.systemPackages = with pkgs; [
@@ -136,6 +161,9 @@ in {
     pkgsUnstable.qt6Packages.fcitx5-qt
   ];
 
+  # =============================================================================
+  # SESSION ENV
+  # =============================================================================
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     # GTK_IM_MODULE = "fcitx";
@@ -145,6 +173,8 @@ in {
     MOZ_ENABLE_WAYLAND = "1";
   };
 
-  # System version
+  # =============================================================================
+  # STATE VERSION
+  # =============================================================================
   system.stateVersion = "25.11";
 }

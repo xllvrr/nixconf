@@ -1,8 +1,12 @@
+// =============================================================================
+// INPUT
+// =============================================================================
 input {
     // Allow focus-follows-mouse to scroll a bit to fully reveal the hovered window,
     // but refuse large scrolls so tiny off-screen slivers don’t steal focus.
     focus-follows-mouse max-scroll-amount="20%"
 
+    // Trackball tuning (Kensington Expert etc.)
     trackball {
         scroll-method "on-button-down"
         scroll-button 277
@@ -10,15 +14,9 @@ input {
     }
 }
 
-gestures {
-    hot-corners {
-        off
-    }
-}
-
-// Ask clients to omit client-side decorations (titlebars/borders) where possible.
-prefer-no-csd
-
+// =============================================================================
+// OUTPUTS (MONITORS)
+// =============================================================================
 output "DP-1" {
     mode "1920x1080"
     position x=0 y=0
@@ -29,6 +27,10 @@ output "HDMI-A-1" {
     position x=1920 y=0
 }
 
+// =============================================================================
+// WORKSPACES
+// =============================================================================
+// Named workspaces and which monitor they should open on.
 workspace "music" {
     open-on-output "HDMI-A-1"
 }
@@ -45,6 +47,31 @@ workspace "browser" {
     open-on-output "DP-1"
 }
 
+// =============================================================================
+// GESTURES
+// =============================================================================
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// =============================================================================
+// CLIENT / COMPOSITOR PREFERENCES
+// =============================================================================
+// Ask clients to omit client-side decorations (titlebars/borders) where possible.
+prefer-no-csd
+
+// =============================================================================
+// DEBUG / QUIRKS
+// =============================================================================
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// =============================================================================
+// LAYOUT / THEME
+// =============================================================================
 layout {
     // Spacing between windows (and around the workspace edge).
     gaps 16
@@ -65,6 +92,9 @@ layout {
     always-center-single-column
 }
 
+// =============================================================================
+// WINDOW RULES
+// =============================================================================
 // Rounded window corners (and rounded borders).
 window-rule {
     geometry-corner-radius 12
@@ -76,6 +106,9 @@ window-rule {
     open-maximized true
 }
 
+// -----------------------------------------------------------------------------
+// APP-SPECIFIC BEHAVIOR
+// -----------------------------------------------------------------------------
 // Steam and Steam-launched games should land on the "gaming" workspace.
 window-rule {
     match app-id=r#"^(steam|Steam|steam_app_\d+)$"#
@@ -115,6 +148,9 @@ window-rule {
     open-maximized false
 }
 
+// =============================================================================
+// AUTOSTART
+// =============================================================================
 spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
 // Noctalia (Qt6) can clash with fcitx5-qt (segfault / inputcontext issues).
@@ -129,26 +165,36 @@ spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"
 spawn-sh-at-startup "safeeyes"
 spawn-sh-at-startup "nicotine-plus"
 
+// =============================================================================
+// HOTKEY OVERLAY
+// =============================================================================
 hotkey-overlay {
     skip-at-startup
     hide-not-bound
 }
 
+// =============================================================================
+// KEYBINDS
+// =============================================================================
 binds {
+    // -- Launchers / UX --------------------------------------------------------
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
     Alt+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle || fuzzel"; }
     Mod+O hotkey-overlay-title="Overview" { toggle-overview; }
 
+    // -- Window actions --------------------------------------------------------
     Mod+C repeat=false hotkey-overlay-title="Close window" { close-window; }
     Mod+F repeat=false hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
     Mod+Z repeat=false hotkey-overlay-title="Toggle floating" { toggle-window-floating; }
     Mod+Shift+Z repeat=false hotkey-overlay-title="Move to tiling" { move-window-to-tiling; }
 
+    // -- Focus movement --------------------------------------------------------
     Mod+H hotkey-overlay-title="Focus left" { focus-column-left; }
     Mod+J hotkey-overlay-title="Focus down" { focus-window-down; }
     Mod+K hotkey-overlay-title="Focus up" { focus-window-up; }
     Mod+L hotkey-overlay-title="Focus right" { focus-column-right; }
 
+    // -- Reorder / move windows ------------------------------------------------
     Mod+Ctrl+H hotkey-overlay-title="Swap left" { swap-window-left; }
     Mod+Ctrl+L hotkey-overlay-title="Swap right" { swap-window-right; }
     Mod+Ctrl+J hotkey-overlay-title="Move down" { move-window-down; }
@@ -156,12 +202,14 @@ binds {
     Mod+Ctrl+Shift+H hotkey-overlay-title="Move column left" { move-column-left; }
     Mod+Ctrl+Shift+L hotkey-overlay-title="Move column right" { move-column-right; }
 
+    // -- Resize ---------------------------------------------------------------
     Mod+Minus hotkey-overlay-title="Decrease column width" { set-column-width "-10%"; }
     Mod+Equal hotkey-overlay-title="Increase column width" { set-column-width "+10%"; }
     Mod+Shift+Minus hotkey-overlay-title="Decrease window height" { set-window-height "-10%"; }
     Mod+Shift+Equal hotkey-overlay-title="Increase window height" { set-window-height "+10%"; }
     Mod+BackSpace hotkey-overlay-title="Reset window height" { reset-window-height; }
 
+    // -- Column operations -----------------------------------------------------
     Mod+Alt+H repeat=false hotkey-overlay-title="Toggle merge left" { consume-or-expel-window-left; }
     Mod+Alt+L repeat=false hotkey-overlay-title="Toggle merge right" { consume-or-expel-window-right; }
 
@@ -173,6 +221,7 @@ binds {
     Mod+Shift+F hotkey-overlay-title="Maximize column" { maximize-column; }
     Mod+Shift+E hotkey-overlay-title="Expand column width" { expand-column-to-available-width; }
 
+    // -- Workspaces / monitors -------------------------------------------------
     Mod+Shift+H hotkey-overlay-title="Move workspace to monitor left" { move-workspace-to-monitor-left; }
     Mod+Shift+J hotkey-overlay-title="Move workspace to monitor down" { move-workspace-to-monitor-down; }
     Mod+Shift+K hotkey-overlay-title="Move workspace to monitor up" { move-workspace-to-monitor-up; }
@@ -203,12 +252,15 @@ binds {
     Mod+Shift+9 hotkey-overlay-title="Move to workspace 9" { move-window-to-workspace 9; }
     Mod+Shift+0 hotkey-overlay-title="Move to workspace 10" { move-window-to-workspace 10; }
 
+    // -- Floating --------------------------------------------------------------
     Mod+M hotkey-overlay-title="Move to floating" { move-window-to-floating; }
     Mod+Shift+M hotkey-overlay-title="Focus floating" { focus-floating; }
 
+    // -- Session ---------------------------------------------------------------
     Mod+Shift+R hotkey-overlay-title="Reload config" { spawn-sh "niri msg action load-config-file"; }
     Mod+Ctrl+Q repeat=false hotkey-overlay-title="Quit niri" { quit; }
 
+    // -- Utilities -------------------------------------------------------------
     Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn-sh "noctalia-shell ipc call launcher clipboard || fuzzclip"; }
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "fuzzshot"; }
 

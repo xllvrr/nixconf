@@ -1,4 +1,7 @@
 {pkgs, ...}: let
+  # =============================================================================
+  # CLI HELPERS (SHELL SCRIPTS)
+  # =============================================================================
   fuzzclip = pkgs.writeShellApplication {
     name = "fuzzclip";
     runtimeInputs = [pkgs.cliphist pkgs.fuzzel pkgs.wl-clipboard];
@@ -7,6 +10,9 @@
     '';
   };
 
+  # -----------------------------------------------------------------------------
+  # Screenshots
+  # -----------------------------------------------------------------------------
   fuzzshot = pkgs.writeShellApplication {
     name = "fuzzshot";
     runtimeInputs = [
@@ -34,6 +40,9 @@
     '';
   };
 
+  # -----------------------------------------------------------------------------
+  # WiFi picker (nmcli + fuzzel)
+  # -----------------------------------------------------------------------------
   fuzzwifi = pkgs.writeShellApplication {
     name = "fuzzwifi";
     runtimeInputs = [pkgs.networkmanager pkgs.fuzzel pkgs.libnotify];
@@ -67,6 +76,9 @@
     '';
   };
 
+  # -----------------------------------------------------------------------------
+  # Simple "toggle record" audio recorder
+  # -----------------------------------------------------------------------------
   record-audio = pkgs.writeShellApplication {
     name = "record-audio";
     runtimeInputs = [
@@ -88,6 +100,9 @@
     '';
   };
 
+  # -----------------------------------------------------------------------------
+  # Tmux sessions
+  # -----------------------------------------------------------------------------
   tmux-music = pkgs.writeShellApplication {
     name = "tmux-music";
     runtimeInputs = [
@@ -112,6 +127,9 @@
     '';
   };
 in {
+  # =============================================================================
+  # EXPORTED PACKAGES
+  # =============================================================================
   home.packages = [
     fuzzclip
     fuzzshot
