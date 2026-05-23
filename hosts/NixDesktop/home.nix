@@ -15,7 +15,7 @@ in {
     (home-modules + "/apps/os/noctalia.nix")
     (home-modules + "/scripts.nix")
     (home-modules + "/suites/defaults.nix") # Base/default apps + shell tooling
-    (home-modules + "/apps/browser/firefox.nix")
+    (home-modules + "/apps/browser/chromium.nix")
     (home-modules + "/apps/terminal/kitty.nix")
     (home-modules + "/apps/programming/vscode.nix")
     (home-modules + "/suites/ai.nix")
