@@ -1,6 +1,5 @@
 {
   inputs,
-  configRoot,
   ...
 }: {
   imports = [
@@ -13,6 +12,6 @@
 
   programs.noctalia-shell = {
     enable = true;
-    settings = (builtins.fromJSON (builtins.readFile (configRoot + "/noctalia/settings.json"))).settings;
+    settings = (builtins.fromJSON (builtins.readFile ../../../../configs/noctalia/settings.json)).settings;
   };
 }

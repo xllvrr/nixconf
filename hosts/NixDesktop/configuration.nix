@@ -6,14 +6,9 @@
   config,
   pkgs,
   pkgsUnstable,
-  repoRoot,
   lib,
   ...
 }: let
-  # =============================================================================
-  # MODULE PATHS / HELPERS
-  # =============================================================================
-  nixos-modules = repoRoot + "/modules/nixos";
   fcitx5Addons = with pkgs; [
     fcitx5-gtk
     kdePackages.fcitx5-configtool
@@ -27,16 +22,16 @@ in {
   # =============================================================================
   imports = [
     ./hardware.nix # Import hardware for host
-    (nixos-modules + "/common.nix") # Shared system defaults
-    (nixos-modules + "/apps/chromium.nix") # Chromium/Chrome policies
-    (nixos-modules + "/theme/stylix.nix") # Import stylix
-    (nixos-modules + "/suites/gaming.nix") # Import gaming suite
-    (nixos-modules + "/services/greetd.nix") # Import greeter
-    (nixos-modules + "/services/ollama.nix") # Ollama daemon
-    (nixos-modules + "/services/nicotine.nix") # Nicotine+ + firewall
-    (nixos-modules + "/thunar.nix") # Thunar + GVFS/Tumbler helpers
-    (nixos-modules + "/wm/sway.nix") # Sway session (selectable in greetd)
-    (nixos-modules + "/wm/niri.nix") # Niri session (selectable in greetd)
+    ../../modules/nixos/common.nix # Shared system defaults
+    ../../modules/nixos/apps/chromium.nix # Chromium/Chrome policies
+    ../../modules/nixos/theme/stylix.nix # Import stylix
+    ../../modules/nixos/suites/gaming.nix # Import gaming suite
+    ../../modules/nixos/services/greetd.nix # Import greeter
+    ../../modules/nixos/services/ollama.nix # Ollama daemon
+    ../../modules/nixos/services/nicotine.nix # Nicotine+ + firewall
+    ../../modules/nixos/thunar.nix # Thunar + GVFS/Tumbler helpers
+    ../../modules/nixos/wm/sway.nix # Sway session (selectable in greetd)
+    ../../modules/nixos/wm/niri.nix # Niri session (selectable in greetd)
   ];
 
   # =============================================================================
@@ -166,8 +161,7 @@ in {
   # =============================================================================
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    # GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
+    QT_IM_MODULES = "wayland;fcitx";
     SDL_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     MOZ_ENABLE_WAYLAND = "1";

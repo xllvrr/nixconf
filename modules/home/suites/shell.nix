@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ../apps/shell/zsh.nix
     ../apps/shell/fish.nix
     ../apps/shell/codex.nix
     ../apps/shell/yazi.nix

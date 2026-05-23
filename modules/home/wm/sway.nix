@@ -103,7 +103,9 @@ in {
       # =============================================================================
       startup = [
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
-        {command = "env QT_IM_MODULE= noctalia-shell";}
+        # If Noctalia crashes (known interaction with fcitx), reintroduce a per-app override:
+        # {command = "env QT_IM_MODULE= QT_IM_MODULES=wayland noctalia-shell";}
+        {command = "noctalia-shell";}
         {command = "syncthing";}
         {command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music";}
         {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}

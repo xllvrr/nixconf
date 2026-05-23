@@ -54,8 +54,6 @@
 
     pkgs = mkPkgs nixpkgs;
     pkgsUnstable = mkPkgs nixpkgs-unstable;
-    repoRoot = self.outPath;
-    configRoot = repoRoot + "/configs";
 
     customNvim = nvf.lib.neovimConfiguration {
       inherit pkgs;
@@ -66,9 +64,7 @@
 
     nixosConfigurations.NixDesktop = nixpkgs.lib.nixosSystem {
       pkgs = pkgs;
-      specialArgs = {
-        inherit inputs pkgsUnstable repoRoot configRoot;
-      };
+      specialArgs = {inherit inputs pkgsUnstable;};
       modules = [
         ./hosts/NixDesktop/configuration.nix
         stylix.nixosModules.stylix
@@ -81,9 +77,7 @@
         {
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-bak";
-          home-manager.extraSpecialArgs = {
-            inherit inputs pkgsUnstable repoRoot configRoot;
-          };
+          home-manager.extraSpecialArgs = {inherit inputs pkgsUnstable;};
           home-manager.users.xllvr = import ./hosts/NixDesktop/home.nix;
         }
       ];

@@ -3,7 +3,7 @@
 // =============================================================================
 input {
     // Allow focus-follows-mouse to scroll a bit to fully reveal the hovered window,
-    // but refuse large scrolls so tiny off-screen slivers don’t steal focus.
+    // but refuse large scrolls so tiny off-screen slivers don't steal focus.
     focus-follows-mouse max-scroll-amount="20%"
 
     // Trackball tuning (Kensington Expert etc.)
@@ -153,9 +153,7 @@ window-rule {
 // =============================================================================
 spawn-sh-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
-// Noctalia (Qt6) can clash with fcitx5-qt (segfault / inputcontext issues).
-// Keep fcitx enabled globally, but start Noctalia with QT_IM_MODULE unset.
-spawn-sh-at-startup "env QT_IM_MODULE= noctalia-shell"
+spawn-sh-at-startup "noctalia-shell"
 spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
 spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"

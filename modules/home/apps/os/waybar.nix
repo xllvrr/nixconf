@@ -3,7 +3,6 @@
   inputs,
   lib,
   config,
-  configRoot,
   ...
 }: {
   options = {
@@ -109,7 +108,7 @@
           @define-color base08 ${base08}; @define-color base09 ${base09}; @define-color base0A ${base0A}; @define-color base0B ${base0B};
           @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
         ''
-        + builtins.readFile (configRoot + "/waybar/style.css");
+        + builtins.readFile ../../../../configs/waybar/style.css;
     };
   };
 }

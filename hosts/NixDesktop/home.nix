@@ -1,30 +1,24 @@
 {
   config,
   pkgs,
-  repoRoot,
-  configRoot,
   lib,
   ...
-}: let
-  home-modules = repoRoot + "/modules/home";
-in {
+}: {
   # =============================================================================
   # IMPORTS
   # =============================================================================
   imports = [
-    (home-modules + "/wm/sway.nix")
-    (home-modules + "/wm/niri.nix")
-    (home-modules + "/apps/os/waybar.nix")
-    (home-modules + "/apps/os/noctalia.nix")
-    (home-modules + "/scripts.nix")
-    (home-modules + "/suites/defaults.nix") # Base/default apps + shell tooling
-    (home-modules + "/apps/browser/chromium.nix")
-    (home-modules + "/apps/terminal/kitty.nix")
-    (home-modules + "/apps/programming/vscode.nix")
-    (home-modules + "/suites/ai.nix")
-    (home-modules + "/suites/audio.nix")
-    # Noctalia provides notifications; sunset mako.
-    # (home-modules + "/services/mako.nix")
+    ../../modules/home/wm/sway.nix
+    ../../modules/home/wm/niri.nix
+    ../../modules/home/apps/os/waybar.nix
+    ../../modules/home/apps/os/noctalia.nix
+    ../../modules/home/apps/browser/chromium.nix
+    ../../modules/home/apps/terminal/kitty.nix
+    ../../modules/home/apps/programming/vscode.nix
+    ../../modules/home/scripts.nix
+    ../../modules/home/suites/defaults.nix
+    ../../modules/home/suites/ai.nix
+    ../../modules/home/suites/audio.nix
   ];
 
   # =============================================================================
@@ -79,12 +73,6 @@ in {
     TERMINAL = "kitty";
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
     FLAKE = "/home/xllvr/nixos";
-    # Noctalia warned about these being set; try letting NixOS manage IM vars via
-    # `i18n.inputMethod` instead of hardcoding them in the HM session.
-    # GTK_IM_MODULE = "fcitx";
-    # QT_IM_MODULE = "fcitx";
-    # SDL_IM_MODULE = "fcitx";
-    # XMODIFIERS = "@im=fcitx";
     NNN_FIFO = "/tmp/nnn.fifo";
   };
 
