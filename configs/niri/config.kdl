@@ -31,19 +31,23 @@ output "HDMI-A-1" {
 // WORKSPACES
 // =============================================================================
 // Named workspaces and which monitor they should open on.
-workspace "music" {
-    open-on-output "HDMI-A-1"
-}
-
 workspace "code" {
     open-on-output "HDMI-A-1"
 }
 
-workspace "gaming" {
-    open-on-output "DP-1"
+workspace "music" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "vibing" {
+    open-on-output "HDMI-A-1"
 }
 
 workspace "browser" {
+    open-on-output "DP-1"
+}
+
+workspace "gaming" {
     open-on-output "DP-1"
 }
 

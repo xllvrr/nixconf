@@ -651,6 +651,44 @@
               "y": 887
             }
           ]
+        },
+        {
+          "name": "HDMI-A-1",
+          "widgets": [
+            {
+              "clockColor": "primary",
+              "clockStyle": "minimal",
+              "customFont": "",
+              "format": "HH:mm",
+              "id": "Clock",
+              "roundedCorners": true,
+              "scale": 2.1407621118361098,
+              "showBackground": false,
+              "useCustomFont": false,
+              "x": 735,
+              "y": 731
+            },
+            {
+              "colorName": "primary",
+              "height": 72,
+              "hideWhenIdle": false,
+              "id": "AudioVisualizer",
+              "roundedCorners": true,
+              "scale": 1.3180139091430123,
+              "showBackground": false,
+              "visualizerType": "linear",
+              "width": 320,
+              "x": 605,
+              "y": 136
+            },
+            {
+              "id": "Weather",
+              "roundedCorners": true,
+              "showBackground": false,
+              "x": 699,
+              "y": 822
+            }
+          ]
         }
       ]
     }
@@ -662,8 +700,8 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "DP-1": "/nix/store/p68a6ldyqmjsvp1z95m2lqwl0nrskkyc-Wallpaper.png",
-      "HDMI-A-1": "/nix/store/p68a6ldyqmjsvp1z95m2lqwl0nrskkyc-Wallpaper.png"
+      "DP-1": "/nix/store/yvah5jzmb7sdqqagwszpzfbyp7sk2fh2-noctalia-shell-2026-05-22_fddc9cd/share/noctalia-shell/Assets/Wallpaper/noctalia.png",
+      "HDMI-A-1": "/nix/store/yvah5jzmb7sdqqagwszpzfbyp7sk2fh2-noctalia-shell-2026-05-22_fddc9cd/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -699,7 +737,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 0
+      "lastSeenTs": 1779522121000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.8"
