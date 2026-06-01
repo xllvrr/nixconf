@@ -32,7 +32,7 @@
     prismlauncher
 
     # Emulators
-    melonDS
+    melonds
     mgba
   ];
 }

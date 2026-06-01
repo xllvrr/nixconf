@@ -51,6 +51,10 @@ workspace "gaming" {
     open-on-output "DP-1"
 }
 
+workspace "Notes" {
+    open-on-output "DP-1"
+}
+
 // =============================================================================
 // GESTURES
 // =============================================================================
@@ -142,6 +146,11 @@ window-rule {
 }
 
 window-rule {
+    match at-startup=true app-id=r#"^(obsidian|md\.obsidian\.Obsidian)$"#
+    open-on-workspace "Notes"
+}
+
+window-rule {
     match at-startup=true app-id=r#"^(org\.nicotine_plus\.Nicotine|nicotine-plus|nicotine)$"#
     open-on-workspace "music"
 }
@@ -152,11 +161,17 @@ window-rule {
     open-maximized false
 }
 
+window-rule {
+    match app-id=r#"^thunar$"#
+    open-floating true
+    open-maximized false
+}
+
 // =============================================================================
 // AUTOSTART
 // =============================================================================
-spawn-sh-at-startup "swww-daemon"
-spawn-sh-at-startup "swww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
+spawn-sh-at-startup "awww-daemon"
+spawn-sh-at-startup "awww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
 spawn-sh-at-startup "noctalia-shell"
 spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
@@ -166,6 +181,7 @@ spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "ssh-add $HOME/.ssh/github_key"
 spawn-sh-at-startup "safeeyes"
 spawn-sh-at-startup "nicotine-plus"
+spawn-at-startup "obsidian"
 
 // =============================================================================
 // HOTKEY OVERLAY

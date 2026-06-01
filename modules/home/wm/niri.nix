@@ -21,7 +21,7 @@ in {
     cliphist
     nicotine-plus
     openssh
-    swww
+    awww
     wl-clipboard
   ];
 }

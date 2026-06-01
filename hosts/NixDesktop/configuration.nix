@@ -146,7 +146,7 @@ in {
   # Host-specific packages
   environment.systemPackages = with pkgs; [
     qbittorrent-enhanced
-    libreoffice-fresh
+    onlyoffice-desktopeditors
     eyedropper
     gimp3
     audacity
@@ -170,5 +170,5 @@ in {
   # =============================================================================
   # STATE VERSION
   # =============================================================================
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
