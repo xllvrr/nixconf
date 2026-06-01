@@ -78,10 +78,9 @@ in {
     fcitx5.addons = fcitx5Addons;
   };
 
-  # Keep the Qt inputcontext plugin ABI aligned with Noctalia (nixpkgs-unstable / Qt 6.11),
-  # without mixing unstable GTK/GLib into the stable GTK immodule cache build.
+  # Keep the Qt inputcontext plugin available for Qt apps (fcitx5-qt).
   environment.variables.QT_PLUGIN_PATH = lib.mkAfter [
-    "${pkgsUnstable.qt6Packages.fcitx5-qt}/${pkgsUnstable.qt6.qtbase.qtPluginPrefix}"
+    "${pkgs.qt6Packages.fcitx5-qt}/${pkgs.qt6.qtbase.qtPluginPrefix}"
   ];
 
   # =============================================================================
@@ -152,8 +151,8 @@ in {
     audacity
     picard
     file-roller
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    pkgsUnstable.qt6Packages.fcitx5-qt
+    noctalia-shell
+    qt6Packages.fcitx5-qt
   ];
 
   # =============================================================================
