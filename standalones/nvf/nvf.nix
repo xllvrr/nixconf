@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   vim = {
     # =============================================================================
     # THEME / UI
@@ -97,7 +98,10 @@
       enableTreesitter = true;
       enableFormat = true;
 
-      nix.enable = true;
+      nix = {
+        enable = true;
+        format.type = [ "nixfmt" ];
+      };
       r.enable = true;
       python.enable = true;
       lua.enable = true;
