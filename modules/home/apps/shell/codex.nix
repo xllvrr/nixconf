@@ -9,7 +9,7 @@
     enable = true;
 
     settings = {
-      model = "gpt-5.2";
+      model = "gpt-5.5";
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
       sandbox_workspace_write.network_access = true;

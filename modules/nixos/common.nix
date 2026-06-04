@@ -2,12 +2,16 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   # =============================================================================
   # NIX
   # =============================================================================
   # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Prefer flake registry over legacy NIX_PATH
   nix.registry = {
@@ -111,6 +115,7 @@
 
     # Nix Tools
     home-manager
+    nixfmt
     nix-output-monitor
     nvd
     hydra-check
