@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   # =============================================================================
   # IMPORTS
   # =============================================================================
@@ -13,6 +14,7 @@
     ../../modules/home/apps/os/waybar.nix
     ../../modules/home/apps/os/noctalia.nix
     ../../modules/home/apps/browser/chromium.nix
+    ../../modules/home/apps/office/onlyoffice.nix
     ../../modules/home/apps/terminal/kitty.nix
     ../../modules/home/apps/programming/vscode.nix
     ../../modules/home/scripts.nix

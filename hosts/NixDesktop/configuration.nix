@@ -8,7 +8,8 @@
   pkgsUnstable,
   lib,
   ...
-}: let
+}:
+let
   fcitx5Addons = with pkgs; [
     fcitx5-gtk
     kdePackages.fcitx5-configtool
@@ -16,7 +17,8 @@
     fcitx5-rime
     rime-data
   ];
-in {
+in
+{
   # =============================================================================
   # IMPORTS
   # =============================================================================
@@ -41,7 +43,7 @@ in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # =============================================================================
   # NETWORKING / LOCALE
@@ -88,7 +90,10 @@ in {
   # =============================================================================
   # Enable cache and trusted users
   nix.settings = {
-    trusted-users = ["root" "xllvr"];
+    trusted-users = [
+      "root"
+      "xllvr"
+    ];
   };
 
   # =============================================================================
@@ -130,7 +135,10 @@ in {
   users.users.xllvr = {
     isNormalUser = true;
     description = "Xllvr";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 
@@ -145,7 +153,6 @@ in {
   # Host-specific packages
   environment.systemPackages = with pkgs; [
     qbittorrent-enhanced
-    onlyoffice-desktopeditors
     eyedropper
     gimp3
     audacity
