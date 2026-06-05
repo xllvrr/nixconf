@@ -1,8 +1,8 @@
 {
   pkgs,
-  pkgsUnstable,
   ...
-}: {
+}:
+{
   # mpv settings
   programs.mpv = {
     enable = true;

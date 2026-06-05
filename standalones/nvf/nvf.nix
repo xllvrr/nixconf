@@ -143,6 +143,36 @@
       })
     '';
 
+    luaConfigRC.nix_repo_root_gf = ''
+      local function nix_repo_root_gf()
+        local line = vim.api.nvim_get_current_line()
+        local rel = line:match('repoRoot%s*%+%s*"([^"]+)"')
+
+        if rel then
+          local root = vim.fs.root(0, { ".git", "flake.nix" }) or vim.fn.getcwd()
+          local path = vim.fs.normalize(root .. "/" .. rel:gsub("^/", ""))
+
+          if vim.uv.fs_stat(path) then
+            vim.cmd.edit(vim.fn.fnameescape(path))
+            return
+          end
+        end
+
+        vim.cmd.normal({ "gf", bang = true })
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "nix",
+        callback = function(args)
+          vim.keymap.set("n", "gf", nix_repo_root_gf, {
+            buffer = args.buf,
+            silent = true,
+            desc = "Go to Nix repoRoot path or file under cursor",
+          })
+        end,
+      })
+    '';
+
     # Formatting
     formatter.conform-nvim = {
       enable = true;

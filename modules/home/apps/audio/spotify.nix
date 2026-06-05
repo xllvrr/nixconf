@@ -1,8 +1,5 @@
+{ ... }:
 {
-  pkgs,
-  pkgsUnstable,
-  ...
-}: {
   # Spotify
   programs.spotify-player = {
     enable = true;

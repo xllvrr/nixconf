@@ -1,13 +1,6 @@
+{ pkgs, ... }:
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-{
-  # =============================================================================
-  # IMPORTS
-  # =============================================================================
+  # Host-specific Home Manager modules.
   imports = [
     ../../modules/home/wm/sway.nix
     ../../modules/home/wm/niri.nix
@@ -19,18 +12,11 @@
     ../../modules/home/apps/programming/vscode.nix
     ../../modules/home/scripts.nix
     ../../modules/home/suites/defaults.nix
-    ../../modules/home/suites/ai.nix
     ../../modules/home/suites/audio.nix
   ];
 
-  # =============================================================================
-  # FEATURE FLAGS
-  # =============================================================================
-  waybar.enable = false;
+  xllvr.desktop.waybar.enable = false;
 
-  # =============================================================================
-  # HOME MANAGER
-  # =============================================================================
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -47,12 +33,6 @@
 
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
-  # =============================================================================
-  # PACKAGES
-  # =============================================================================
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  # And allow for unfree packages within
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # Screenshots
@@ -65,11 +45,6 @@
     mpc
   ];
 
-  # =============================================================================
-  # SESSION / ENV
-  # =============================================================================
-  # Home Manager can export variables for the session so that it's agnostic
-  # from the shell chosen
   home.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "kitty";
@@ -78,10 +53,6 @@
     NNN_FIFO = "/tmp/nnn.fifo";
   };
 
-  # =============================================================================
-  # SHELL
-  # =============================================================================
-  # In the same vein, home.shellAliases allows defining shell-agnostic aliases
   home.shellAliases = {
     # Applications
     v = "nvim";
@@ -93,10 +64,6 @@
     cd = "z";
   };
 
-  # =============================================================================
-  # XDG DIRECTORIES
-  # =============================================================================
-  # Manage XDG Directories
   xdg = {
     enable = true;
     userDirs = {
@@ -109,9 +76,6 @@
     };
   };
 
-  # =============================================================================
-  # MISC
-  # =============================================================================
   # Disable home manager defaulting to man-db
   programs.man.enable = false;
 

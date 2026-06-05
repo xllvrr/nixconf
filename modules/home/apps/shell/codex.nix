@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     nodejs
     mcp-nixos
@@ -10,6 +11,7 @@
 
     settings = {
       model = "gpt-5.5";
+      oss_provider = "ollama";
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
       sandbox_workspace_write.network_access = true;
@@ -17,7 +19,10 @@
       mcp_servers = {
         context7 = {
           command = "npx";
-          args = ["-y" "@upstash/context7-mcp"];
+          args = [
+            "-y"
+            "@upstash/context7-mcp"
+          ];
         };
 
         nixos = {

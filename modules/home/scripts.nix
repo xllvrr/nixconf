@@ -1,18 +1,19 @@
-{pkgs, ...}: let
-  # =============================================================================
-  # CLI HELPERS (SHELL SCRIPTS)
-  # =============================================================================
+{ pkgs, ... }:
+let
+  # Clipboard picker.
   fuzzclip = pkgs.writeShellApplication {
     name = "fuzzclip";
-    runtimeInputs = [pkgs.cliphist pkgs.fuzzel pkgs.wl-clipboard];
+    runtimeInputs = [
+      pkgs.cliphist
+      pkgs.fuzzel
+      pkgs.wl-clipboard
+    ];
     text = ''
       cliphist list | fuzzel -d -p 'Clipboard history below:' | cliphist decode | wl-copy
     '';
   };
 
-  # -----------------------------------------------------------------------------
-  # Screenshots
-  # -----------------------------------------------------------------------------
+  # Screenshot picker.
   fuzzshot = pkgs.writeShellApplication {
     name = "fuzzshot";
     runtimeInputs = [
@@ -40,12 +41,14 @@
     '';
   };
 
-  # -----------------------------------------------------------------------------
-  # WiFi picker (nmcli + fuzzel)
-  # -----------------------------------------------------------------------------
+  # WiFi picker (nmcli + fuzzel).
   fuzzwifi = pkgs.writeShellApplication {
     name = "fuzzwifi";
-    runtimeInputs = [pkgs.networkmanager pkgs.fuzzel pkgs.libnotify];
+    runtimeInputs = [
+      pkgs.networkmanager
+      pkgs.fuzzel
+      pkgs.libnotify
+    ];
     text = ''
       # Get list of available networks
       networks=$(nmcli -t -f SSID,SIGNAL,SECURITY device wifi list | grep -v '^:' | sort -t: -k2 -nr | awk -F: '{
@@ -76,9 +79,7 @@
     '';
   };
 
-  # -----------------------------------------------------------------------------
-  # Simple "toggle record" audio recorder
-  # -----------------------------------------------------------------------------
+  # Toggle audio recorder.
   record-audio = pkgs.writeShellApplication {
     name = "record-audio";
     runtimeInputs = [
@@ -100,9 +101,7 @@
     '';
   };
 
-  # -----------------------------------------------------------------------------
-  # Tmux sessions
-  # -----------------------------------------------------------------------------
+  # Tmux sessions.
   tmux-music = pkgs.writeShellApplication {
     name = "tmux-music";
     runtimeInputs = [
@@ -119,17 +118,15 @@
 
   tmux-nixconf = pkgs.writeShellApplication {
     name = "tmux-nixconf";
-    runtimeInputs = [pkgs.tmux];
+    runtimeInputs = [ pkgs.tmux ];
     text = ''
       tmux has-session -t nixconf 2>/dev/null || \
         tmux new-session -d -s nixconf -c "$HOME/nixconf"
       tmux attach -t nixconf
     '';
   };
-in {
-  # =============================================================================
-  # EXPORTED PACKAGES
-  # =============================================================================
+in
+{
   home.packages = [
     fuzzclip
     fuzzshot

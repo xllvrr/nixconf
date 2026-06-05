@@ -1,7 +1,9 @@
 {
   inputs,
+  repoRoot,
   ...
-}: {
+}:
+{
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -12,6 +14,7 @@
 
   programs.noctalia-shell = {
     enable = true;
-    settings = (builtins.fromJSON (builtins.readFile ../../../../configs/noctalia/settings.json)).settings;
+    settings =
+      (builtins.fromJSON (builtins.readFile (repoRoot + "/configs/noctalia/settings.json"))).settings;
   };
 }

@@ -1,18 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Fish
   programs.fish = {
     enable = true;
     preferAbbrs = true;
     functions = {
       batman = "man $argv | col -bx | bat -l man -p";
-      y = ''
-                   set tmp (mktemp -t "yazi-cwd.XXXXXX")
-                yazi $argv --cwd-file="$tmp"
-                if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        	builtin cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-      '';
     };
     shellAbbrs = {
       n = "nnn";
