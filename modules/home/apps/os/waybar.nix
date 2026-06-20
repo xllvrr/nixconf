@@ -55,17 +55,17 @@
             format-wifi = "{essid} ";
             format-ethernet = "{ifname} = {ipaddr}/{cidr} ";
             format-disconnected = "Disconnected ⚠";
-            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call network togglePanel || fuzzwifi'";
+            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia msg panel-toggle control-center network || fuzzwifi'";
           };
           pulseaudio = {
             format = " {volume}%";
             format-bluetooth = " {volume}%";
             format-muted = "";
-            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call volume togglePanel || kitty --detach --class floating pulsemixer'";
+            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia msg panel-toggle control-center audio || kitty --detach --class floating pulsemixer'";
           };
           bluetooth = {
             format = "";
-            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call bluetooth togglePanel || blueman-manager'";
+            on-click = "${pkgs.bash}/bin/bash -lc 'noctalia msg panel-toggle control-center bluetooth || blueman-manager'";
           };
         };
 

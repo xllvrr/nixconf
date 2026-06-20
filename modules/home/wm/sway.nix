@@ -94,7 +94,7 @@ in
         {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
           "Alt+space" =
-            "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
+            "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia msg panel-toggle launcher || fuzzel'";
 
           "${mod}+c" = "kill";
 
@@ -113,8 +113,7 @@ in
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
 
-          "${mod}+Alt+v" =
-            "exec ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher clipboard || fuzzclip'";
+          "${mod}+Alt+v" = "exec ${pkgs.bash}/bin/bash -lc 'noctalia msg panel-toggle clipboard || fuzzclip'";
           "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";

@@ -1,0 +1,438 @@
+[audio]
+enable_overdrive = false
+enable_sounds = false
+notification_sound = ""
+sound_volume = 0.5
+volume_change_sound = ""
+
+[backdrop]
+blur_intensity = 0.4
+enabled = true
+tint_intensity = 0.6
+
+[bar.main]
+auto_hide = false
+background_opacity = 1.0
+capsule = false
+capsule_fill = "surface"
+center = [ "workspaces" ]
+end = [ "tray", "volume", "bluetooth", "network", "notifications" ]
+margin_edge = 10
+margin_ends = 20
+padding = 15
+position = "top"
+radius = 32
+reserve_space = true
+scale = 1.1
+shadow = true
+start = [ "clock" ]
+thickness = 34
+widget_spacing = 8
+
+[brightness]
+enable_ddcutil = false
+minimum_brightness = 0.0
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "clipboard"
+
+[desktop_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000002",
+    "desktop-widget-0000000000000003",
+    "desktop-widget-0000000000000004",
+    "desktop-widget-0000000000000005",
+    "desktop-widget-0000000000000006",
+    "desktop-widget-0000000000000007"
+]
+
+    [desktop_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 144.0
+    box_width = 752.0
+    cx = 960.0
+    cy = 164.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = false
+        bands = 32
+        color_2 = "tertiary"
+        show_when_idle = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 840.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        background = false
+        color = "primary"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 960.0
+    cy = 920.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "weather"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
+        background = false
+        color = "primary"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000005]
+    box_height = 104.0
+    box_width = 208.0
+    cx = 824.0
+    cy = 813.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000005.settings]
+        background = false
+        background_color = "surface"
+        bands = 32
+        color = "primary"
+        show_when_idle = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000006]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 840.0
+    cy = 890.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "weather"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000006.settings]
+        background = false
+        color = "primary"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000007]
+    box_height = 104.0
+    box_width = 384.0
+    cx = 840.0
+    cy = 210.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000007.settings]
+        background = false
+        bands = 32
+        color = "primary"
+        color_2 = "tertiary"
+        show_when_idle = true
+
+[dock]
+active_monitor_only = true
+active_opacity = 1.0
+active_scale = 1.0
+auto_hide = true
+background_opacity = 1.0
+cross_axis_padding = 8
+enabled = true
+icon_size = 48
+inactive_opacity = 0.6
+inactive_scale = 0.85
+item_spacing = 6
+launcher_icon = "grid-dots"
+launcher_position = "none"
+magnification = true
+magnification_scale = 1.45
+main_axis_padding = 16
+margin_edge = 8
+margin_ends = 0
+pinned = []
+position = "bottom"
+radius = 16
+radius_bottom_left = 16
+radius_bottom_right = 16
+radius_top_left = 16
+radius_top_right = 16
+reserve_space = false
+shadow = true
+show_dots = false
+show_instance_count = true
+show_running = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "suspend" ]
+pre_action_fade_seconds = 5.0
+
+    [idle.behavior.lock]
+    action = "lock"
+    command = "noctalia:session lock"
+    enabled = false
+    resume_command = ""
+    timeout = 660
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    command = "noctalia:dpms-off"
+    enabled = false
+    resume_command = "noctalia:dpms-on"
+    timeout = 600
+
+    [idle.behavior.suspend]
+    action = "lock_and_suspend"
+    command = "noctalia:session suspend"
+    enabled = false
+    resume_command = ""
+    timeout = 1800
+
+[keybinds]
+cancel = [ "Escape" ]
+down = [ "Down" ]
+left = [ "Left" ]
+right = [ "Right" ]
+up = [ "Up" ]
+validate = [ "Return", "KP_Enter" ]
+
+[location]
+address = "Singapore, SG"
+auto_locate = false
+sunrise = "06:30"
+sunset = "18:30"
+
+[lockscreen]
+blur_intensity = 0.0
+blurred_desktop = false
+enabled = true
+tint_intensity = 0.0
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 961.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 840.0
+    cy = 931.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_login_button = true
+
+[nightlight]
+enabled = true
+force = false
+temperature_day = 6500
+temperature_night = 4000
+
+[notification]
+background_opacity = 1.0
+enable_daemon = true
+layer = "overlay"
+offset_x = 20
+offset_y = 8
+scale = 1.0
+show_actions = true
+show_app_name = true
+
+    [notification.filter.chromium]
+    match = "chromium"
+    play_sound = false
+
+    [notification.filter.discord]
+    match = "discord"
+    play_sound = false
+
+    [notification.filter.firefox]
+    match = "firefox"
+    play_sound = false
+
+[osd]
+background_opacity = 1.0
+offset_x = 20
+offset_y = 8
+orientation = "horizontal"
+position = "top_right"
+scale = 1.0
+
+    [osd.kinds]
+    bluetooth = false
+    brightness = true
+    caffeine = false
+    dnd = false
+    keyboard_layout = true
+    lock_keys = false
+    power_profile = false
+    privacy = false
+    volume = true
+    volume_input = true
+    volume_output = true
+    wifi = false
+
+[plugins]
+enabled = [ "noctalia/screen_recorder" ]
+
+[shell]
+avatar_path = "/home/xllvr/.face"
+clipboard_auto_paste = "off"
+clipboard_enabled = true
+corner_radius_scale = 1.0
+font_family = "Montserrat Medium"
+settings_show_advanced = true
+show_location = false
+telemetry_enabled = true
+ui_scale = 1.0
+
+    [shell.animation]
+    enabled = false
+    speed = 1.0
+
+    [shell.mpris]
+    blacklist = []
+
+    [shell.panel]
+    borders = false
+    clipboard_placement = "centered"
+    control_center_placement = "attached"
+    launcher_categories = false
+    launcher_compact = true
+    launcher_placement = "centered"
+    session_placement = "centered"
+    shadow = true
+    transparency_mode = "solid"
+    wallpaper_placement = "attached"
+
+    [[shell.session.actions]]
+    action = "lock"
+    shortcut = "1"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    shortcut = "2"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    shortcut = "4"
+
+    [[shell.session.actions]]
+    action = "logout"
+    shortcut = "5"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    shortcut = "6"
+
+    [shell.shadow]
+    direction = "down_right"
+
+[system.monitor]
+enabled = true
+
+[theme]
+builtin = "Catppuccin"
+community_palette = "Ayu Green"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = []
+    community_ids = []
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/xllvr/nixconf/m"
+edge_smoothness = 0.05
+enabled = false
+fill_color = "#000000"
+fill_mode = "crop"
+transition = [ "fade", "disc", "stripes", "wipe", "honeycomb" ]
+transition_duration = 1500.0
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = false
+    interval_seconds = 1800
+    order = "random"
+    recursive = true
+
+[weather]
+effects = true
+enabled = true
+refresh_minutes = 30
+unit = "celsius"
+
+[widget.clock]
+format = "{:%H:%M %a, %b %d}"
+scale = 1.0
+tooltip_format = "{:%H:%M %a, %b %d}"
+
+[widget.notifications]
+hide_when_no_unread = false
+
+[widget.tray]
+drawer = true
+hidden = []
+pinned = []
+
+[widget.workspaces]
+display = "name"
+empty_color = "secondary"
+focused_color = "tertiary"
+hide_when_empty = true
+labels_only_when_occupied = true
+max_label_chars = 10
+occupied_color = "secondary"
+pill_scale = 1.0
+scale = 1.2

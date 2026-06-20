@@ -51,7 +51,7 @@ workspace "gaming" {
     open-on-output "DP-1"
 }
 
-workspace "Notes" {
+workspace "notes" {
     open-on-output "DP-1"
 }
 
@@ -198,7 +198,7 @@ hotkey-overlay {
 binds {
     // -- Launchers / UX --------------------------------------------------------
     Mod+Return hotkey-overlay-title="Terminal" { spawn "kitty"; }
-    Alt+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle || fuzzel"; }
+    Alt+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia msg panel-toggle launcher || fuzzel"; }
     Mod+O hotkey-overlay-title="Overview" { toggle-overview; }
 
     // -- Window actions --------------------------------------------------------
@@ -280,7 +280,7 @@ binds {
     Mod+Ctrl+Q repeat=false hotkey-overlay-title="Quit niri" { quit; }
 
     // -- Utilities -------------------------------------------------------------
-    Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn-sh "noctalia-shell ipc call launcher clipboard || fuzzclip"; }
+    Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn-sh "noctalia msg panel-toggle clipboard || fuzzclip"; }
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "fuzzshot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }

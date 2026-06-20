@@ -8,13 +8,20 @@
     inputs.noctalia.homeModules.default
   ];
 
-  stylix.targets.noctalia-shell = {
-    enable = false;
-  };
+  # v4 rollback:
+  #
+  # stylix.targets.noctalia-shell = {
+  #   enable = false;
+  # };
+  #
+  # programs.noctalia-shell = {
+  #   enable = true;
+  #   settings =
+  #     (builtins.fromJSON (builtins.readFile (repoRoot + "/configs/noctalia/settings.json"))).settings;
+  # };
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
-    settings =
-      (builtins.fromJSON (builtins.readFile (repoRoot + "/configs/noctalia/settings.json"))).settings;
+    settings = repoRoot + "/configs/noctalia/config.toml";
   };
 }
