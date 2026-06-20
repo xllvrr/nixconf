@@ -123,7 +123,6 @@ in
     audacity
     picard
     file-roller
-    noctalia-shell
     qt6Packages.fcitx5-qt
   ];
 

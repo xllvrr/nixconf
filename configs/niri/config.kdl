@@ -173,7 +173,7 @@ window-rule {
 // =============================================================================
 spawn-sh-at-startup "awww-daemon"
 spawn-sh-at-startup "awww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
-spawn-sh-at-startup "noctalia-shell"
+spawn-sh-at-startup "noctalia"
 spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
 spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"

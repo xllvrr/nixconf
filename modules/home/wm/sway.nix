@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   # =============================================================================
   # GLOBALS
   # =============================================================================
@@ -12,10 +13,12 @@
   primaryscreen = "DP-1";
   secondaryscreen = "HDMI-A-1";
   configHome =
-    if config.xdg.enable or false
-    then config.xdg.configHome
-    else "${config.home.homeDirectory}/.config";
-in {
+    if config.xdg.enable or false then
+      config.xdg.configHome
+    else
+      "${config.home.homeDirectory}/.config";
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -46,29 +49,52 @@ in {
       modifier = mod;
       keybindings = lib.attrsets.mergeAttrsList [
         # Workspace switching / moving (1..10)
-        (lib.attrsets.mergeAttrsList (map (num: let
-          ws = toString num;
-        in {
-          "${mod}+${ws}" = "workspace ${ws}";
-          "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
-        }) [1 2 3 4 5 6 7 8 9 0]))
+        (lib.attrsets.mergeAttrsList (
+          map
+            (
+              num:
+              let
+                ws = toString num;
+              in
+              {
+                "${mod}+${ws}" = "workspace ${ws}";
+                "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
+              }
+            )
+            [
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+              0
+            ]
+        ))
 
         # Vim-like focus/move, plus moving workspaces across outputs
-        (lib.attrsets.concatMapAttrs (key: direction: {
+        (lib.attrsets.concatMapAttrs
+          (key: direction: {
             "${mod}+${key}" = "focus ${direction}";
             "${mod}+Ctrl+${key}" = "move ${direction}";
             "${mod}+Shift+${key}" = "move workspace to output ${direction}";
-          }) {
+          })
+          {
             h = "left";
             j = "down";
             k = "up";
             l = "right";
-          })
+          }
+        )
 
         # Everything else
         {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.kitty}/bin/kitty";
-          "Alt+space" = "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
+          "Alt+space" =
+            "exec --no-startup-id ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher toggle || fuzzel'";
 
           "${mod}+c" = "kill";
 
@@ -87,7 +113,8 @@ in {
           "${mod}+Shift+r" = "exec swaymsg reload";
           "${mod}+Ctrl+q" = "exit";
 
-          "${mod}+Alt+v" = "exec ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher clipboard || fuzzclip'";
+          "${mod}+Alt+v" =
+            "exec ${pkgs.bash}/bin/bash -lc 'noctalia-shell ipc call launcher clipboard || fuzzclip'";
           "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
@@ -104,17 +131,17 @@ in {
       startup = [
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
         # If Noctalia crashes (known interaction with fcitx), reintroduce a per-app override:
-        # {command = "env QT_IM_MODULE= QT_IM_MODULES=wayland noctalia-shell";}
-        {command = "noctalia-shell";}
-        {command = "syncthing";}
-        {command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music";}
-        {command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store";}
-        {command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store";}
-        {command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key";}
-        {command = "swaymsg workspace 1 && ${pkgs.chromium}/bin/chromium";}
-        {command = "${pkgs.safeeyes}/bin/safeeyes";}
-        {command = "${pkgs.nicotine-plus}/bin/nicotine-plus";}
+        # {command = "env QT_IM_MODULE= QT_IM_MODULES=wayland noctalia";}
+        { command = "noctalia"; }
+        { command = "syncthing"; }
+        { command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music"; }
+        { command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf"; }
+        { command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"; }
+        { command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"; }
+        { command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key"; }
+        { command = "swaymsg workspace 1 && ${pkgs.chromium}/bin/chromium"; }
+        { command = "${pkgs.safeeyes}/bin/safeeyes"; }
+        { command = "${pkgs.nicotine-plus}/bin/nicotine-plus"; }
       ];
       workspaceAutoBackAndForth = true;
 
@@ -125,10 +152,10 @@ in {
         titlebar = false;
         border = 3;
         criteria = [
-          {class = "nmtui";}
-          {class = "Pavucontrol";}
-          {class = ".*blueman.*";}
-          {title = "Steam - Update News";}
+          { class = "nmtui"; }
+          { class = "Pavucontrol"; }
+          { class = ".*blueman.*"; }
+          { title = "Steam - Update News"; }
         ];
       };
       workspaceOutputAssign = [
@@ -150,14 +177,14 @@ in {
         }
       ];
       assigns = {
-        "6" = [{class = "obsidian";}];
+        "6" = [ { class = "obsidian"; } ];
         "7" = [
           {
             app_id = "kitty";
             title = "^music$";
           }
         ];
-        "8" = [{class = "zathura";}];
+        "8" = [ { class = "zathura"; } ];
         "9" = [
           {
             app_id = "kitty";
@@ -181,9 +208,11 @@ in {
       # =============================================================================
       # BARS (WAYBAR HANDLED SEPARATELY)
       # =============================================================================
-      bars = [];
+      bars = [ ];
     };
     systemd.enable = true;
-    wrapperFeatures = {gtk = true;};
+    wrapperFeatures = {
+      gtk = true;
+    };
   };
 }

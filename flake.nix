@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     stylix = {
-      url = "github:nix-community/stylix/pull/2337/head";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,10 +22,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # noctalia = {
-    #   url = "github:noctalia-dev/noctalia-shell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -72,6 +72,7 @@
         modules = [
           ./hosts/NixDesktop/configuration.nix
           stylix.nixosModules.stylix
+          ./modules/nixos/theme/stylix-kmscon.nix
           {
             environment.systemPackages = [
               customNvim.neovim
