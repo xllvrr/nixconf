@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   services.mpd = {
     enable = true;
     musicDirectory = "/mnt/media/Music";
@@ -16,5 +16,6 @@
       }
     '';
   };
-}
 
+  services.mpd-mpris.enable = true;
+}
