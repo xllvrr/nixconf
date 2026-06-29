@@ -39,6 +39,10 @@ workspace "music" {
     open-on-output "HDMI-A-1"
 }
 
+workspace "notes" {
+    open-on-output "HDMI-A-1"
+}
+
 workspace "vibing" {
     open-on-output "HDMI-A-1"
 }
@@ -48,10 +52,6 @@ workspace "browser" {
 }
 
 workspace "gaming" {
-    open-on-output "DP-1"
-}
-
-workspace "notes" {
     open-on-output "DP-1"
 }
 
@@ -174,7 +174,6 @@ window-rule {
 spawn-sh-at-startup "awww-daemon"
 spawn-sh-at-startup "awww img \"$HOME/.config/niri/wallpaper.png\" --transition-type none"
 spawn-sh-at-startup "noctalia"
-spawn-at-startup "syncthing"
 spawn-sh-at-startup "kitty --title music --detach tmux-music"
 spawn-sh-at-startup "kitty --title nixconf --detach tmux-nixconf"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"

@@ -26,6 +26,7 @@ in
     ../../modules/nixos/services/greetd.nix # Import greeter
     ../../modules/nixos/services/ollama.nix # Ollama daemon
     ../../modules/nixos/services/nicotine.nix # Nicotine+ + firewall
+    ../../modules/nixos/services/syncthing.nix # Syncthing daemon
     ../../modules/nixos/thunar.nix # Thunar + GVFS/Tumbler helpers
     ../../modules/nixos/wm/sway.nix # Sway session (selectable in greetd)
     ../../modules/nixos/wm/niri.nix # Niri session (selectable in greetd)

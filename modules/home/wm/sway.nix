@@ -132,7 +132,6 @@ in
         # If Noctalia crashes (known interaction with fcitx), reintroduce a per-app override:
         # {command = "env QT_IM_MODULE= QT_IM_MODULES=wayland noctalia";}
         { command = "noctalia"; }
-        { command = "syncthing"; }
         { command = "${pkgs.kitty}/bin/kitty --title music --detach tmux-music"; }
         { command = "${pkgs.kitty}/bin/kitty --title nixconf --detach tmux-nixconf"; }
         { command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"; }

@@ -1,9 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # Always installed GUIs
   home.packages = with pkgs; [
     # Productivity
     obsidian
-    syncthing
     zathura
     system-config-printer
 

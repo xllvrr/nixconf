@@ -25,7 +25,6 @@
     mangohud
     protonup-qt
     lutris
-    bottles
     r2modman
 
     # Minecraft
