@@ -340,6 +340,13 @@ ui_scale = 1.0
     [shell.mpris]
     blacklist = []
 
+    [shell.screenshot]
+    copy_to_clipboard = true
+    directory = "~/Pictures/Screenshots"
+    filename_pattern = "%Y-%m-%d_%H-%M-%S"
+    freeze_screen = true
+    save_to_file = false
+
     [shell.panel]
     borders = false
     clipboard_placement = "centered"
