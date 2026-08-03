@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   # Clipboard picker.
   fuzzclip = pkgs.writeShellApplication {
@@ -10,6 +10,29 @@ let
     ];
     text = ''
       cliphist list | fuzzel -d -p 'Clipboard history below:' | cliphist decode | wl-copy
+    '';
+  };
+
+  # Noctalia screenshot mode picker.
+  noctalia-shot = pkgs.writeShellApplication {
+    name = "noctalia-shot";
+    runtimeInputs = [
+      inputs.noctalia.packages.${pkgs.system}.default
+      pkgs.fuzzel
+      pkgs.grim
+      pkgs.slurp
+      pkgs.wl-clipboard
+    ];
+    text = ''
+      mode="$(printf "region\nwindow\nfullscreen\npick screen\nall screens" | fuzzel -d -p 'Screenshot mode')"
+
+      case "$mode" in
+          "region") noctalia msg screenshot-region;;
+          "window") grim -g "$(slurp)" - | wl-copy --type image/png;;
+          "fullscreen") noctalia msg screenshot-fullscreen;;
+          "pick screen") noctalia msg screenshot-fullscreen pick;;
+          "all screens") noctalia msg screenshot-fullscreen all;;
+      esac
     '';
   };
 
@@ -130,6 +153,7 @@ in
   home.packages = [
     fuzzclip
     fuzzshot
+    noctalia-shot
     fuzzwifi
     record-audio
     tmux-music

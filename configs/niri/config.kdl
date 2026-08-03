@@ -280,7 +280,7 @@ binds {
 
     // -- Utilities -------------------------------------------------------------
     Mod+Alt+V hotkey-overlay-title="Clipboard" { spawn-sh "noctalia msg panel-toggle clipboard || fuzzclip"; }
-    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn-sh "noctalia msg screenshot-region || fuzzshot"; }
+    Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "noctalia-shot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }
     Mod+B hotkey-overlay-title="Browser" { spawn "chromium"; }
