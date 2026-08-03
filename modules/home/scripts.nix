@@ -17,7 +17,7 @@ let
   noctalia-shot = pkgs.writeShellApplication {
     name = "noctalia-shot";
     runtimeInputs = [
-      inputs.noctalia.packages.${pkgs.system}.default
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       pkgs.fuzzel
       pkgs.grim
       pkgs.slurp
