@@ -5,6 +5,7 @@
     ../../modules/home/wm/sway.nix
     ../../modules/home/wm/niri.nix
     ../../modules/home/apps/os/waybar.nix
+    ../../modules/home/apps/os/fcitx5.nix
     ../../modules/home/apps/os/noctalia.nix
     ../../modules/home/apps/browser/chromium.nix
     ../../modules/home/apps/office/onlyoffice.nix

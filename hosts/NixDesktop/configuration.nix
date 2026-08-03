@@ -129,8 +129,13 @@ in
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    QT_IM_MODULES = "wayland;fcitx";
+    # Niri/Sway do not provide the Qt text-input protocols that Qt expects;
+    # prefer fcitx for Qt while keeping Qt 6's fallback list available.
+    QT_IM_MODULE = "fcitx";
+    QT_IM_MODULES = "wayland;fcitx;ibus";
+    GTK_IM_MODULE = "fcitx";
     SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "ibus";
     XMODIFIERS = "@im=fcitx";
     MOZ_ENABLE_WAYLAND = "1";
   };

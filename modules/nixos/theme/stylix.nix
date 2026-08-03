@@ -1,5 +1,8 @@
 # Stylix Configuration
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
+  home-manager.users.xllvr.xdg.configFile.Kvantum.force = true;
+
   stylix = {
     enable = true;
     autoEnable = true;

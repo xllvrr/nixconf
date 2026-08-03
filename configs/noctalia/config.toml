@@ -5,6 +5,9 @@ notification_sound = ""
 sound_volume = 0.5
 volume_change_sound = ""
 
+[accessibility]
+ui_scale = 1.0
+
 [backdrop]
 blur_intensity = 0.4
 enabled = true
@@ -115,9 +118,7 @@ widget_order = [
         [desktop_widgets.widget.desktop-widget-0000000000000005.settings]
         background = false
         background_color = "surface"
-        bands = 32
         color = "primary"
-        show_when_idle = true
 
     [desktop_widgets.widget.desktop-widget-0000000000000006]
     box_height = 0.0
@@ -144,7 +145,6 @@ widget_order = [
         [desktop_widgets.widget.desktop-widget-0000000000000007.settings]
         background = false
         bands = 32
-        color = "primary"
         color_2 = "tertiary"
         show_when_idle = true
 
@@ -331,7 +331,6 @@ font_family = "Montserrat Medium"
 settings_show_advanced = true
 show_location = false
 telemetry_enabled = true
-ui_scale = 1.0
 
     [shell.animation]
     enabled = false
@@ -349,15 +348,20 @@ ui_scale = 1.0
 
     [shell.panel]
     borders = false
-    clipboard_placement = "centered"
+    clipboard_placement = "floating"
+    clipboard_position = "center"
     control_center_placement = "attached"
-    launcher_categories = false
-    launcher_compact = true
-    launcher_placement = "centered"
-    session_placement = "centered"
+    launcher_placement = "floating"
+    launcher_position = "center"
+    session_placement = "floating"
+    session_position = "center"
     shadow = true
     transparency_mode = "solid"
     wallpaper_placement = "attached"
+
+    [shell.launcher]
+    categories = false
+    compact = true
 
     [[shell.session.actions]]
     action = "lock"
@@ -434,10 +438,10 @@ hidden = []
 pinned = []
 
 [widget.workspaces]
-display = "name"
 empty_color = "secondary"
 focused_color = "tertiary"
 hide_when_empty = true
+label_source = "name"
 labels_only_when_occupied = true
 max_label_chars = 10
 occupied_color = "secondary"

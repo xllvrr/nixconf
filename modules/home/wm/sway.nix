@@ -128,6 +128,7 @@ in
       # STARTUP
       # =============================================================================
       startup = [
+        { command = "fcitx5 -d"; }
         # Work around a Qt6 + fcitx5-qt crash (segfault in libfcitx5platforminputcontextplugin.so).
         # If Noctalia crashes (known interaction with fcitx), reintroduce a per-app override:
         # {command = "env QT_IM_MODULE= QT_IM_MODULES=wayland noctalia";}
