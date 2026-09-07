@@ -8,8 +8,10 @@
     ../../modules/home/apps/os/fcitx5.nix
     ../../modules/home/apps/os/noctalia.nix
     ../../modules/home/apps/browser/chromium.nix
+    ../../modules/home/apps/browser/firefox.nix
     ../../modules/home/apps/office/onlyoffice.nix
     ../../modules/home/apps/terminal/kitty.nix
+    ../../modules/home/apps/video/freetube.nix
     ../../modules/home/apps/programming/vscode.nix
     ../../modules/home/scripts.nix
     ../../modules/home/suites/defaults.nix

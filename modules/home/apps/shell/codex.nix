@@ -16,6 +16,8 @@
       sandbox_mode = "workspace-write";
       sandbox_workspace_write.network_access = true;
 
+      projects."/home/xllvr/nixconf".trust_level = "trusted";
+
       mcp_servers = {
         context7 = {
           command = "npx";

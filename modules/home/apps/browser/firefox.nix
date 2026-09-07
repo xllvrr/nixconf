@@ -5,7 +5,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
     profiles.xllvr = {
@@ -25,21 +26,13 @@
       # -----------------------------------------------------------------------------
 
       search.engines = {
-        "Startpage" = {
-          urls = [
-            {
-              template = "https://www.startpage.com/sp/search?query={searchTerms}&language=auto";
-            }
-          ];
-          definedAliases = ["@s"];
-        };
         "MyNixOS" = {
           urls = [
             {
               template = "https://mynixos.com/search?q={searchTerms}";
             }
           ];
-          definedAliases = ["@myn"];
+          definedAliases = [ "@myn" ];
         };
         "Youtube" = {
           urls = [
@@ -47,7 +40,7 @@
               template = "https://youtube.com/results?search_query={searchTerms}";
             }
           ];
-          definedAliases = ["@yt"];
+          definedAliases = [ "@yt" ];
         };
         "Jisho" = {
           urls = [
@@ -55,7 +48,7 @@
               template = "https://jisho.org/search/{searchTerms}";
             }
           ];
-          definedAliases = ["@jsh"];
+          definedAliases = [ "@jsh" ];
         };
         "KBBI" = {
           urls = [
@@ -63,7 +56,7 @@
               template = "https://kbbi.web.id/{searchTerms}";
             }
           ];
-          definedAliases = ["@kbb"];
+          definedAliases = [ "@kbb" ];
         };
         "ProtonDB" = {
           urls = [
@@ -71,11 +64,11 @@
               template = "https://www.protondb.com/search?q={searchTerms}";
             }
           ];
-          definedAliases = ["@pro"];
+          definedAliases = [ "@pro" ];
         };
       };
       search.force = true;
-      search.default = "Startpage";
+      search.default = "google";
     };
 
     # -----------------------------------------------------------------------------
@@ -100,5 +93,5 @@
     };
   };
 
-  stylix.targets.firefox.profileNames = ["xllvr"];
+  stylix.targets.firefox.profileNames = [ "xllvr" ];
 }

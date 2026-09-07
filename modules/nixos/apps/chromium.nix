@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   # System-wide Chromium/Chrome policies (applies to all users).
   programs.chromium = {
     enable = true;
@@ -13,19 +13,19 @@
       # See `chrome://policy` -> RestoreOnStartup.
       RestoreOnStartup = 1;
 
-      # Default search engine (Startpage).
+      # Default search engine (Google).
       DefaultSearchProviderEnabled = true;
-      DefaultSearchProviderName = "Startpage";
-      DefaultSearchProviderKeyword = "s";
-      DefaultSearchProviderSearchURL = "https://www.startpage.com/sp/search?query={searchTerms}&language=auto";
+      DefaultSearchProviderName = "Google";
+      DefaultSearchProviderKeyword = "g";
+      DefaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
 
       # Extra "Site search" entries (shortcuts: type `@<shortcut>` in the omnibox).
       # Note: Chromium may already ship some engines; these are added/managed by policy.
       SiteSearchSettings = [
         {
-          name = "Startpage";
-          shortcut = "s";
-          url = "https://www.startpage.com/sp/search?query={searchTerms}&language=auto";
+          name = "Google";
+          shortcut = "g";
+          url = "https://www.google.com/search?q={searchTerms}";
           featured = true;
           allow_user_override = true;
         }
