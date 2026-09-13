@@ -41,6 +41,9 @@
       unfree = [
         "steam"
         "steam-unwrapped"
+        "vivaldi"
+        "vivaldi-ffmpeg-codecs"
+        "widevine-cdm"
       ];
 
       system = "x86_64-linux";

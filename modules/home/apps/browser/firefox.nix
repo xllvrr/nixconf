@@ -26,6 +26,14 @@
       # -----------------------------------------------------------------------------
 
       search.engines = {
+        "Ecosia" = {
+          urls = [
+            {
+              template = "https://www.ecosia.org/search?q={searchTerms}";
+            }
+          ];
+          definedAliases = [ "@eco" ];
+        };
         "MyNixOS" = {
           urls = [
             {
@@ -68,7 +76,7 @@
         };
       };
       search.force = true;
-      search.default = "google";
+      search.default = "Ecosia";
     };
 
     # -----------------------------------------------------------------------------
