@@ -41,8 +41,6 @@
       unfree = [
         "steam"
         "steam-unwrapped"
-        "vivaldi"
-        "vivaldi-ffmpeg-codecs"
         "widevine-cdm"
       ];
 

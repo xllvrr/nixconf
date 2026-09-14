@@ -70,8 +70,4 @@ in
 
     extraOpts = browserPolicy;
   };
-
-  environment.etc."vivaldi/policies/managed/extra.json" = {
-    text = builtins.toJSON browserPolicy;
-  };
 }
