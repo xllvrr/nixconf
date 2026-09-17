@@ -28,8 +28,7 @@ in
     ../../modules/nixos/services/nicotine.nix # Nicotine+ + firewall
     ../../modules/nixos/services/syncthing.nix # Syncthing daemon
     ../../modules/nixos/thunar.nix # Thunar + GVFS/Tumbler helpers
-    ../../modules/nixos/wm/sway.nix # Sway session (selectable in greetd)
-    ../../modules/nixos/wm/niri.nix # Niri session (selectable in greetd)
+    ../../modules/nixos/wm/niri.nix # Niri session
   ];
 
   # Bootloader.
@@ -129,7 +128,7 @@ in
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    # Niri/Sway do not provide the Qt text-input protocols that Qt expects;
+    # Niri does not provide the Qt text-input protocols that Qt expects;
     # prefer fcitx for Qt while keeping Qt 6's fallback list available.
     QT_IM_MODULE = "fcitx";
     QT_IM_MODULES = "wayland;fcitx;ibus";

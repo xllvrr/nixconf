@@ -2,9 +2,7 @@
 {
   # Host-specific Home Manager modules.
   imports = [
-    ../../modules/home/wm/sway.nix
     ../../modules/home/wm/niri.nix
-    ../../modules/home/apps/os/waybar.nix
     ../../modules/home/apps/os/fcitx5.nix
     ../../modules/home/apps/os/noctalia.nix
     ../../modules/home/apps/browser/chromium.nix
@@ -16,8 +14,6 @@
     ../../modules/home/suites/defaults.nix
     ../../modules/home/suites/audio.nix
   ];
-
-  xllvr.desktop.waybar.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
