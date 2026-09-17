@@ -1,5 +1,21 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  browser = config.programs.vivaldi.finalPackage;
+
+  # Shared browser launcher for window-manager configs.
+  launch-browser = pkgs.writeShellApplication {
+    name = "launch-browser";
+    text = ''
+      exec ${lib.getExe browser} "$@"
+    '';
+  };
+
   # Clipboard picker.
   fuzzclip = pkgs.writeShellApplication {
     name = "fuzzclip";
@@ -153,6 +169,7 @@ in
   home.packages = [
     fuzzclip
     fuzzshot
+    launch-browser
     noctalia-shot
     fuzzwifi
     record-audio

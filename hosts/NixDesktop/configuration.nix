@@ -21,6 +21,7 @@ in
     ./hardware.nix # Host hardware scan
     ../../modules/nixos/common.nix # Shared system defaults
     ../../modules/nixos/apps/chromium.nix # Chromium/Chrome policies
+    ../../modules/nixos/apps/vivaldi.nix # Vivaldi policies
     ../../modules/nixos/theme/stylix.nix # Stylix theme
     ../../modules/nixos/suites/gaming.nix # Gaming suite
     ../../modules/nixos/services/greetd.nix # Import greeter

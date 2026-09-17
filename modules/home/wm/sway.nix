@@ -117,7 +117,7 @@ in
           "${mod}+Shift+s" = "exec fuzzshot";
 
           "${mod}+Alt+f" = "exec thunar";
-          "${mod}+b" = "exec ${pkgs.chromium}/bin/chromium";
+          "${mod}+b" = "exec launch-browser";
           "${mod}+e" = "exec kitty --detach yazi";
           "${mod}+r" = "exec record-audio";
         }
@@ -138,7 +138,7 @@ in
         { command = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch cliphist store"; }
         { command = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch cliphist store"; }
         { command = "${pkgs.openssh}/bin/ssh-add $HOME/.ssh/github_key"; }
-        { command = "swaymsg workspace 1 && ${pkgs.chromium}/bin/chromium"; }
+        { command = "swaymsg workspace 1 && launch-browser"; }
         { command = "${pkgs.safeeyes}/bin/safeeyes"; }
         { command = "${pkgs.nicotine-plus}/bin/nicotine-plus"; }
       ];
