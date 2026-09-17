@@ -41,7 +41,6 @@
       unfree = [
         "steam"
         "steam-unwrapped"
-        "vivaldi"
         "widevine-cdm"
       ];
 

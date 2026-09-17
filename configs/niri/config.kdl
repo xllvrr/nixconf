@@ -124,9 +124,9 @@ window-rule {
     open-on-workspace "gaming"
 }
 
-// Browser Picture-in-Picture should stay a small floating window.
+// Chromium Picture-in-Picture should stay a small floating window.
 window-rule {
-    match app-id=r#"^(chromium|vivaldi-stable)$"# title="Picture-in-Picture"
+    match app-id=r#"^chromium$"# title="Picture-in-Picture"
     open-floating true
     open-maximized false
 }
@@ -142,7 +142,7 @@ window-rule {
 }
 
 window-rule {
-    match at-startup=true app-id=r#"^(chromium|vivaldi-stable)$"#
+    match at-startup=true app-id=r#"^chromium$"#
     open-on-workspace "browser"
 }
 
@@ -284,7 +284,7 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "noctalia-shot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }
-    Mod+B hotkey-overlay-title="Browser" { spawn "launch-browser"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "chromium"; }
     Mod+E hotkey-overlay-title="Yazi" { spawn "kitty" "--detach" "yazi"; }
     Mod+R hotkey-overlay-title="Record audio" { spawn "record-audio"; }
 }
