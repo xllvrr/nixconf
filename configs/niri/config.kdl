@@ -284,7 +284,7 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Screenshot" { spawn "noctalia-shot"; }
 
     Mod+Alt+F hotkey-overlay-title="Files" { spawn "thunar"; }
-    Mod+B hotkey-overlay-title="Browser" { spawn "chromium"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "vivaldi"; }
     Mod+E hotkey-overlay-title="Yazi" { spawn "kitty" "--detach" "yazi"; }
     Mod+R hotkey-overlay-title="Record audio" { spawn "record-audio"; }
 }

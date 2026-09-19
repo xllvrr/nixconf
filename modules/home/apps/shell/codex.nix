@@ -10,7 +10,8 @@
         enable = true;
 
         settings = {
-            model = "gpt-5.6-sol medium";
+            model = "gpt-5.6-sol";
+            model_reasoning_effort = "medium";
             oss_provider = "ollama";
             approval_policy = "on-request";
             sandbox_mode = "workspace-write";

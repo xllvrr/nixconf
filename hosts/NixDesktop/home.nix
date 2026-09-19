@@ -6,6 +6,7 @@
     ../../modules/home/apps/os/fcitx5.nix
     ../../modules/home/apps/os/noctalia.nix
     ../../modules/home/apps/browser/chromium.nix
+    ../../modules/home/apps/browser/vivaldi.nix
     ../../modules/home/apps/office/onlyoffice.nix
     ../../modules/home/apps/terminal/kitty.nix
     ../../modules/home/apps/video/freetube.nix
