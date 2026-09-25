@@ -32,7 +32,6 @@
 
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     # Screenshots
     grim
@@ -47,9 +46,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "kitty";
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.steam/root/compatibilitytools.d";
-    FLAKE = "/home/xllvr/nixos";
-    NNN_FIFO = "/tmp/nnn.fifo";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
+    FLAKE = "/home/xllvr/nixconf";
   };
 
   home.shellAliases = {

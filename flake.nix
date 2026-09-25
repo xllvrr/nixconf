@@ -39,10 +39,17 @@
     }@inputs:
     let
       unfree = [
+        "evafast"
+        "obsidian"
         "steam"
         "steam-unwrapped"
         "vivaldi"
+        "vscode"
+        "vscode-extension-github-copilot"
+        "vscode-extension-mhutchie-git-graph"
+        "vscode-extension-ms-vscode-cpptools"
         "widevine-cdm"
+        "zoom"
       ];
 
       system = "x86_64-linux";
@@ -82,6 +89,7 @@
           }
           home-manager.nixosModules.home-manager
           {
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "hm-bak";
             home-manager.extraSpecialArgs = { inherit inputs pkgsUnstable repoRoot; };
