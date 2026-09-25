@@ -2,6 +2,8 @@
 
 Personal NixOS and Home Manager configuration for `NixDesktop`.
 
+Vivaldi is the default browser, with Chromium retained as a fallback.
+
 ## Layout
 
 - `flake.nix` wires inputs, packages, and the `NixDesktop` system output.
@@ -37,7 +39,3 @@ sudo nixos-rebuild switch --flake .#NixDesktop
 The repo currently uses a plain flake. Reconsider `flake-parts` only if this grows into multiple hosts or systems, gains substantial `packages`, `checks`, or `devShells`, or starts exporting reusable modules. Relevant references: <https://flake.parts> and <https://flake.parts/options/home-manager.html>.
 
 Uncommitted local changes are expected while iterating. Do not revert unrelated dirty files during cleanup work.
-
-## Why plain flake
-
-Using a plain flake simplifies the repository structure by avoiding unnecessary layers of abstraction. This approach reduces cognitive overhead for contributors and maintainers, especially for projects that require minimal configuration and quick iteration. Plain flakes are well-suited for this repository's size and scope, where the focus is on simplicity and direct configuration without complex flake layers.
