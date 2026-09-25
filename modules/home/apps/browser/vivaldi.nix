@@ -23,10 +23,12 @@ in
 
     # Selected Chromium extensions:
     # - Bitwarden
+    # - Dark Reader
     # - Vimium C
     # - ShopBack
     extensions = [
       { id = "nngceckbapebfimnlniiiahkandclblb"; }
+      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; }
       { id = "hfjbmagddngcpeloejdejnfgbamkjaeg"; }
       { id = "djjjmdgomejlopjnccoejdhgjmiappap"; }
     ];
