@@ -1,1 +1,6 @@
 modules/extraconfs/apps/slskd.env
+# Nix build artifacts
+**/nix-cache
+*.nix
+build/
+out/
