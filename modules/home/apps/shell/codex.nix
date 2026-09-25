@@ -12,7 +12,6 @@
         settings = {
             model = "gpt-5.6-sol";
             model_reasoning_effort = "medium";
-            oss_provider = "ollama";
             approval_policy = "on-request";
             sandbox_mode = "workspace-write";
             sandbox_workspace_write.network_access = true;
