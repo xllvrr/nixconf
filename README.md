@@ -39,3 +39,5 @@ sudo nixos-rebuild switch --flake .#NixDesktop
 The repo currently uses a plain flake. Reconsider `flake-parts` only if this grows into multiple hosts or systems, gains substantial `packages`, `checks`, or `devShells`, or starts exporting reusable modules. Relevant references: <https://flake.parts> and <https://flake.parts/options/home-manager.html>.
 
 Uncommitted local changes are expected while iterating. Do not revert unrelated dirty files during cleanup work.
+
+Vivaldi is now the default browser. Chromium is retained for now as a fallback and Firefox remains an unimported module.
