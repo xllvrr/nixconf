@@ -74,8 +74,6 @@
   # =============================================================================
   # Always installed packages
   environment.systemPackages = with pkgs; [
-    # Editors
-    neovim
 
     # Download
     curl

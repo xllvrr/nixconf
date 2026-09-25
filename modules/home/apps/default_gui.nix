@@ -1,21 +1,19 @@
 { pkgs, ... }: {
-  # Always installed GUIs
-  home.packages = with pkgs; [
-    # Productivity
-    obsidian
-    zathura
-    system-config-printer
+    # Always installed GUIs
+    home.packages = with pkgs; [
+        # Productivity
+        obsidian
+        zathura
+        system-config-printer
 
-    # Health
-    safeeyes
+        # Health
+        safeeyes
 
-    # Music
-    cava
-    pulsemixer
-    qpwgraph
+        # Music
+        pulsemixer
+        qpwgraph
 
-    # Terminal
-    kitty
-    fuzzel
-  ];
+        # Terminal
+        fuzzel
+    ];
 }

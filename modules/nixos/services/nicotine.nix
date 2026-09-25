@@ -1,7 +1,3 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    nicotine-plus
-  ];
-
-  networking.firewall.allowedTCPPorts = [50300];
+{ pkgs, ... }: {
+    networking.firewall.allowedTCPPorts = [ 50300 ];
 }
