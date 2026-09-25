@@ -75,16 +75,8 @@ in
         ];
     };
 
-    # Enable the X11 windowing system.
-    services.xserver.enable = true;
-
     # Enable LD
-    programs.nix-ld = {
-        enable = true;
-        libraries = with pkgs; [
-            uv
-        ];
-    };
+    programs.nix-ld.enable = true;
 
     # Enable SSH
     services.openssh.enable = true;
@@ -111,7 +103,6 @@ in
     };
 
     # Shell
-    programs.zsh.enable = true;
     programs.fish.enable = true;
 
     # Host-specific packages

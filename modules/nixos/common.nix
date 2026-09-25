@@ -20,15 +20,6 @@
   };
 
   # =============================================================================
-  # LOCALE / INPUT
-  # =============================================================================
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # =============================================================================
   # DOCUMENTATION
   # =============================================================================
   # Enable documentation
@@ -41,12 +32,6 @@
       cache.enable = true;
     };
   };
-
-  # =============================================================================
-  # SERVICES
-  # =============================================================================
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # =============================================================================
   # FONTS
@@ -64,8 +49,6 @@
   # =============================================================================
   # LOCATION / NIGHT LIGHT
   # =============================================================================
-  # Redshift (sunsetted; Noctalia provides night light)
-  services.redshift.enable = false;
   services.geoclue2.enable = true;
   location.provider = "geoclue2";
 
@@ -129,9 +112,5 @@
     caligula
     pastel
     feh
-
-    # GUI
-    gnomeExtensions.appindicator
-    gnomeExtensions.tray-icons-reloaded
   ];
 }
